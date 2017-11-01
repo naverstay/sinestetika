@@ -1,0 +1,22 @@
+{
+  "name": "sinestetika",
+  "version": "0.1.0",
+  "description": "",
+  "author": "ferryvg",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "autoprefixer": "~7.1.2",
+    "gulp": "~3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-delete-file": "^1.0.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "~7.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-uglifycss": "^1.0.8"
+  },
+  "devDependencies": {
+    "gulp-watch": "^4.3.11"
+  }
+}
