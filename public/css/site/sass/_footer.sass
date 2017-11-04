@@ -1,0 +1,133 @@
+footer.section
+  background: #0000fe
+  color: #fff
+  padding-top: 0
+  padding-bottom: 0
+  font-size: 3.15rem
+  line-height: 6rem
+
+.footer-email
+  margin-top: 23.5rem
+  font-weight: 700
+  text-transform: uppercase
+  display: block
+  overflow: hidden
+  color: #fff !important
+
+.footer-phone
+  font-weight: 700
+  text-transform: uppercase
+  display: block
+  overflow: hidden
+  color: #fff !important
+
+.footer-email span, .footer-phone span
+  display: block
+  height: 6rem
+  animation-name: text_bottom2top
+  animation-duration: 0.6s
+  animation-timing-function: ease-out
+  animation-iteration-count: 1
+  animation-fill-mode: forwards
+  animation-direction: normal
+
+.p-contacts-intro .phone
+  display: block
+  color: #fff !important
+
+footer
+  a
+    color: #fff !important
+  &.section .footer-addr
+    padding-top: 12rem
+    margin-bottom: 7rem
+    p
+      font-size: 2.3rem
+      line-height: 4rem
+      font-weight: normal
+
+.footer-services
+  font-size: 2.8rem
+  line-height: 3.2rem
+  max-width: 240px
+  .row
+    margin-top: 42px
+    a
+      display: block
+      margin: 0 0 9.8rem
+      font-weight: 700
+      &:hover, &:active, &:focus
+        color: #8b7cfd !important
+    > div:first-child
+      margin-left: 0 !important
+
+.footer-to-main
+  width: 100%
+  border-top: 1px solid #fff
+  padding: 5rem 0
+  font-size: 2.8rem
+  font-weight: 700
+  line-height: 3.6rem
+  margin-top: 1rem
+  a
+    display: block
+    position: relative
+    &:before
+      content: ''
+      display: block
+      position: absolute
+      right: 19px
+      width: 29px
+      height: 2px
+      top: 50%
+      margin-top: -1px
+      background-color: currentColor
+      transition: all 0.1s linear
+    &:hover:before
+      width: 48px
+    &:after
+      content: ''
+      position: absolute
+      right: 18px
+      top: 50%
+      margin-top: -4px
+      width: 8px
+      height: 8px
+      border-top: solid 2px currentColor
+      border-right: solid 2px currentColor
+      transform: rotate(45deg)
+
+@media (min-width: 768px)
+  footer.section
+    font-size: 5.15rem
+    line-height: 8.5rem
+  .footer-email
+    margin-top: 40rem
+    span
+      height: 8.5rem
+  .footer-phone span
+    height: 8.5rem
+  footer.section .footer-addr
+    p
+      font-size: 2.3rem
+      line-height: 3.6rem
+    padding-top: 17.5rem
+    margin-bottom: 12rem
+  .footer-services
+    margin: 14.5rem 0 4.5rem
+    font-size: 3.4rem
+    max-width: none
+    .row
+      margin-top: 14.5rem
+      margin-bottom: 4.5rem
+      a
+        margin: 0 0 8rem
+  .footer-to-main
+    font-size: 24px
+    padding: 36px 0
+    margin-top: 0
+    a
+      &:before
+        right: 1px
+      &:after
+        right: 0

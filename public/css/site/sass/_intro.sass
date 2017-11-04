@@ -1,0 +1,212 @@
+.intro
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  width: 100%
+  height: 100vh
+  min-height: 100vh
+  padding: 0
+  text-align: left
+  color: white
+  // background: #fff
+  background: #0000ff
+  position: relative
+  // animation-name: intro_bg
+  // animation-duration: 0.0s
+  // animation-timing-function: linear
+  // animation-iteration-count: 1
+  // animation-fill-mode: forwards
+  // animation-direction: normal
+  overflow: hidden
+  &.__anim
+    animation-delay: 2.9s
+  .start-logo
+    width: 8rem
+    height: 8rem
+    position: absolute
+    left: 50%
+    top: 50%
+    margin-left: -4rem
+    margin-top: -4rem
+    -webkit-transform-origin: center center
+    transform: scale(0)
+    animation-name: start_scale
+    animation-duration: 2.5s
+    animation-delay: 0.5s
+    animation-timing-function: ease-in-out
+    animation-iteration-count: 1
+    animation-fill-mode: forwards
+    animation-direction: normal
+    span
+      display: block
+      position: absolute
+      left: 0
+      top: 0
+      width: 8rem
+      height: 8rem
+      background: #00f
+      border-radius: 50%
+      &.c1
+        animation-name: start_c1
+        animation-duration: 0.7s
+        animation-delay: 1.3s
+        animation-timing-function: ease-out
+        animation-iteration-count: 1
+        animation-fill-mode: forwards
+        animation-direction: normal
+      &.c2
+        width: 5rem
+        height: 5rem
+        left: 1.5rem
+        top: 1.5rem
+        -webkit-transform-origin: center center
+        transform: scale(1)
+        animation-name: start_c2
+        animation-duration: 1.8s
+        animation-delay: 1.3s
+        animation-timing-function: linear
+        animation-iteration-count: 1
+        animation-fill-mode: forwards
+        animation-direction: normal
+  .intro-body
+    flex: 1 0 auto
+    width: 100%
+    .container
+      position: relative
+
+@media (min-width: 768px)
+  .intro .start-logo
+    width: 14rem
+    height: 14rem
+    margin-left: -7rem
+    margin-top: -7rem
+    span
+      &.c1, &.c2
+        display: block
+        position: absolute
+        left: 0
+        top: 0
+        width: 14rem
+        height: 14rem
+        background: #00f
+        border-radius: 50%
+
+.intro-logo
+  position: absolute
+  top: 20px
+  padding: 0
+  text-align: left
+
+.intro
+  .intro-body .brand-heading
+    font-size: 0
+    line-height: 0
+    margin: 3rem 0 0
+    font-weight: normal
+    > span
+      font-size: 48px
+      display: block
+      overflow: hidden
+      height: 9rem
+      line-height: 9rem
+    span span
+      display: inline-block
+      transform: translateY(100%)
+      opacity: 0
+      position: relative
+      animation-name: text_bottom2top
+      animation-duration: 0.5s
+      animation-timing-function: ease-out
+      animation-iteration-count: 1
+      animation-fill-mode: forwards
+      animation-direction: normal
+  &.__anim .intro-body .brand-heading span span
+    animation-delay: 2.8s
+  .intro-body .intro-text
+    font-size: 24px
+    font-weight: 300
+    line-height: 30px
+    margin: 5.8rem 0 0
+    opacity: 0
+    animation-name: text_opacity
+    animation-duration: 0.4s
+    animation-delay: 0.4s
+    animation-timing-function: linear
+    animation-iteration-count: 1
+    animation-fill-mode: forwards
+    animation-direction: normal
+  &.__anim .intro-body .intro-text
+    animation-delay: 3.2s
+
+.intro-arrow
+  display: block
+  font: 0/0 a
+  box-sizing: border-box
+  color: #fff !important
+  position: absolute
+  left: 50%
+  margin-left: -38px
+  bottom: 26px
+  padding: 30px
+  transition: padding 0.15s ease-out
+  span
+    display: block
+    border-radius: 1px 0 1px 3px
+    width: 14px
+    height: 14px
+    border-bottom: solid 4px currentColor
+    border-left: solid 4px currentColor
+    transform: rotate(-45deg)
+  &:hover
+    padding-top: 35px
+    padding-bottom: 25px
+
+.p-service-intro .intro-arrow
+  opacity: 0
+  transform: translateY(2rem)
+  animation-name: arrow_anim
+  animation-duration: 0.3s
+  animation-delay: 1.6s
+  animation-timing-function: ease-out
+  animation-iteration-count: 1
+  animation-fill-mode: forwards
+  animation-direction: normal
+
+@media (min-width: 768px)
+  .p-service-intro .intro-arrow
+    left: 40px
+    margin-left: 0
+  .intro-logo
+    top: 40px
+  .intro
+    justify-content: center
+    text-align: center
+    padding: 0
+    .intro-body
+      .brand-heading
+        font-size: 0
+        line-height: 0
+        white-space: nowrap
+        margin: 0 0 5rem
+        > span
+          display: inline-block
+          height: 14rem
+          font-size: 11.4rem
+          line-height: 14rem
+          &:first-child
+            margin-right: 3rem
+      .intro-text
+        font-size: 4rem
+        line-height: 4rem
+        margin: 0 0 0.5rem
+
+@media (min-width: 980px)
+  .p-service-intro .intro-arrow
+    left: 100px
+
+@media (min-width: 1400px)
+  .intro-logo.container-fluid
+    padding-left: 100px
+    padding-right: 100px
+  .p-service-intro .intro-arrow
+    left: 120px

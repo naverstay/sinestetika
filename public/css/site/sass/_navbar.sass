@@ -1,0 +1,320 @@
+svg.logo
+  width: 200px
+  height: 46px
+  position: relative
+  z-index: 10
+  cursor: pointer
+  .logo-circle
+    fill: #0000fe
+    circle
+      fill: #0000fe
+  .logo-text > *
+    fill: #231f20
+    opacity: 0
+
+.intro svg.logo .logo-text > *
+  opacity: 1
+
+svg.logo.logo-white
+  .logo-circle
+    fill: #fff
+    circle
+      fill: #fff
+  .logo-text > *
+    fill: #fff
+
+body
+  &.__intro
+    .navbar-custom svg.logo
+      .logo-circle
+        fill: #fff !important
+        circle
+          fill: #fff !important
+      .logo-text > *
+        fill: #fff !important
+    .navbar-toggle
+      color: #fff
+  &.home.__intro svg.logo .logo-text > *
+    opacity: 1
+
+@media (min-width: 768px)
+  svg.logo
+    width: 41rem
+    height: 9.5rem
+  /*svg.logo .logo-text > * {
+   *    opacity: 1;
+   *}
+
+.navbar-brand
+  cursor: default
+  span
+    display: block
+    opacity: 0
+    position: absolute
+    left: 2.5rem
+    top: 38%
+    background: #0000a0
+    border-radius: 50%
+    width: 2rem
+    height: 2rem
+    box-shadow: 0 0 1rem 1rem #0000a0
+    transition: transform .7s linear, background .7s linear, box-shadow .7s linear
+    z-index: 1
+    cursor: default
+  &.__anim span
+    opacity: 1
+    transform: scale(80)
+    box-shadow: 0 0 1rem 1rem #0000fe
+    background: #0000fe
+
+@media (min-width: 768px)
+  .navbar-brand
+    span
+      width: 3rem
+      height: 3rem
+      left: 16.2rem
+      top: 58%
+    &.__anim span
+      opacity: 1
+      transform: scale(200)
+      box-shadow: 0 0 1rem 1rem #0000fe
+      background: #0000fe
+
+/*svg.logo .logo-circle.logo-circle-blur circle {
+ *    transition: 1s ease-out;
+ *}
+ *svg.logo .logo-circle.logo-circle-blur.scale circle {
+ *    transform: scale(45, 45) translate(-50%, -100%);
+ *}
+
+
+
+
+.navbar-custom
+  margin-top: 27px
+  margin-bottom: 0
+  position: fixed
+  z-index: 99
+  top: 0
+  left: 0
+  right: 0
+  // height: 0
+  padding: 0
+  min-height: 1px
+  // > .container
+  //   height: 0
+  //   > .row
+  //     height: 0
+  .navbar-brand
+    height: auto
+    display: inline-block
+    padding: 0
+    line-height: 0
+    margin-left: 20px !important
+    position: relative
+    z-index: 999
+    outline: none !important
+  &.in .navbar-brand
+    position: static
+  .b-menu-overlay
+    position: fixed
+    top: 0
+    right: 0
+    height: 100vh
+    left: 0
+    background: rgba(0, 0, 0, 0.25)
+    transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1)
+    opacity: 0
+    visibility: hidden
+  .b-menu
+    display: block
+    position: fixed
+    transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1)
+    top: 0
+    right: 0
+    height: 100vh
+    background: #fff
+    padding: 0 20px
+    z-index: 998
+    width: 100%
+    left: 100%
+  &.in
+    .b-menu
+      left: 0
+    .b-menu-overlay
+      opacity: 1
+      visibility: visible
+  .b-menu-container
+    position: relative
+  .b-menu
+    .b-menu-body
+      display: flex
+      height: 100vh
+      align-items: center
+      justify-content: flex-start
+      background: #fff
+      margin-top: -6rem
+    ul
+      list-style: none
+      padding: 0
+      margin: 0
+      font-size: 2.4rem
+      letter-spacing: 0.15rem
+      text-transform: uppercase
+      min-height: 6rem
+      line-height: 4rem
+      color: #000
+      font-weight: 700
+      text-align: left
+      display: block
+      li
+        list-style: none
+        padding: 0
+        margin: 0
+        font-size: 2.4rem
+        letter-spacing: 0.15rem
+        text-transform: uppercase
+        min-height: 6rem
+        line-height: 4rem
+        color: #000
+        font-weight: 700
+        text-align: left
+        display: block
+        padding: 1rem 0
+
+@media (min-width: 768px)
+  .navbar-custom .navbar-brand
+    margin-left: 20px !important
+    position: static
+
+.b-menu-main
+  position: absolute
+  bottom: 5rem
+  right: 0
+  left: 0
+
+.navbar-custom .b-menu
+  .b-menu-services
+    margin-top: -1rem
+  .b-menu-main li
+    font-size: 2rem
+    padding: 0.5rem 0
+
+.b-menu a:hover
+  color: #0000ff
+
+@media (orientation: landscape)
+  .navbar-custom .b-menu
+    .b-menu-services
+      margin-top: -10rem
+    .b-menu-main
+      bottom: 7rem
+
+@media (min-width: 768px)
+  .navbar-custom
+    .b-menu
+      width: 45%
+      padding-left: 0
+      padding-right: 80px
+    &.in .b-menu
+      left: 55%
+    .b-menu
+      .b-menu-body
+        justify-content: flex-end
+        margin-top: 0
+      ul
+        text-align: right
+        li
+          text-align: right
+      .b-menu-services
+        margin-top: 0
+
+@media (min-width: 980px)
+  .navbar-custom
+    .b-menu
+      width: 40%
+      padding-left: 0
+      padding-right: 100px
+    &.in .b-menu
+      left: 60%
+
+@media (min-width: 1400px)
+  .navbar-custom .b-menu
+    padding-left: 0
+    padding-right: 120px
+
+.navbar-custom
+  .navbar-collapse
+    position: relative
+    z-index: 999
+    height: 46px !important
+    border: none
+    box-shadow: none
+    width: 10rem
+    float: right
+  .navbar-toggle
+    color: #0000ff
+    display: block
+    background: transparent
+    border: none
+    font: 0/0 a
+    border-radius: 0
+    position: absolute
+    z-index: 999
+    width: 84px
+    height: 73px
+    top: 50%
+    right: -10px
+    margin: -36px 0 0
+    padding: 0
+  &.in .navbar-toggle
+    color: #0000ff !important
+  .navbar-toggle .navbar-toggle-icon
+    width: 74px
+    height: 74px
+    position: relative
+    transform: rotate(0deg)
+    transition: .3s ease-in-out, 0s color, 0s background-color
+    cursor: pointer
+    padding: 0
+    span
+      display: block
+      position: absolute
+      height: 3px
+      width: 4rem
+      background: currentColor
+      border-radius: 0
+      opacity: 1
+      left: 50%
+      top: 50%
+      margin-left: -2rem
+      margin-top: -0.7rem
+      transform: rotate(0deg)
+      transition: all .25s ease-in-out, color 0s, background-color 0s
+      &:nth-child(1)
+        transform-origin: left center
+      &:nth-child(2)
+        margin-top: 0.7rem
+        transform-origin: left center
+  &.in .navbar-toggle .navbar-toggle-icon span
+    margin-top: -1.4rem
+    margin-left: -1.5rem
+    &:nth-child(1)
+      transform: rotate(45deg)
+    &:nth-child(2)
+      transform: rotate(-45deg)
+      margin-top: 1.4rem
+  .navbar-toggle
+    &:focus, &:active
+      outline: none
+
+@media (min-width: 768px)
+  .navbar-custom
+    margin-top: 5.7rem
+    .navbar-collapse
+      height: 9.5rem !important
+  /*.navbar-custom .navbar-toggle {
+   *    margin-top: -6px;
+   *    right: 20px;
+   *    padding: 0;
+   *}
