@@ -1,4 +1,5 @@
-@import fonts/BrutalType
+@import font2/BrutalType
+
 
 body
   padding: 0
@@ -45,6 +46,7 @@ body
   font-family: 'Brutal Type', "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif
   color: #000000
   font-weight: 400
+  font-weight: normal
   background: #0000ff
   padding: 0
   margin: 0
@@ -52,6 +54,8 @@ body
   outline: none
   overflow: auto
   position: relative
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
 
 .s-page
   min-height: 100%
@@ -515,7 +519,7 @@ body
       min-height: 6rem
       line-height: 4rem
       color: #000
-      font-weight: bold
+      font-weight: 700
       text-align: left
       display: block
       li
@@ -528,7 +532,7 @@ body
         min-height: 6rem
         line-height: 4rem
         color: #000
-        font-weight: bold
+        font-weight: 700
         text-align: left
         display: block
         padding: 1rem 0
@@ -672,7 +676,7 @@ body
 
 .line-heading
   font-size: 16px
-  font-weight: bold
+  font-weight: 700
   text-transform: uppercase
   position: relative
   letter-spacing: 1rem
@@ -749,7 +753,7 @@ body
   padding-top: 3.5rem
   padding-bottom: 2.65rem
   a
-    font-weight: bold
+    font-weight: 700
     font-size: 3.75rem
     line-height: 4.55rem
     color: #0000fe
@@ -868,7 +872,7 @@ body
   .all-projects-link
     display: block
     font-size: 18px
-    font-weight: bold
+    font-weight: 700
     color: #0000ff
     position: relative
     margin-top: 15px
@@ -985,7 +989,7 @@ body
     padding: 0
 
 .b-project-tags
-  font-weight: bold
+  font-weight: 700
   font-size: 13px
   line-height: 30px
 
@@ -1006,7 +1010,7 @@ body
       font-size: 2rem
       line-height: 4.5rem
   .b-project-tags
-    font-weight: bold
+    font-weight: 700
     font-size: 1.83rem
     line-height: 4rem
   .b-project-caption span
@@ -1077,14 +1081,14 @@ footer.section
 
 .footer-email
   margin-top: 23.5rem
-  font-weight: bold
+  font-weight: 700
   text-transform: uppercase
   display: block
   overflow: hidden
   color: #fff !important
 
 .footer-phone
-  font-weight: bold
+  font-weight: 700
   text-transform: uppercase
   display: block
   overflow: hidden
@@ -1124,7 +1128,7 @@ footer
     a
       display: block
       margin: 0 0 9.8rem
-      font-weight: bold
+      font-weight: 700
       &:hover, &:active, &:focus
         color: #8b7cfd !important
     > div:first-child
@@ -1135,7 +1139,7 @@ footer
   border-top: 1px solid #fff
   padding: 5rem 0
   font-size: 2.8rem
-  font-weight: bold
+  font-weight: 700
   line-height: 3.6rem
   margin-top: 1rem
   a
@@ -1647,7 +1651,7 @@ a.b-tags-item
   margin: 5.4rem 0 5.4rem
   line-height: 5.4rem
   letter-spacing: 0.25rem
-  font-weight: bold
+  font-weight: 700
   text-transform: uppercase
 
 .p-project-intro-wrapper.__anim
@@ -1813,7 +1817,7 @@ a.b-tags-item
       display: none
       &.__mobile
         font-size: 18px
-        font-weight: bold
+        font-weight: 700
         display: block
         a
           padding-left: 0
@@ -1926,7 +1930,7 @@ a.b-tags-item
         text-transform: lowercase
         display: inline-block
       &.active a
-        font-weight: bold
+        font-weight: 700
         color: #000
       a
         &:hover, &:active, &:focus
@@ -2016,7 +2020,7 @@ a.b-tags-item
 .p-service-section-title
   font-size: 3.4rem
   line-height: 4.8rem
-  font-weight: bold
+  font-weight: 700
   margin-bottom: 3.9rem
 
 .p-service-section-content
@@ -2098,7 +2102,7 @@ a.b-tags-item
       color: #0000fe
       font-size: 2.5rem
       line-height: 2.5rem
-      font-weight: bold
+      font-weight: 700
       letter-spacing: 1rem
     &.__single .p-service-section:before
       content: ''
@@ -2106,7 +2110,7 @@ a.b-tags-item
   .p-service-section-title
     font-size: 3.98rem
     line-height: 6rem
-    font-weight: bold
+    font-weight: 700
     margin-bottom: 3.4rem
   .p-service-section-content
     font-size: 2.28rem
@@ -2152,7 +2156,7 @@ a.b-tags-item
       color: #0000fe
       font-size: 2.5rem
       line-height: 2.5rem
-      font-weight: bold
+      font-weight: 700
       letter-spacing: 1rem
   .p-service-projects
     margin-bottom: 23rem
@@ -2177,7 +2181,7 @@ a.b-tags-item
     line-height: 6.5rem
     margin-bottom: 11rem
     text-transform: uppercase
-    font-weight: bold
+    font-weight: 700
   .email, .phone
     overflow: hidden
   .email span, .phone span
@@ -2203,7 +2207,7 @@ a.b-tags-item
       line-height: 8.7rem
       margin-bottom: 18rem
       text-transform: uppercase
-      font-weight: bold
+      font-weight: 700
     .email span, .phone span
       display: block
       height: 8.7rem
