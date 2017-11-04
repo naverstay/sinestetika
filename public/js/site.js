@@ -140,7 +140,7 @@ $(function() {
     $('.navbar-custom').css('right', brw + 'px').toggleClass('in');
   }
 
-  $(window).on('resize scroll', onScrollResize);
+  $(window).on('resize scroll', throttle(onScrollResize, 100) );
 
   $(document)
     .on('click', '.intro-arrow', function(e) {

@@ -5,4 +5,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
 
 <script src="{{ asset('js/unveil.js') }}"></script>
+<script src="{{ asset('js/debounce.js') }}"></script>
 <script src="{{ asset('js/site.js') }}"></script>
