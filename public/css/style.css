@@ -362,20 +362,8 @@ body.home.__intro svg.logo .logo-text > * {
   padding: 0;
   text-align: left;
   color: white;
-  background: #fff;
+  background: #0000ff;
   position: relative;
-  -webkit-animation-name: intro_bg;
-          animation-name: intro_bg;
-  -webkit-animation-duration: 0.0s;
-          animation-duration: 0.0s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-direction: normal;
-          animation-direction: normal;
   overflow: hidden;
 }
 

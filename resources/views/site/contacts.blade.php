@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="email"><span>mail@sinestetika.com</span></div>
-                        <a class="phone" href="tel:+74995892569"><span>+7 499 589 25 69</span></a>
+                        <div class="phone"><span>+7 499 589 25 69</span></div>
                     </div>
                 </div>
             </div>
