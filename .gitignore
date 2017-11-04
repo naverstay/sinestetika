@@ -9,3 +9,8 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 .env
+
+/storage
+yarn.lock
+
+node_modules
