@@ -36,6 +36,16 @@ body
       color: #fff
   &.home.__intro svg.logo .logo-text > *
     opacity: 1
+  &.is-open
+    @media (max-width: 768px)
+      .navbar-header
+        position: relative
+        z-index: 999
+      .navbar-custom svg.logo
+        .logo-circle
+          fill: #0000fe !important
+          circle
+            fill: #0000fe !important
 
 @media (min-width: 768px)
   svg.logo

@@ -76,6 +76,7 @@ $(function() {
   }
 
   function showPage(path, hash, event, is_back) {
+    console.log('showPage triggered')
     is_back = (typeof is_back == 'boolean' ? is_back : false);
 
     var xhr = loadPage(path, hash);
@@ -388,6 +389,27 @@ $(function() {
   }
 
   onPageLoaded();
+
+  function homePreloader(){
+
+    if ( window.location.pathname === "/" ){
+
+      $('.start-logo').addClass('is-started');
+      $('.intro').addClass('__anim');
+      setTimeout(function(){
+        $('.start-logo').addClass('is-finnised');
+      },3000);
+
+    }
+
+    if (sessionStorage.getItem('preloader') == null){
+      // set session
+      sessionStorage.setItem('preloader', 'true');
+    }
+  }
+  // trigger only for homepage
+  // that's why it's outside onPageLoaded
+  homePreloader();
 });
 
 function convertRemToPixels(rem) {

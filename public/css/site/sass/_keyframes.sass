@@ -55,13 +55,9 @@
     display: block
     transform: scale(1)
 
-  99%
+  100%
     display: block
     transform: scale(1)
-
-  100%
-    display: none
-    transform: scale(0)
 
 
 @keyframes start_c1
@@ -74,24 +70,24 @@
 
 @keyframes start_c2
   0%
-    box-shadow: 0 0 0 0 #00f
+    // box-shadow: 0 0 0 0 #00f
+    filter: blur(0px)
     transform: scale(1)
 
   40%
-    box-shadow: 0 0 3rem 2rem #00f
+    filter: blur(10px)
+    // box-shadow: 0 0 3rem 2rem #00f
     transform: scale(1)
 
   60%
-    box-shadow: 0 0 3rem 2rem #00f
+    filter: blur(10px)
+    // box-shadow: 0 0 3rem 2rem #00f
     transform: scale(1)
 
-  99%
-    box-shadow: 0 0 3rem 2rem #00f
-    transform: scale(18)
-
   100%
-    display: none
-    box-shadow: 0 0 3rem 2rem #00f
+    // display: none
+    filter: blur(10px)
+    // box-shadow: 0 0 3rem 2rem #00f
     transform: scale(18)
 
 

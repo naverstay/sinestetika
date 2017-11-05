@@ -8,35 +8,43 @@
   padding: 0
   text-align: left
   color: white
-  // background: #fff
   background: #0000ff
   position: relative
-  // animation-name: intro_bg
-  // animation-duration: 0.0s
-  // animation-timing-function: linear
-  // animation-iteration-count: 1
-  // animation-fill-mode: forwards
-  // animation-direction: normal
   overflow: hidden
   &.__anim
-    animation-delay: 2.9s
+    // animation-delay: 3.9s
   .start-logo
-    width: 8rem
-    height: 8rem
-    position: absolute
-    left: 50%
-    top: 50%
-    margin-left: -4rem
-    margin-top: -4rem
-    -webkit-transform-origin: center center
-    transform: scale(0)
-    animation-name: start_scale
-    animation-duration: 2.5s
-    animation-delay: 0.5s
-    animation-timing-function: ease-in-out
-    animation-iteration-count: 1
-    animation-fill-mode: forwards
-    animation-direction: normal
+    position: fixed
+    top: 0
+    right: 0
+    left: 0
+    bottom: 0
+    z-index: 1100
+    background: white
+    opacity: 0
+    pointer-events: none
+    &.is-started
+      opacity: 1
+      // transition: all .3s ease
+    &.is-finnised
+      opacity: 0
+    &__wrapper
+      width: 8rem
+      height: 8rem
+      position: absolute
+      left: 50%
+      top: 50%
+      margin-left: -4rem
+      margin-top: -4rem
+      transform-origin: center center
+      // transform: scale(0)
+      animation-name: start_scale
+      animation-duration: 2.5s
+      animation-delay: 0.5s
+      animation-timing-function: ease-in-out
+      animation-iteration-count: 1
+      animation-fill-mode: both
+      animation-direction: normal
     span
       display: block
       position: absolute
@@ -52,21 +60,21 @@
         animation-delay: 1.3s
         animation-timing-function: ease-out
         animation-iteration-count: 1
-        animation-fill-mode: forwards
+        animation-fill-mode: both
         animation-direction: normal
       &.c2
         width: 5rem
         height: 5rem
         left: 1.5rem
         top: 1.5rem
-        -webkit-transform-origin: center center
+        transform-origin: center center
         transform: scale(1)
         animation-name: start_c2
         animation-duration: 1.8s
         animation-delay: 1.3s
         animation-timing-function: linear
         animation-iteration-count: 1
-        animation-fill-mode: forwards
+        animation-fill-mode: both
         animation-direction: normal
   .intro-body
     flex: 1 0 auto
@@ -75,21 +83,19 @@
       position: relative
 
 @media (min-width: 768px)
-  .intro .start-logo
-    width: 14rem
-    height: 14rem
-    margin-left: -7rem
-    margin-top: -7rem
-    span
-      &.c1, &.c2
-        display: block
-        position: absolute
-        left: 0
-        top: 0
+  .intro
+    .start-logo
+      &__wrapper
         width: 14rem
         height: 14rem
-        background: #00f
-        border-radius: 50%
+        margin-left: -7rem
+        margin-top: -7rem
+      span
+        &.c1, &.c2
+          left: 0
+          top: 0
+          width: 14rem
+          height: 14rem
 
 .intro-logo
   position: absolute
@@ -121,7 +127,7 @@
       animation-fill-mode: forwards
       animation-direction: normal
   &.__anim .intro-body .brand-heading span span
-    animation-delay: 2.8s
+    animation-delay: 3s
   .intro-body .intro-text
     font-size: 24px
     font-weight: 300
@@ -136,7 +142,7 @@
     animation-fill-mode: forwards
     animation-direction: normal
   &.__anim .intro-body .intro-text
-    animation-delay: 3.2s
+    animation-delay: 3.3s
 
 .intro-arrow
   display: block

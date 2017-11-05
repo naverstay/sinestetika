@@ -78,5 +78,5 @@ gulp.task('css:site', function () {
 
 gulp.task('watch', function() {
     gulp.watch(paths.vendor, ['css:vendor']);
-    gulp.watch('./site/*.*', ['css:site']);
+    gulp.watch('./site/**/*.*', ['css:site']);
 });
