@@ -67,7 +67,7 @@ $(function() {
     var delay = 600;
 
     if (anim_type == 'next') {
-      delay = 900;
+      delay = 800;
 
       // nextAnim()
     } else {
