@@ -1,10 +1,10 @@
 @keyframes text_bottom2top
   0%
-    transform: translateY(100%)
+    transform: translate3d(0,100%,0)
     opacity: 0
 
   100%
-    transform: translateY(0)
+    transform: translate3d(0,0,0)
     opacity: 1
 
 
@@ -30,11 +30,11 @@
 
 @keyframes arrow_anim
   0%
-    transform: translateY(2rem)
+    transform: translate3d(0,2rem,0)
     opacity: 0
 
   100%
-    transform: translateY(0)
+    transform: translate3d(0,0,0)
     opacity: 1
 
 
@@ -132,8 +132,9 @@
 .h-floating, .p-service-section:before
   opacity: 0
   position: relative
-  top: 3vh
-  transition: opacity .5s ease-out, top .5s ease-out
+  // top: 3vh
+  transform: translate3d(0,3vh,0)
+  transition: opacity .5s ease-out, transform .5s ease-out
 
 .p-service-sections .p-service-section:before
   opacity: 0
@@ -142,7 +143,8 @@
 
 .h-floating.__visible
   opacity: 1
-  top: 0
+  // top: 0
+  transform: translate3d(0,0vh,0)
 
 .p-service-sections .p-service-section.__visible:before
   opacity: 1

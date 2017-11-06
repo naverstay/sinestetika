@@ -425,56 +425,56 @@ function convertRemToPixels(rem) {
   return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 }
 
-
-function nextAnim() {
-  var $el = $('.p-project-intro-wrapper.__next');
-  var $elBg = $('.p-project-intro-wrapper.__next .p-project-intro-bg');
-  var $elIntro = $('.p-project-intro-wrapper.__next .p-project-intro');
-  var $elIntroBody = $('.p-project-intro-wrapper.__next .p-project-intro-body');
-  var $elTitle = $('.p-project-intro-wrapper.__next .p-project-next-title');
-  var st = window.pageYOffset || document.documentElement.scrollTop;
-  var ph = ($('.p-project-intro-wrapper.__next').offset().top - st) - 30;
-
-  $elBg.transition({
-    scale: [1.05, 1]
-  }, 300, 'out');
-
-  $elTitle.transition({
-    opacity: 0,
-    delay: 350
-  }, 250, 'out');
-
-  $elBg.css({
-    height: $(window).height() + ph + 'px'
-  }).transition({
-    scale: 1,
-    marginTop: (0 - ph) + 'px',
-    delay: 300
-  }, 1500, 'out');
-
-  $el.transition({
-    scale: 1,
-    height: '100vh',
-    minHeight: '100vh',
-    delay: 400,
-    y: (0 - ph) + convertRemToPixels(14) + 'px'
-  }, 1000, 'in');
-
-  $elIntro.css({
-    overflow: 'visible'
-  }).transition({
-    height: '100vh',
-    minHeight: '100vh',
-    delay: 400
-  }, 750, 'out');
-
-  $elTitle.transition({
-    height: 0,
-    marginBottom: 0,
-    delay: 800
-  }, 500, 'out');
-
-  setTimeout(function() {
-    $elTitle.remove();
-  }, 2000);
-}
+//
+// function nextAnim() {
+//   var $el = $('.p-project-intro-wrapper.__next');
+//   var $elBg = $('.p-project-intro-wrapper.__next .p-project-intro-bg');
+//   var $elIntro = $('.p-project-intro-wrapper.__next .p-project-intro');
+//   var $elIntroBody = $('.p-project-intro-wrapper.__next .p-project-intro-body');
+//   var $elTitle = $('.p-project-intro-wrapper.__next .p-project-next-title');
+//   var st = window.pageYOffset || document.documentElement.scrollTop;
+//   var ph = ($('.p-project-intro-wrapper.__next').offset().top - st) - 30;
+//
+//   $elBg.transition({
+//     scale: [1.05, 1]
+//   }, 300, 'out');
+//
+//   $elTitle.transition({
+//     opacity: 0,
+//     delay: 350
+//   }, 250, 'out');
+//
+//   $elBg.css({
+//     height: $(window).height() + ph + 'px'
+//   }).transition({
+//     scale: 1,
+//     marginTop: (0 - ph) + 'px',
+//     delay: 300
+//   }, 1500, 'out');
+//
+//   $el.transition({
+//     scale: 1,
+//     height: '100vh',
+//     minHeight: '100vh',
+//     delay: 400,
+//     y: (0 - ph) + convertRemToPixels(14) + 'px'
+//   }, 1000, 'in');
+//
+//   $elIntro.css({
+//     overflow: 'visible'
+//   }).transition({
+//     height: '100vh',
+//     minHeight: '100vh',
+//     delay: 400
+//   }, 750, 'out');
+//
+//   $elTitle.transition({
+//     height: 0,
+//     marginBottom: 0,
+//     delay: 800
+//   }, 500, 'out');
+//
+//   setTimeout(function() {
+//     $elTitle.remove();
+//   }, 2000);
+// }
