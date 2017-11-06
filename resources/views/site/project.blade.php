@@ -35,7 +35,8 @@
             @endif
 
             <div class="p-project-sections">
-                <div class="row row-eq-height">
+                <!-- row-eq-height -->
+                <div class="row ">
                 @foreach ($project->sections as $s)
                     <div class="p-project-section p-project-section__{{ $s->type }} col-xs-12 {{ ($s->small_format == 1 ? 'col-sm-6' : 'col-sm-12') }} h-floating"
                             {!! ($s->clear ? ' style="clear:left"' : '') !!}>

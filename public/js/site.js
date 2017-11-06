@@ -445,7 +445,6 @@ $(function() {
           if (!styleSheet.rules[ri].selectorText) continue;
 
           if (styleSheet.rules[ri].selectorText.match(':hover')) {
-            console.log(styleSheet)
             styleSheet.deleteRule(ri);
           }
         }

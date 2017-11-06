@@ -2718,7 +2718,7 @@ a.b-tags-item:hover, a.b-tags-item:active, a.b-tags-item:focus {
    *.p-project-sections .row .col-sm-6:last-child {
    *    flex: 1 0 auto;
    *} */
-  .p-project-section .p-project-section-body, .p-project-section.p-project-section__video {
+  .p-project-section .p-project-section-body, .p-project-section.p-project-section__video.col-sm-6 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -2736,6 +2736,9 @@ a.b-tags-item:hover, a.b-tags-item:active, a.b-tags-item:focus {
     -webkit-flex: 1 0 auto;
         -ms-flex: 1 0 auto;
             flex: 1 0 auto;
+  }
+  .p-project-section.p-project-section__video.col-sm-12 .p-project-section-body {
+    display: block;
   }
   .p-project-section .p-project-section-body .p-project-section-body-wrapper {
     -webkit-box-flex: 1;
