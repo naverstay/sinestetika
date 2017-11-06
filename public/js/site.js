@@ -53,38 +53,43 @@ $(function() {
     return pages[path];
   }
 
-  function startLogoAnim(event) {
+  function animationHandler(event) {
     var anim_type = null;
 
     var $trg = $(event.target);
     var $el = null;
     if (($el = $trg.parents('.p-project-next')).length > 0) {
       anim_type = 'next';
-      $el.addClass('__anim');
+      $el.find('.p-project-intro-wrapper').addClass('__anim');
       $('body').addClass('__anim_next');
     }
 
     var delay = 600;
 
     if (anim_type == 'next') {
-      delay = 100000;
+      delay = 900;
+
+      // nextAnim()
     } else {
       $('.navbar-brand').addClass('__anim');
       $('body').removeClass('home').addClass('__intro __leave');
     }
-    return delay;
+    return data = {
+      delay: delay,
+      anim_type: anim_type
+    };
   }
 
   function showPage(path, hash, event, is_back) {
-    console.log('showPage triggered')
     is_back = (typeof is_back == 'boolean' ? is_back : false);
 
     var xhr = loadPage(path, hash);
     xhr.done(function(html, state) {
       if (state == 'success') {
         var delay = 0;
+        var animationHandlerCb = animationHandler(event);
         if (!is_back) {
-          delay = startLogoAnim(event);
+          delay = animationHandlerCb.delay;
         }
 
         var tit = html.match(/<title>(.*?)<\/title>/);
@@ -110,6 +115,10 @@ $(function() {
                 $b.addClass(cls);
               }
             }
+          }
+
+          if ( animationHandlerCb.anim_type == "next" ){
+            $b.addClass('__from-next');
           }
 
           onPageLoaded();

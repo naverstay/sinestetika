@@ -483,41 +483,10 @@ body
   color: #fff !important
   display: block
 
-/*.p-project-next .p-project-title {
- *    margin-bottom: 20px;
- *}
-
 .p-project-photo
   display: block
   img
     width: 100%
-
-/*.p-project-next .p-project-photo {
- *    left: 20px;
- *    right: 20px;
- *}
-/*@media (min-width:768px) {
- *    .p-project-next .p-project-photo {
- *        left: 40px;
- *        right: 40px;
- *    }
- *}
- *@media (min-width:980px) {
- *    .p-project-next .p-project-photo {
- *        left: 60px;
- *        right: 60px;
- *    }
- *}
- *@media (min-width: 1400px) {
- *    .p-project-next .p-project-photo {
- *        left: 120px;
- *        right: 120px;
- *    }
- *}
-
-/*.p-project-next .p-project-intro-body {
- *    margin-bottom: 20vh;
- *}
 
 .p-project-descr
   margin: 5rem 0
@@ -793,14 +762,6 @@ body
  *    min-height: 83vh;
  *    overflow: hidden;
  *}
- *.p-project-intro.__next.__anim {
- *    animation-name: next_project;
- *    animation-duration: 1.2s;
- *    animation-timing-function: ease-out;
- *    animation-iteration-count: 1;
- *    animation-fill-mode: forwards;
- *    animation-direction: normal;
- *}
  *@media (min-height: 555px) {
  *    .p-project-intro.p-project-next {
  *        height: 60vh;
@@ -814,6 +775,9 @@ body
  *    display: block;
  *}
 
+.p-project-next
+  display: block
+
 .p-project-next-title
   font-size: 1.79rem
   margin: 5.4rem 0 5.4rem
@@ -822,10 +786,10 @@ body
   font-weight: 700
   text-transform: uppercase
 
-.p-project-intro-wrapper.__anim
-  transition: 3s ease-out
-  *
-    transition: 3s ease-out
+// .p-project-intro-wrapper.__anim
+//   transition: 3s ease-out
+//   *
+//     transition: 3s ease-out
 
 /*.p-project-next .p-project-title {
  *    margin: 10rem 0 15rem;
@@ -848,21 +812,54 @@ body
 @media (min-width: 768px)
   .p-project-next
     background: #fff
+    overflow: hidden
   .p-project-intro-wrapper.__next
-    height: 75vh
-    min-height: 75vh
+    position: relative
+    height: 100vh
+    min-height: 100vh
     margin-top: 0
+    transform: scale(1) translate3d(0,25vh,0)
     transition: transform 0.3s ease-out
     transform-origin: center bottom
-    /*transform: scale(0.96, 0.96);
-    &:hover
-      transform: scale(0.96, 0.96)
+    &:hover:not(.__anim)
+      transform: scale(0.96, 0.96) translate3d(0,25vh,0)
+    // .p-project-intro.__next.__anim
+    &.__anim
+      position: fixed
+      z-index: 0
+      bottom: 0
+      left: 0
+      right: 0
+      transform: scale(1) translate3d(0,0vh,0)
+      transition: transform 0.6s ease-out
+      // height: 100vh
+      // min-height: 100vh
+      // animation-name: next_project
+      // animation-duration: 1.2s
+      // animation-timing-function: ease-out
+      // animation-iteration-count: 1
+      // animation-fill-mode: forwards
+      // animation-direction: normal
+      // &:hover
+      //   transform: scale(1, 1)
+      .p-project-intro
+        padding: 16rem 0 0
+        margin-bottom: 15rem
+        height: auto
+        min-height: 100vh
+      .p-project-next-title
+        // refactor
+        display: none
+        opacity: 0
+        transform: translate3d(0,20px,0)
+        height: 0
+        margin: 0
+
+
   .p-project-intro-bg
     height: 100vh
     min-height: 100vh
   .__next .p-project-intro-bg
-    height: 75vh
-    min-height: 75vh
     position: absolute
     z-index: 1
   .p-project-intro
@@ -870,6 +867,7 @@ body
     margin-bottom: 15rem
     height: auto
     min-height: 100vh
+    transition: all .6s .3s ease
   .__next .p-project-intro
     padding: 0
     margin: 0
@@ -918,8 +916,9 @@ body
     overflow: hidden
     letter-spacing: 0.56rem
     margin-top: -1.2rem
-  .__next .p-project-title
-    margin: 0 0 5rem
+    transition: all .3s .3s ease-out
+  // .__next .p-project-title
+  //   margin: 0 0 5rem
 
 .p-projects-intro
   padding: 18.5rem 0 3rem

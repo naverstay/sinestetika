@@ -84,7 +84,7 @@
         </div>
 
 
-    <div class="p-project-next">
+    <a class="p-project-next" href="{{ route('project', $next_project->name) }}">
         <div class="p-project-intro-wrapper __next">
             <div class="p-project-intro-bg blue-bg"></div>
             <div class="p-project-intro">
@@ -92,7 +92,7 @@
                     <div class="row">
                         <div class="col-md-8 col-sm-10 col-xs-12">
                             <p class="p-project-next-title">Следующий проект</p>
-                            <a class="p-project-title" href="{{ route('project', $project->name) }}">{{ $project->caption }}</a>
+                            <p class="p-project-title">{{ $next_project->caption }}</p>
                         </div>
                     </div>
                 </div>
@@ -100,17 +100,17 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
                             <div class="p-project-tags b-tags">
-                                @foreach ($project->tags as $tag)
+                                @foreach ($next_project->tags as $tag)
                                     <div class="b-tags-item"><span>{{ $tag->caption }}</span></div>
                                 @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
-                <a class="p-project-photo container container-fluid" href="{{ route('project', $project->name) }}">
-                    <img src="{{ asset($project->photo) }}" />
-                </a>
+                <div class="p-project-photo container container-fluid">
+                    <img src="{{ asset($next_project->photo) }}" />
+                </div>
             </div>
         </div>
-    </div>
+    </a>
 @endsection

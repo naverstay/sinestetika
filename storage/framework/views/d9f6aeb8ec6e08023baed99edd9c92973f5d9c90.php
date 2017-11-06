@@ -1,1 +1,0 @@
-<input <?php echo $attributes; ?> value="<?php echo e($value); ?>" />
