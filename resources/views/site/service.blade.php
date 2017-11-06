@@ -35,7 +35,7 @@
                 @foreach($service->sections as $section)
                     <div class="p-service-section" {!! ($section->tags->count() ? 'id="' . $section->tags->first()->name . '"' : '') !!}>
                         <h2 class="p-service-section-title h-floating">{{ $section->caption }}</h2>
-                        <div class="p-service-section-content">
+                        <div class="p-service-section-content h-floating">
                             {!! $section->descr !!}
                         </div>
                     </div>

@@ -3597,10 +3597,13 @@ a.b-tags-item:hover, a.b-tags-item:active, a.b-tags-item:focus {
 
 .p-service-sections .p-service-section:before {
   opacity: 0;
-  margin-top: 3vh;
-  -webkit-transition: opacity .5s ease-out, margin-top .5s ease-out;
-  -o-transition: opacity .5s ease-out, margin-top .5s ease-out;
-  transition: opacity .5s ease-out, margin-top .5s ease-out;
+  -webkit-transform: translate3d(0, 3vh, 0);
+          transform: translate3d(0, 3vh, 0);
+  -webkit-transition: opacity .5s ease-out, -webkit-transform .5s ease-out;
+  transition: opacity .5s ease-out, -webkit-transform .5s ease-out;
+  -o-transition: opacity .5s ease-out, transform .5s ease-out;
+  transition: opacity .5s ease-out, transform .5s ease-out;
+  transition: opacity .5s ease-out, transform .5s ease-out, -webkit-transform .5s ease-out;
 }
 
 .h-floating.__visible {
@@ -3611,7 +3614,8 @@ a.b-tags-item:hover, a.b-tags-item:active, a.b-tags-item:focus {
 
 .p-service-sections .p-service-section.__visible:before {
   opacity: 1;
-  margin-top: 0;
+  -webkit-transform: translate3d(0, 0vh, 0);
+          transform: translate3d(0, 0vh, 0);
 }
 
 .h-floating-d-0-1 {

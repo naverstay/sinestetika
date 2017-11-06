@@ -6,4 +6,5 @@
 
 <script src="{{ asset('js/unveil.js') }}"></script>
 <script src="{{ asset('js/debounce.js') }}"></script>
+<script src="{{ asset('js/viewport-units-buggyfill.js') }}"></script>
 <script src="{{ asset('js/site.js') }}"></script>

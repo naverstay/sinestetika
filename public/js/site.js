@@ -419,6 +419,40 @@ $(function() {
   // trigger only for homepage
   // that's why it's outside onPageLoaded
   homePreloader();
+
+  // viewport units buggyfill
+  viewportUnitsBuggyfill.init({
+    force: true,
+    refreshDebounceWait: 250
+  });
+
+  // detect mobile devices
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    $('html').addClass('is-mobile')
+  }
+
+  function hasTouch() {
+    return 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+  }
+
+  if (!hasTouch()) { // remove all :hover stylesheets
+    try { // prevent exception on browsers not supporting DOM styleSheets properly
+      for (var si in document.styleSheets) {
+        var styleSheet = document.styleSheets[si];
+        if (!styleSheet.rules) continue;
+
+        for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
+          if (!styleSheet.rules[ri].selectorText) continue;
+
+          if (styleSheet.rules[ri].selectorText.match(':hover')) {
+            console.log(styleSheet)
+            styleSheet.deleteRule(ri);
+          }
+        }
+      }
+    } catch (ex) {}
+  }
+
 });
 
 function convertRemToPixels(rem) {
