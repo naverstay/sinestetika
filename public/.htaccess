@@ -1,7 +1,7 @@
-AuthType Basic
-AuthName "Restricted Content"
-AuthUserFile /home/admin/web/sinestetika.com/public_html/.htpasswd
-Require valid-user
+#AuthType Basic
+#AuthName "Restricted Content"
+#AuthUserFile /home/admin/web/sinestetika.com/public_html/.htpasswd
+#Require valid-user
 
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
@@ -19,7 +19,7 @@ Require valid-user
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    #Handle Authorization Header
+    #RewriteCond %{HTTP:Authorization} .
+    #RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>

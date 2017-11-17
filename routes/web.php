@@ -15,6 +15,8 @@ Auth::routes();
 
 Route::get('/', ['as'=>'home', 'uses'=>'MainController@index']);
 
+Route::get('/testjson', ['as'=>'testmethod', 'uses'=>'HomeController@test']);
+
 Route::get('/service/{name}', ['as'=>'service', 'uses'=>'MainController@service']);
 
 Route::get('/projects/{tags?}', ['as'=>'projects', 'uses'=>'MainController@projects'])->where('tags', '[a-z0-9\-_\/]*');;

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="p-projects">
-        <div class="p-projects-intro blue-bg">
+        <div class="p-projects-intro blueSection blue-bg">
             <div class="container container-fluid">
                 <p>Преодолеваем разрыв между стратегией и воплощением благодаря комплексным решениям</p>
             </div>

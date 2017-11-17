@@ -8,94 +8,97 @@
   padding: 0
   text-align: left
   color: white
-  background: #0000ff
+  background: #00f
   position: relative
   overflow: hidden
   &.__anim
     // animation-delay: 3.9s
-  .start-logo
-    position: fixed
-    top: 0
-    right: 0
-    left: 0
-    bottom: 0
-    z-index: 1100
-    background: white
-    opacity: 0
-    pointer-events: none
-    &.is-started
-      opacity: 1
-      // transition: all .3s ease
-    &.is-finnised
-      opacity: 0
-    &__wrapper
-      width: 8rem
-      height: 8rem
-      position: absolute
-      left: 50%
-      top: 50%
-      margin-left: -4rem
-      margin-top: -4rem
-      transform-origin: center center
-      // transform: scale(0)
-      animation-name: start_scale
-      animation-duration: 2.5s
-      animation-delay: 0.5s
-      animation-timing-function: ease-in-out
-      animation-iteration-count: 1
-      animation-fill-mode: both
-      animation-direction: normal
-    span
-      display: block
-      position: absolute
-      left: 0
-      top: 0
-      width: 8rem
-      height: 8rem
-      background: #00f
-      border-radius: 50%
-      &.c1
-        animation-name: start_c1
-        animation-duration: 0.7s
-        animation-delay: 1.3s
-        animation-timing-function: ease-out
-        animation-iteration-count: 1
-        animation-fill-mode: both
-        animation-direction: normal
-      &.c2
-        width: 5rem
-        height: 5rem
-        left: 1.5rem
-        top: 1.5rem
-        transform-origin: center center
-        transform: scale(1)
-        animation-name: start_c2
-        animation-duration: 1.8s
-        animation-delay: 1.3s
-        animation-timing-function: linear
-        animation-iteration-count: 1
-        animation-fill-mode: both
-        animation-direction: normal
-  .intro-body
+    .intro-body
     flex: 1 0 auto
     width: 100%
     .container
       position: relative
 
+.start-logo
+  position: fixed
+  top: 0
+  right: 0
+  left: 0
+  bottom: 0
+  z-index: 1100
+  background: white
+  //opacity: 0
+  //pointer-events: none
+  &.is-started
+    opacity: 1
+    // transition: all .3s ease
+  &.is-finnised
+    opacity: 0
+    pointer-events: none
+    z-index: -1
+  &__wrapper
+    width: 8rem
+    height: 8rem
+    position: absolute
+    left: 50%
+    top: 50%
+    margin-left: -4rem
+    margin-top: -4rem
+    transform-origin: center center
+    // transform: scale(0)
+    animation-name: start_scale
+    animation-duration: 2.5s
+    animation-delay: 0.5s
+    animation-timing-function: ease-in-out
+    animation-iteration-count: 1
+    animation-fill-mode: both
+    animation-direction: normal
+  span
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 8rem
+    height: 8rem
+    background: #00f
+    border-radius: 50%
+    &.c1
+      animation-name: start_c1
+      animation-duration: 0.7s
+      animation-delay: 1.3s
+      animation-timing-function: ease-out
+      animation-iteration-count: 1
+      animation-fill-mode: both
+      animation-direction: normal
+    &.c2
+      width: 5rem
+      height: 5rem
+      left: 1.5rem
+      top: 1.5rem
+      transform-origin: center center
+      transform: scale(1)
+      animation-name: start_c2
+      animation-duration: 1.8s
+      animation-delay: 1.3s
+      animation-timing-function: linear
+      animation-iteration-count: 1
+      animation-fill-mode: both
+      animation-direction: normal
+
 @media (min-width: 768px)
-  .intro
-    .start-logo
-      &__wrapper
+  //.intro
+  .start-logo
+    &__wrapper
+      width: 14rem
+      height: 14rem
+      margin-left: -7rem
+      margin-top: -7rem
+    span
+      &.c1, &.c2
+        left: 0
+        top: 0
         width: 14rem
         height: 14rem
-        margin-left: -7rem
-        margin-top: -7rem
-      span
-        &.c1, &.c2
-          left: 0
-          top: 0
-          width: 14rem
-          height: 14rem
 
 .intro-logo
   position: absolute
@@ -116,6 +119,7 @@
       height: 9rem
       line-height: 9rem
     span span
+      will-change: transform
       display: inline-block
       transform: translateY(100%)
       opacity: 0
@@ -129,6 +133,7 @@
   &.__anim .intro-body .brand-heading span span
     animation-delay: 3s
   .intro-body .intro-text
+    will-change: transform
     font-size: 24px
     font-weight: 300
     line-height: 30px

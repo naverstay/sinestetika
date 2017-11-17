@@ -1,6 +1,7 @@
 .s-page
   min-height: 100%
   background: #fff
+  overflow: hidden
 
 .container-fluid
   padding-right: 20px
@@ -40,3 +41,13 @@
   .container-fluid
     padding-left: 120px
     padding-right: 120px
+
+.visible-touch
+  display: none
+
+.is-mobile,
+.touchscreen
+  .visible-touch
+    display: unset
+  .hidden-touch
+    display: none !important

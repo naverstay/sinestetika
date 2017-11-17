@@ -5,11 +5,15 @@ svg.logo
   z-index: 10
   cursor: pointer
   .logo-circle
+    transition: fill .3s
     fill: #0000fe
     circle
+      transition: fill .3s
       fill: #0000fe
   .logo-text > *
-    fill: #231f20
+    transition: fill .3s, opacity .3s
+    //fill: #231f20
+    fill: #0000fe
     opacity: 0
 
 .intro svg.logo .logo-text > *
@@ -51,9 +55,9 @@ body
   svg.logo
     width: 41rem
     height: 9.5rem
-  /*svg.logo .logo-text > * {
-   *    opacity: 1;
-   *}
+/*svg.logo .logo-text > * {
+ *    opacity: 1;
+ *}
 
 .navbar-brand
   cursor: default
@@ -101,6 +105,7 @@ body
 
 
 .navbar-custom
+  transition: transform .3s
   margin-top: 27px
   margin-bottom: 0
   position: fixed
@@ -115,6 +120,10 @@ body
   //   height: 0
   //   > .row
   //     height: 0
+
+  &.nav-up
+    transform: translate(0, -180%)
+
   .navbar-brand
     height: auto
     display: inline-block
@@ -179,7 +188,7 @@ body
       display: block
       li
         list-style: none
-        padding: 0
+        //padding: 0
         margin: 0
         font-size: 2.4rem
         letter-spacing: 0.15rem
@@ -211,7 +220,7 @@ body
     padding: 0.5rem 0
 
 .b-menu a:hover
-  color: #0000ff
+  color: #00f
 
 @media (orientation: landscape)
   .navbar-custom .b-menu
@@ -263,7 +272,7 @@ body
     width: 10rem
     float: right
   .navbar-toggle
-    color: #0000ff
+    color: #00f
     display: block
     background: transparent
     border: none
@@ -278,7 +287,7 @@ body
     margin: -36px 0 0
     padding: 0
   &.in .navbar-toggle
-    color: #0000ff !important
+    color: #00f !important
   .navbar-toggle .navbar-toggle-icon
     width: 74px
     height: 74px
@@ -323,8 +332,3 @@ body
     margin-top: 5.7rem
     .navbar-collapse
       height: 9.5rem !important
-  /*.navbar-custom .navbar-toggle {
-   *    margin-top: -6px;
-   *    right: 20px;
-   *    padding: 0;
-   *}

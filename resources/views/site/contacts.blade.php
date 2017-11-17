@@ -2,12 +2,17 @@
 
 @section('content')
     <div class="p-contacts">
-        <div class="p-contacts-intro blue-bg">
+        <div class="p-contacts-intro blueSection blue-bg">
             <div class="communication container container-fluid">
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="email"><span>mail@sinestetika.com</span></div>
-                        <div class="phone"><span>+7 499 589 25 69</span></div>
+                        <div class="hidden-touch">
+                            <div class="phone"><span>+7 499 589 25 69</span></div>
+                        </div>
+                        <div class="visible-touch">
+                            <a class="phone" href="tel:+74995892569"><span>+7 499 589 25 69</span></a>
+                        </div>
                     </div>
                 </div>
             </div>

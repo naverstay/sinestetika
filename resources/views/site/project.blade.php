@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="p-project-intro-wrapper">
-        <div class="p-project-intro-bg blue-bg"></div>
+        <div class="p-project-intro-bg blueSection blue-bg"></div>
         <div class="p-project-intro">
             <div class="p-project-intro-body container container-fluid">
                 <div class="row">
                     <div class="col-md-8 col-sm-10 col-xs-12">
-                        <h1 class="p-project-title">{{ $project->caption }}</h1>
+                        <h1 class="p-project-title"><span>{{ $project->caption }}</span></h1>
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
 
     <a class="p-project-next" href="{{ route('project', $next_project->name) }}">
         <div class="p-project-intro-wrapper __next">
-            <div class="p-project-intro-bg blue-bg"></div>
+            <div class="p-project-intro-bg blueSection blue-bg"></div>
             <div class="p-project-intro">
                 <div class="p-project-intro-body container container-fluid">
                     <div class="row">

@@ -1,17 +1,12 @@
-<header class="intro blue-bg{{ ($show_start_screen ? ' __anim' : '') }}">
-    <!-- @if ($show_start_screen)
+<header class="intro blueSection blue-bg{{ ($show_start_screen ? ' __anim' : '') }}">
+    @if ($show_start_screen)
         <div class="start-logo">
-            <span class="c1"></span>
-            <span class="c2"></span>
+            <div class="start-logo__wrapper">
+                <span class="c1"></span>
+                <span class="c2"></span>
+            </div>
         </div>
-    @endif -->
-
-    <div class="start-logo">
-        <div class="start-logo__wrapper">
-            <span class="c1"></span>
-            <span class="c2"></span>
-        </div>
-    </div>
+    @endif
 
     <div class="intro-body">
         <div class="container container-fluid">

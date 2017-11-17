@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
-        <div class="p-service-intro blue-bg">
+        <div class="p-service-intro blueSection blue-bg">
             <div class="p-service-intro-body container container-fluid">
                 <div class="row">
                     <div class="col-md-8 col-sm-10 col-xs-12">

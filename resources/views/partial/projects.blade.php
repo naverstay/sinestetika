@@ -2,8 +2,9 @@
     <div class="row">
         @foreach ($projects as $p)
             <div class="col-sm-6 col-xs-12">
-                <a href="{{ route('project', $p->name) }}" class="b-project h-floating">
+                <a href="{{ route('project', $p->name) }}" data-surf-animation=".b-project-info-loader" class="b-project h-floating surfAnimate skipStartLogo">
                     <div class="b-project-container" style="background-image: url('{{ asset($p->photo_m) }}')">
+                        <div class="b-project-info-loader"></div>
                         <div class="b-project-info">
                             <div class="b-project-info-container">
                                 <h3 class="b-project-caption"><span>{{ $p->caption }}</span></h3>
