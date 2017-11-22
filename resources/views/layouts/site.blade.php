@@ -6,7 +6,7 @@
     <meta name="name" content="Брендинговое агентство Sinestetika"/>
     <meta name="description" content="Создаем системы визуальных и вербальных коммуникаций, необходимые для роста и развития, а также для запуска новых продуктов."/>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=0" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta property="og:url" content="http://sinestetika.com" />
     <meta property="og:title" content="Брендинговое агентство Sinestetika" />

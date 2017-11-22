@@ -118,18 +118,23 @@
       overflow: hidden
       height: 9rem
       line-height: 9rem
-    span span
-      will-change: transform
-      display: inline-block
-      transform: translateY(100%)
-      opacity: 0
-      position: relative
-      animation-name: text_bottom2top
-      animation-duration: 0.5s
-      animation-timing-function: ease-out
-      animation-iteration-count: 1
-      animation-fill-mode: forwards
-      animation-direction: normal
+
+      span
+        will-change: transform
+        display: inline-block
+        -webkit-transform: translate3d(0, 100%, 0)
+        transform: translate3d(0, 100%, 0)
+        opacity: 0
+        position: relative
+        animation-duration: 0.4s
+        animation-timing-function: ease-out
+        animation-iteration-count: 1
+        animation-fill-mode: forwards
+        animation-direction: normal
+
+        ._page_loaded &
+          animation-name: text_bottom2top
+
   &.__anim .intro-body .brand-heading span span
     animation-delay: 3s
   .intro-body .intro-text
@@ -139,13 +144,16 @@
     line-height: 30px
     margin: 5.8rem 0 0
     opacity: 0
-    animation-name: text_opacity
     animation-duration: 0.4s
     animation-delay: 0.4s
     animation-timing-function: linear
     animation-iteration-count: 1
     animation-fill-mode: forwards
     animation-direction: normal
+
+    ._page_loaded &
+      animation-name: text_opacity
+
   &.__anim .intro-body .intro-text
     animation-delay: 3.3s
 
@@ -204,7 +212,7 @@
           height: 14rem
           font-size: 11.4rem
           line-height: 14rem
-          &:first-child
+          //&:first-child
             margin-right: 3rem
       .intro-text
         font-size: 4rem

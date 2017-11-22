@@ -1,7 +1,7 @@
 <div class="b-projects">
-    <div class="row">
+    <div class="row{{ ($isotop ? ' boardGrid' : '') }}">
         @foreach ($projects as $p)
-            <div class="col-sm-6 col-xs-12">
+            <div class="col-sm-6 col-xs-12{{ ($isotop ? ' gridItem' : '') }}">
                 <a href="{{ route('project', $p->name) }}" data-surf-animation=".b-project-info-loader" class="b-project h-floating surfAnimate skipStartLogo">
                     <div class="b-project-container" style="background-image: url('{{ asset($p->photo_m) }}')">
                         <div class="b-project-info-loader"></div>

@@ -15,7 +15,7 @@
                         <div class="p-service-tags b-tags">
                             @foreach ($service->sections as $section)
                                 @foreach ($section->tags as $tag)
-                                    <a href="#{{ $tag->name }}" class="b-tags-item"><span>{{ $tag->caption }}</span></a>
+                                    <a href="#{{ $tag->name }}" class="b-tags-item scrollTo"><span>{{ $tag->caption }}</span></a>
                                 @endforeach
                             @endforeach
                         </div>

@@ -23,10 +23,10 @@
                             }}
                         </a>
                     </li>
-                    <li class="__all{{ (sizeof($selected_groups) <= 0 ? ' active' : '') }}"><a href="{{ route('projects') }}">Показать все</a></li>
+                    <li class="__all{{ (sizeof($selected_groups) <= 0 ? ' active' : '') }}"><a class="filterLink" href="{{ route('projects') }}">Показать все</a></li>
 
                     @foreach ($groups as $gr)
-                        <li class="{{ ($gr->active ? 'active' : '') }}"><a href="{{ $gr->href }}">{{ $gr->caption }}</a></li>
+                        <li class="{{ ($gr->active ? 'active' : '') }}"><a class="filterLink" href="{{ $gr->href }}">{{ $gr->caption }}</a></li>
                     @endforeach
                 </ul>
             </div>

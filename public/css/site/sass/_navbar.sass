@@ -62,24 +62,34 @@ body
 .navbar-brand
   cursor: default
   span
+    will-change: transform
     display: block
-    opacity: 0
+    //transform: scale(1)
+    //opacity: 0
+    //background: #0000a0
+    //box-shadow: 0 0 1rem 1rem #0000a0
     position: absolute
-    left: 2.5rem
+    left: 2.5em
     top: 38%
-    background: #0000a0
     border-radius: 50%
-    width: 2rem
-    height: 2rem
-    box-shadow: 0 0 1rem 1rem #0000a0
-    transition: transform .7s linear, background .7s linear, box-shadow .7s linear
+    width: 2em
+    height: 2em
+    font-size: 100px
+    //transition: transform .7s linear, background .7s linear, box-shadow .7s linear
     z-index: 1
     cursor: default
+    animation-duration: .7s
+    animation-timing-function: linear
+    animation-iteration-count: 1
+    animation-fill-mode: both
+    animation-direction: normal
+    pointer-events: none
   &.__anim span
-    opacity: 1
-    transform: scale(80)
-    box-shadow: 0 0 1rem 1rem #0000fe
-    background: #0000fe
+    animation-name: logo_anim
+    //opacity: 1
+    //transform: scale(80)
+    //box-shadow: 0 0 1rem 1rem #0000fe
+    //background: #0000fe
 
 @media (min-width: 768px)
   .navbar-brand
@@ -88,11 +98,13 @@ body
       height: 3rem
       left: 16.2rem
       top: 58%
-    &.__anim span
-      opacity: 1
-      transform: scale(200)
-      box-shadow: 0 0 1rem 1rem #0000fe
-      background: #0000fe
+    //&.__anim span
+      animation-name: logo_anim_big
+
+      //opacity: 1
+      //transform: scale(200)
+      //box-shadow: 0 0 1rem 1rem #0000fe
+      //background: #0000fe
 
 /*svg.logo .logo-circle.logo-circle-blur circle {
  *    transition: 1s ease-out;
@@ -105,7 +117,7 @@ body
 
 
 .navbar-custom
-  transition: transform .3s
+  transition: transform .3s, opacity .3s
   margin-top: 27px
   margin-bottom: 0
   position: fixed
@@ -123,6 +135,34 @@ body
 
   &.nav-up
     transform: translate(0, -180%)
+
+  //.__fade_in_nav &,
+  .__leave &,
+  .__anim_next &
+    opacity: 0 !important
+    transition: transform .3s 5s, opacity .3s
+
+  //.__start_anim &,
+  &.__invis
+    transform: translate(0, 0)
+    transition: transform 0s, opacity 0s
+    opacity: 0
+
+    body:not(.__intro) &
+      transition: transform 0s, opacity .3s .7s
+
+  body.__fade_in_nav &
+    transition: transform .3s 5s, opacity .3s .8s
+    opacity: 0
+
+    //animation-duration: .3s
+    //animation-delay: .3s
+    //animation-timing-function: linear
+    //animation-iteration-count: 1
+    //animation-fill-mode: forwards
+    //animation-direction: normal
+    //pointer-events: none
+    //animation-name: logo_next
 
   .navbar-brand
     height: auto
@@ -157,9 +197,11 @@ body
     z-index: 998
     width: 100%
     left: 100%
+    margin-left: 15px
   &.in
     .b-menu
       left: 0
+      margin-left: 0
     .b-menu-overlay
       opacity: 1
       visibility: visible

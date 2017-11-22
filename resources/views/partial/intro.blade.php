@@ -10,7 +10,7 @@
 
     <div class="intro-body">
         <div class="container container-fluid">
-            <h1 class="brand-heading"><span><span>Branding</span></span> <span><span>& Digital</span></span></h1>
+            <h1 class="brand-heading"><span><span>Branding&nbsp;</span><span>& Digital</span></span></h1>
             <p class="intro-text"><span>Эстетичные системы коммуникаций для бизнеса</span></p>
         </div>
     </div>

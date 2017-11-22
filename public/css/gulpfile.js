@@ -21,7 +21,7 @@ var paths = {
 };
 
 var processors = [
-  focus(),
+  // focus(),
   autoprefixer({
     browsers: ['last 10 versions'],
     remove: true, // remove outdated prefixes?

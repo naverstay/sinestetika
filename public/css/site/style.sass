@@ -3,48 +3,6 @@
 @import sass/_general
 @import sass/_layout
 
-@keyframes project-list-caption
-  0%
-    transform: translate(0, 22px)
-    opacity: 0.2
-
-  40%
-    transform: translate(0, 4px)
-    opacity: 0.5
-
-  60%
-    margin-top: 0
-    opacity: 0.5
-
-  80%
-    margin-top: 0
-    opacity: 0.8
-
-  100%
-    margin-top: 0
-    opacity: 1
-
-@keyframes project-list-caption-hide
-  100%
-    transform: translate(0, 22px)
-    opacity: 0.2
-
-  60%
-    transform: translate(0, 4px)
-    opacity: 0.5
-
-  40%
-    margin-top: 0
-    opacity: 0.5
-
-  20%
-    margin-top: 0
-    opacity: 0.8
-
-  0%
-    margin-top: 0
-    opacity: 1
-
 body
   &.__leave .s-page
     > *
@@ -153,7 +111,7 @@ body
 
 .home-services-descr
   overflow: hidden
-  height: 144px
+  min-height: 144px
   margin-bottom: 85px
   font-size: 16px
   line-height: 36px
@@ -169,8 +127,11 @@ body
     padding-top: 0
     padding-bottom: 0
     a
+      display: inline-block
+      vertical-align: top
       font-size: 3.4rem
       line-height: 4.5rem
+      padding-bottom: 35px
       &:before
         content: ''
         display: block
@@ -178,15 +139,14 @@ body
         left: -15px
         width: 28px
         height: 2px
-        top: 100%
-        margin-top: 23px
+        bottom: 4px
         background-color: currentColor
       &:after
         content: ''
         position: absolute
         left: 4px
-        top: 100%
-        margin-top: 20px
+        bottom: 4px
+        margin-bottom: -3px
         width: 8px
         height: 8px
         border-top: solid 2px currentColor
@@ -203,7 +163,7 @@ body
           left: 41px
           opacity: 1
   .home-services-descr
-    height: 21rem
+    min-height: 21rem
     margin-bottom: 12rem
     font-size: 2.15rem
     line-height: 5.2rem
@@ -321,17 +281,34 @@ body
     width: 100%
     padding-top: 62%
 
+  .b-project-container
+    &:before
+      transition: opacity .5s
+      content: ''
+      position: absolute
+      top: 0
+      right: 0
+      left: 0
+      bottom: 0
+      opacity: 0
+      background: #00f
+
   &.__animate
     z-index: 100
+
+    .b-project-container
+      &:before
+        opacity: 1
 
     .b-project-info
       opacity: 0 !important
       pointer-events: none
+      transition-delay: .3s
 
     .b-project-info-loader
       opacity: 1
       width: 4000px
-      height: 20000px
+      height: 2500px
       box-shadow: 0 0 25px #00f
 
 .b-project-container
@@ -351,6 +328,7 @@ body
     box-sizing: border-box
     padding: 0 38px
   .b-project-info
+    will-change: transform
     opacity: 0
     transition: opacity 0.5s ease-out
     display: flex
@@ -361,23 +339,26 @@ body
     background: rgba(0, 0, 255, 0.8)
     width: 100%
     height: 100%
-    overflow: hidden
+    //overflow: hidden
 
-  .b-project-info-loader
-    opacity: 0
-    transition: box-shadow 0.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1), transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), width 2s cubic-bezier(0.19, 1, 0.22, 1), height 3s 0.7s cubic-bezier(0.19, 1, 0.22, 1)
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    background: #00f
-    width: 100%
-    height: 100%
-    box-shadow: 0 0 0 #00f
+    //&:hover
+      opacity: 1
 
   &:hover
     .b-project-info
       opacity: 1
+
+.b-project-info-loader
+  opacity: 0
+  transition: box-shadow .3s .7s cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity .5s cubic-bezier(0.785, 0.135, 0.15, 0.86), width .3s .3s cubic-bezier(0.6, 0.04, 0.98, 0.335), height .4s .9s cubic-bezier(0.6, 0.04, 0.98, 0.335)
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  background: #00f
+  width: 100%
+  height: 100%
+  box-shadow: 0 0 0 #00f
 
 .b-project-caption
   font-size: 18px
@@ -496,8 +477,27 @@ body
   position: relative
   z-index: 1
 
+  .p-project-photo
+    opacity: 0
+    animation-duration: 1.5s
+    animation-delay: 1s
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1)
+    animation-iteration-count: 1
+    animation-fill-mode: forwards
+    animation-direction: normal
+
+    ._page_loaded &
+      animation-name: load_project
+
+    &.__prevent_anim
+      display: none
+
+    &.__skip_anim
+      opacity: 1
+      animation-name: none
+
 .p-project-intro-body
-  flex: 1 0 auto
+  //flex: 1 0 auto
   display: flex
   align-items: center
   justify-content: flex-start
@@ -507,6 +507,9 @@ body
     width: 100%
     > div
       padding-right: 0
+
+  .p-project-next &
+    flex: 1 0 auto
 
 /*.p-project-next .b-tags {
  *    margin: 0 0 30px;
@@ -528,10 +531,44 @@ body
   color: #fff !important
   display: block
 
+  > span
+    display: block
+    overflow: hidden
+
+    span
+      will-change: transform
+      display: inline-block
+      -webkit-transform: translate3d(0, 100%, 0)
+      transform: translate3d(0, 100%, 0)
+      opacity: 0
+      position: relative
+      animation-duration: .5s
+      //animation-delay: .1s
+      animation-timing-function: ease-out
+      animation-iteration-count: 1
+      animation-fill-mode: forwards
+      animation-direction: normal
+
+      ._page_loaded &
+        animation-name: text_bottom2top
+
+.__from-next
+  .p-project-title
+    span span
+      animation-name: none
+      transform: translate3d(0, 0, 0)
+      opacity: 1
+
 .p-project-photo
+  will-change: transform
   display: block
+
   img
+    display: block
     width: 100%
+
+    //._page_loaded &
+      display: block
 
 .p-project-descr
   margin: 5rem 0
@@ -720,13 +757,23 @@ body
         &.pause
           width: 12px
           height: 14px
-          border: 4px solid #fff
+          border: solid #fff
           border-width: 0 4px
       .v-volume
+        position: relative
         height: 14px
         margin-left: 20px
         vertical-align: middle
         display: inline-block
+
+        &:before
+          content: ''
+          position: absolute
+          top: -10px
+          right: -10px
+          bottom: -10px
+          left: -10px
+
         .v-btn-volume
           height: 20px
           width: 20px
@@ -753,8 +800,18 @@ body
         vertical-align: middle
         position: relative
         cursor: pointer
+
+        &:before
+          content: ''
+          position: absolute
+          top: -10px
+          bottom: -10px
+          right: 0
+          left: 0
+
       .v-volume:hover .v-volume-bar
         display: inline-block
+
       .v-volume-bar-current
         height: 2px
         width: 0
@@ -771,6 +828,15 @@ body
         border-radius: 4px
         margin-left: -4px
         cursor: pointer
+
+        &:before
+          content: ''
+          position: absolute
+          top: -10px
+          right: -10px
+          bottom: -10px
+          left: -10px
+
       .v-volume.muted .v-volume-bar-target
         left: 0 !important
       .v-time
@@ -821,9 +887,77 @@ body
  *}
 
 .p-project-next
+  //transition: top .6s cubic-bezier(0.075, 0.82, 0.165, 1)
+  transition: top .6s cubic-bezier(0.19, 1, 0.22, 1)
   display: block
+  position: relative
+  z-index: 10
+
+  .p-project-next-title
+    transition: opacity .5s .35s ease-out, height .4s ease-out, margin .4s ease-out
+
+  .b-project-info-loader
+    top: 0
+    bottom: 0
+    z-index: 1
+    width: 100%
+    //background: red
+    opacity: 1
+    box-shadow: none
+    transform: translate(-50%, 0)
+    transition: top .3s cubic-bezier(0.075, 0.82, 0.165, 1)
+    //transition: top .3s cubic-bezier(0.6, 0.04, 0.98, 0.335)
+
+  .p-project-intro-bg
+    background-color: transparent
+
+  &.__start_anim
+
+    .p-project-next-title
+      opacity: 0
+      //margin: 0
+      //height: 0
+
+    //.p-project-intro-wrapper.__next
+      //height: auto
+
+    //.b-project-info-loader
+      width: 4000px
+
+    .p-project-intro
+      height: auto
+      overflow: visible
+
+  &.__anim
+    position: fixed
+    top: 5px
+    right: 0
+    left: 0
+
+    //transform: scale(1) translate3d(0, -5%, 0)
+
+    .b-project-info-loader
+      //height: 2000px
+      top: -200px
+      box-shadow: 0 0 25px #00f
+
+    .p-project-next-title
+      margin: 0
+      height: 0
+
+    .p-project-intro-wrapper.__next
+      height: auto
+      transform: scale(1) translate3d(0, 0, 0) !important
+
+    .p-project-intro-bg
+      height: 100%
+
+    .p-project-intro
+      height: auto
+      overflow: visible
 
 .p-project-next-title
+  //transition: opacity 0.6s ease-out
   font-size: 1.79rem
   margin: 5.4rem 0 5.4rem
   line-height: 5.4rem
@@ -857,7 +991,11 @@ body
 @media (min-width: 768px)
   .p-project-next
     background: #fff
-    overflow: hidden
+    //overflow: hidden
+
+    &.__anim
+      top: 80px
+
   .p-project-intro-wrapper.__next
     position: relative
     height: 100vh
@@ -866,17 +1004,22 @@ body
     transform: scale(1) translate3d(0, 25vh, 0)
     transition: transform 0.3s ease-out
     transform-origin: center bottom
+    .p-project-next:hover &,
     &:hover:not(.__anim)
       transform: scale(0.96, 0.96) translate3d(0, 25vh, 0)
     // .p-project-intro.__next.__anim
-    &.__anim
-      position: fixed
-      z-index: 0
-      bottom: 0
-      left: 0
-      right: 0
-      transform: scale(1) translate3d(0, 0vh, 0)
+
+    //&.__anim
+      transform: scale(1) translate3d(0, -50%, 0)
       transition: transform 0.6s ease-out
+
+      .b-project-info-loader
+        opacity: 1
+        width: 4000px
+        height: 20000px
+        box-shadow: 0 0 25px #00f
+
+
       // height: 100vh
       // min-height: 100vh
       // animation-name: next_project
@@ -1093,6 +1236,13 @@ body
     &.p-project-section__video.col-sm-12
       .p-project-section-body
         display: block
+    &.p-project-section__video.__fs
+      position: fixed
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      padding: 0
 
     .p-project-section-body .p-project-section-body-wrapper
       flex: 1 0 auto
@@ -1157,17 +1307,36 @@ body
   .p-projects .b-projects
     margin-top: 0
 
+@media (min-width: 1049px)
+  .p-project-next
+    &.__anim
+     top: 102px
+
 @media (min-width: 1281px)
   .p-projects-intro p
     font-size: 4.4rem
     line-height: 6.4rem
     max-width: 80rem
 
+  .p-project-next
+    &.__anim
+     top: 112px
+
 @media (min-width: 1401px)
   .p-projects-intro p
     font-size: 6rem
     line-height: 8rem
     max-width: 105rem
+
+@media (min-width: 1441px)
+  .p-project-next
+    &.__anim
+      top: 117px
+
+@media (min-width: 1701px)
+  .p-project-next
+    &.__anim
+      top: 143px
 
 .p-service-intro
   display: flex

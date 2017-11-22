@@ -16,10 +16,14 @@ class MainController extends Controller
     public function __construct(CookieJar $cookieJar)
     {
         $show_start_screen = false;
+
         if(!isset($_COOKIE['start_logo'])) {
             $show_start_screen = true;
             $cookieJar->queue(cookie('start_logo', 1, 60*60*24*30));
         }
+
+        \View::share('isotop', false);
+
         \View::share('show_start_screen', $show_start_screen);
 
         \View::share('all_services', Service::home()->get());
@@ -40,6 +44,8 @@ class MainController extends Controller
 
     public function projects($tags = null) {
         $tag_names = (! is_null($tags) ? explode('/', $tags) : null);
+
+        \View::share('isotop', true);
 
         \View::share('page_title', 'Проекты');
 

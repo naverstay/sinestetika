@@ -7,7 +7,7 @@
             <div class="p-project-intro-body container container-fluid">
                 <div class="row">
                     <div class="col-md-8 col-sm-10 col-xs-12">
-                        <h1 class="p-project-title"><span>{{ $project->caption }}</span></h1>
+                        <h1 class="p-project-title"><span><span>{{ $project->caption }}</span></span></h1>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="p-project-photo container container-fluid">
+            <div class="p-project-photo container container-fluid loadedProject __prevent_anim">
                 <img src="{{ asset($project->photo) }}" />
             </div>
         </div>
@@ -38,7 +38,7 @@
                 <!-- row-eq-height -->
                 <div class="row ">
                 @foreach ($project->sections as $s)
-                    <div class="p-project-section p-project-section__{{ $s->type }} col-xs-12 {{ ($s->small_format == 1 ? 'col-sm-6' : 'col-sm-12') }} h-floating"
+                    <div class="p-project-section p-project-section__{{ $s->type }}{{ ($s->type == 'video' ? ' videoBlock' : '') }} col-xs-12 {{ ($s->small_format == 1 ? 'col-sm-6' : 'col-sm-12') }} h-floating"
                             {!! ($s->clear ? ' style="clear:left"' : '') !!}>
                         <div class="p-project-section-body">
                             @if ($s->type == 'content')
@@ -88,6 +88,7 @@
     <a class="p-project-next" href="{{ route('project', $next_project->name) }}">
         <div class="p-project-intro-wrapper __next">
             <div class="p-project-intro-bg blueSection blue-bg"></div>
+            <div class="b-project-info-loader"></div>
             <div class="p-project-intro">
                 <div class="p-project-intro-body container container-fluid">
                     <div class="row">

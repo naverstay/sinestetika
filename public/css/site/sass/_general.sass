@@ -49,19 +49,43 @@ body
   margin: 0
   border: none
   outline: none
-  overflow: auto
+  overflow-y: scroll
+  overflow-x: hidden
   position: relative
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+
+  &.__anim_next
+    .s-page
+      height: 100%
+      min-height: 100%
+      max-height: 100%
+      overflow: hidden
+
+    .p-project-intro-bg
+      background-color: transparent
+
+    .navbar-custom
+      transform: translate(0, 0)
+
+*
+  backface-visibility: hidden
 
 *::selection
   background: #0000fe
   color: white
 
 .blue-bg *::selection
-  background: rgba(white, .99)
+  background: rgba(255,255,255, .99)
   color: #0000fe
 
+::-moz-selection
+  background: #0000fe
+  color: white
+
+.blue-bg *::-moz-selection
+  background: rgba(255, 255, 255, .99)
+  color: #0000fe
 
 html
   width: 100%
@@ -89,4 +113,4 @@ a
     color: #0000fe
 
 
-  
+
