@@ -6,6 +6,8 @@
 
 <script src="{{ asset('js/unveil.js') }}?t={{ time() }}"></script>
 <script src="{{ asset('js/debounce.js') }}?t={{ time() }}"></script>
+<script src="{{ asset('js/jquery.backstretch.min.js') }}?t={{ time() }}"></script>
+<script src="{{ asset('js/imagesloaded.pkgd.min.js') }}?t={{ time() }}"></script>
 <script src="{{ asset('js/isotope.pkgd.js') }}?t={{ time() }}"></script>
 <script src="{{ asset('js/packery-mode.pkgd.js') }}?t={{ time() }}"></script>
 <script src="{{ asset('js/viewport-units-buggyfill.js') }}?t={{ time() }}"></script>

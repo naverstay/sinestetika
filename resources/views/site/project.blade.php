@@ -44,7 +44,7 @@
                             @if ($s->type == 'content')
                                 {!! $s->content !!}
                             @elseif ($s->type == 'video')
-                                    <video poster="{{ $s->video_preview }}" controls="false">
+                                    <video poster="{{ $s->video_preview }}" playsinline>
                                         <source src="{{ asset($s->video) }}">
                                     </video>
                                     <div class="v-btn-play-big">

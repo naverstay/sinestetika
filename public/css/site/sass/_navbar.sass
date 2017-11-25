@@ -28,7 +28,7 @@ svg.logo.logo-white
     fill: #fff
 
 body
-  &.__intro
+  &.__intro:not(.__fade_in_nav)
     .navbar-custom svg.logo
       .logo-circle
         fill: #fff !important
@@ -61,12 +61,16 @@ body
 
 .navbar-brand
   cursor: default
+
+  svg
+    transition: opacity .3s
+
   span
     will-change: transform
     display: block
-    //transform: scale(1)
-    //opacity: 0
-    //background: #0000a0
+    transform: scale(1)
+    opacity: 0
+    background: #0000a0
     //box-shadow: 0 0 1rem 1rem #0000a0
     position: absolute
     left: 2.5em
@@ -75,21 +79,132 @@ body
     width: 2em
     height: 2em
     font-size: 100px
-    //transition: transform .7s linear, background .7s linear, box-shadow .7s linear
-    z-index: 1
+    transition: transform .7s linear, background .7s linear, box-shadow .7s linear, opacity 1s 0s
+    z-index: 150
     cursor: default
-    animation-duration: .7s
-    animation-timing-function: linear
-    animation-iteration-count: 1
-    animation-fill-mode: both
-    animation-direction: normal
+    //animation-duration: .7s
+    //animation-timing-function: linear
+    //animation-iteration-count: 1
+    //animation-fill-mode: both
+    //animation-direction: normal
     pointer-events: none
   &.__anim span
-    animation-name: logo_anim
+    transition: transform .7s linear, background .7s linear, box-shadow .7s linear, opacity 0s .1s
+    //animation-name: logo_anim
+    transform: scale(80)
+    opacity: 1
+    box-shadow: 0 0 1rem 1rem #0000fe
+    //box-shadow: 0 0 1px 5px #0000fe
+    background: #0000fe
+
+    .__skip-circle &
+      transform: scale(1)
+      opacity: 0
+      box-shadow: none
+
+//html
+  &:before
+    content: ''
+    will-change: transform
+    display: block
+    transform: scale(1)
+    opacity: 0
+    background: #0000a0
+    //box-shadow: 0 0 1rem 1rem #0000a0
+    position: fixed
+    left: 4rem
+    top: 7rem
+    border-radius: 100%
+    width: 2rem
+    height: 2rem
+    //font-size: 100px
+    transition: transform .7s linear, background .7s linear, box-shadow .7s linear, opacity 1s 0s
+    z-index: 150
+    cursor: default
+    //animation-duration: .7s
+    //animation-timing-function: linear
+    //animation-iteration-count: 1
+    //animation-fill-mode: both
+    //animation-direction: normal
+    pointer-events: none
+
+  &.__anim:before
+    transition: transform .7s linear, background .7s linear, box-shadow .7s linear, opacity 0s
+    //animation-name: logo_anim
+    transform: scale(80)
+    opacity: 1
+    box-shadow: 0 0 1rem 1rem #0000fe
+    //box-shadow: 0 0 1px 5px #0000fe
+    background: #0000fe
+
+.navbar-circle
+  will-change: transform
+  display: block
+  transform: scale(0)
+  //box-shadow: 0 0 1rem 1rem #0000fe
+  //background: #0000fe
+  //box-shadow: 0 0 1rem 1rem #0000a0
+  //background: #0000a0
+  width: 5rem
+  height: 5rem
+  position: fixed
+  left: 4rem
+  top: 7rem
+  border-radius: 100%
+  //font-size: 100px
+  transition: transform .7s linear, background .7s linear, box-shadow .7s 0s linear, opacity .1s 0s
+  z-index: 150
+  cursor: default
+  //animation-duration: .7s
+  //animation-timing-function: linear
+  //animation-iteration-count: 1
+  //animation-fill-mode: both
+  //animation-direction: normal
+  pointer-events: none
+
+  svg.logo
+    width: 100%
+    height: 100%
+
+    .logo-circle circle
+      will-change: transform
+      transition: fill .7s
+
+  .__intro &
+    //box-shadow: 0 0 1rem 1rem #0000a0
+    //background: #0000a0
+
+    svg.logo .logo-circle circle
+      fill: #0000ed !important
+
+  .__anim_wave &
+    //width: 2rem
+    //height: 2rem
+    //transition: transform .7s linear, background .7s linear, box-shadow .7s 1s linear, opacity 0s
+    //animation-name: logo_anim
+    transform: scale(80)
     //opacity: 1
-    //transform: scale(80)
     //box-shadow: 0 0 1rem 1rem #0000fe
     //background: #0000fe
+
+    //+ .s-page
+      opacity: 0
+      visibility: hidden
+
+  //.__anim_wave.__anim_wave_back &
+    transform: scale(80)
+    //animation-name: logo_anim_back
+
+  .__anim_wave .__skip-circle &
+    animation-name: none !important
+    transform: scale(0) !important
+    opacity: 0
+    box-shadow: none !important
+
+
+      //+ .s-page
+        opacity: 1
+        visibility: visible
 
 @media (min-width: 768px)
   .navbar-brand
@@ -98,13 +213,39 @@ body
       height: 3rem
       left: 16.2rem
       top: 58%
-    //&.__anim span
-      animation-name: logo_anim_big
 
+    &.__anim span
+      //animation-name: logo_anim_big
       //opacity: 1
-      //transform: scale(200)
+      transform: scale(200)
       //box-shadow: 0 0 1rem 1rem #0000fe
       //background: #0000fe
+
+  .navbar-circle
+    //left: 17rem
+    //top: 9rem
+    left: 10.5rem
+    top: 5.5rem
+
+    .__anim_wave &
+      width: 10rem
+      height: 10rem
+      //animation-name: logo_anim_big
+      //opacity: 1
+      transform: scale(200)
+
+    //.__anim_wave.__anim_wave_back &
+      transform: scale(200)
+      //animation-name: logo_anim_back_big
+
+    //.__anim_wave .__skip-circle &
+      animation-name: none !important
+      transform: scale(0) !important
+      opacity: 0
+      box-shadow: none
+
+//box-shadow: 0 0 1rem 1rem #0000fe
+//background: #0000fe
 
 /*svg.logo .logo-circle.logo-circle-blur circle {
  *    transition: 1s ease-out;
@@ -139,23 +280,45 @@ body
   //.__fade_in_nav &,
   .__leave &,
   .__anim_next &
-    opacity: 0 !important
     transition: transform .3s 5s, opacity .3s
+
+    .navbar-brand svg
+      opacity: 0 !important
 
   //.__start_anim &,
   &.__invis
-    transform: translate(0, 0)
-    transition: transform 0s, opacity 0s
-    opacity: 0
+    &.nav-down
+      transform: translate(0, 0)
+      transition: transform 0s, opacity 0s
+
+    .navbar-header
+      opacity: 0
+      transition: opacity 0s
 
     body:not(.__intro) &
-      transition: transform 0s, opacity .3s .7s
+      &.nav-down
+        transition: transform 0s, opacity .3s .7s
+
+      .navbar-header
+        transition: opacity .3s .7s
 
   body.__fade_in_nav &
     transition: transform .3s 5s, opacity .3s .8s
     opacity: 0
 
-    //animation-duration: .3s
+    //&.nav-down
+      svg.logo .logo-circle
+        -webkit-transition: fill .3s
+        -o-transition: fill .3s
+        transition: fill .3s
+        fill: #0000fe !important
+
+
+    //.navbar-header
+      opacity: 0
+      transition: opacity .3s .8s
+
+  //animation-duration: .3s
     //animation-delay: .3s
     //animation-timing-function: linear
     //animation-iteration-count: 1

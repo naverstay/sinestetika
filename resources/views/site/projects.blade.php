@@ -34,4 +34,6 @@
             @include('partial.projects', ['projects'=>$projects])
         </div>
     </div>
+
+    @include('partial.footer.contacts')
 @endsection

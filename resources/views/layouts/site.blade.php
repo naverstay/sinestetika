@@ -36,7 +36,6 @@
                     <div class="navbar-header">
                         <a href="{{ route('home') }}" class="navbar-brand page-scroll">
                             @svg('logo', 'logo')
-                            <span></span>
                         </a>
                     </div>
                     <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
@@ -69,6 +68,29 @@
         @yield('content')
     </div>
 
+    <div class="navbar-circle">
+<!--        <svg viewBox="0 0 360 360" class="svg-icon logo" version="1.1" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
+            <filter height="200%" id="Blur10" width="200%" x="-20%" y="-20%">
+                <feGaussianBlur stdDeviation="10"></feGaussianBlur>
+            </filter>
+            <g filter="url(#Blur10)" class="logo-circle logo-circle-blur" id="Page-1" stroke="none" stroke-width="1"
+               fill="none" fill-rule="evenodd">
+                <g id="logo" fill-rule="nonzero" fill="#0000fe">
+                    <circle id="Oval" cx="180" cy="180" r="90"></circle>
+                </g>
+            </g>
+        </svg>-->
+        <svg viewBox="0 0 360 360" class="svg-icon logo" version="1.1" xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
+            <filter height="200%" id="Blur10" width="200%" x="-20%" y="-20%">
+                <feGaussianBlur stdDeviation="10"></feGaussianBlur>
+            </filter>
+            <g filter="url(#Blur10)" class="logo-circle logo-circle-blur" id="Page-1" stroke="none" stroke-width="1"
+               fill="none" fill-rule="evenodd">
+                <circle cx="180" cy="180" r="90" fill-rule="nonzero" fill="#0000fe"></circle>
+            </g>
+        </svg>
+    </div>
     @if (!is_ajax())
         @include('partial.js')
     @endif
