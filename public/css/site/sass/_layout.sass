@@ -4,8 +4,18 @@
   background: #fff
   overflow: hidden
 
-  //.__hide_page &
-    display: none
+  > *
+    will-change: transform
+
+  p, ul, ol
+    will-change: transform
+
+  //.__anim_wave &
+    opacity: 0
+
+  .__hide_page &
+    transition: opacity 0s 0s
+    //display: none
     //visibility: hidden
     //opacity: 0
 

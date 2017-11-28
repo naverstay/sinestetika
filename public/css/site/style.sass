@@ -4,6 +4,41 @@
 @import sass/_layout
 
 body
+  //.__anim_wave &
+    .s-page
+      > *
+        transition: transform .45s ease-out
+        transform: translate3d(0, -5%, 0)
+      p, ul, ol
+        transition: opacity .45s ease-out
+        opacity: 0
+
+      .navbar-custom
+        transform: translate3d(0, 0, 0)
+        opacity: 1 !important
+        .blue-bg
+          opacity: 1 !important
+
+  //&.__leave .s-page
+    > *
+      transition: transform .35s ease-out, border-color .35s ease-out, color .35s ease-out
+      transform: translate3d(0, -5%, 0)
+
+    *
+      color: rgba(255, 255, 255, 0) !important
+      border-color: transparent !important
+
+    p, ul, ol, .row
+      transition: opacity .35s ease-out
+      opacity: 0 !important
+
+    .navbar-custom
+      transform: translate3d(0, 0, 0)
+      opacity: 1 !important
+
+      .blue-bg
+        opacity: 1 !important
+
   &.__leave .s-page
     > *
       transition: transform .45s ease-out
@@ -11,7 +46,7 @@ body
     p, ul, ol
       transition: opacity .45s ease-out
       opacity: 0
-
+    >
     .navbar-custom
       transform: translate3d(0, 0, 0)
       opacity: 1 !important
@@ -308,8 +343,10 @@ body
 
     .b-project-info-loader
       opacity: 1
-      width: 4000px
-      height: 2500px
+      //width: 4000px
+      //height: 2500px
+      width: 200vw
+      height: 200vh
       box-shadow: 0 0 25px #00f
 
 .b-project-container
@@ -645,7 +682,7 @@ body
   position: absolute
   left: 0
   right: 0
-  bottom: 0
+  //bottom: 0
   text-align: center
   padding: 0
   margin: 0
@@ -916,11 +953,14 @@ body
     bottom: 0
     z-index: 1
     width: 100%
+    min-height: 100%
+    height: auto
     //background: red
     opacity: 1
     box-shadow: none
     transform: translate(-50%, 0)
-    transition: top .3s cubic-bezier(0.075, 0.82, 0.165, 1)
+    //transition: top .3s .4s cubic-bezier(0.075, 0.82, 0.165, 1), width .3s cubic-bezier(0.6, 0.04, 0.98, 0.335)
+    transition: box-shadow .2s .4s cubic-bezier(0.785, 0.135, 0.15, 0.86), top .3s .4s cubic-bezier(0.6, 0.04, 0.98, 0.335), width .3s cubic-bezier(0.6, 0.04, 0.98, 0.335)
     //transition: top .3s cubic-bezier(0.6, 0.04, 0.98, 0.335)
 
   .p-project-intro-bg
@@ -936,8 +976,10 @@ body
     //.p-project-intro-wrapper.__next
       //height: auto
 
-    //.b-project-info-loader
-      width: 4000px
+    .b-project-info-loader
+      width: 120vw
+      top: -100vh
+      box-shadow: 0 0 25px #00f
 
     .p-project-intro
       height: auto
@@ -945,15 +987,16 @@ body
 
   &.__anim
     position: fixed
-    top: 5px
+    padding-top: 5px
+    top: 0
     right: 0
     left: 0
 
     //transform: scale(1) translate3d(0, -5%, 0)
 
-    .b-project-info-loader
+    //.b-project-info-loader
       //height: 2000px
-      top: -200px
+      top: -100vh
       box-shadow: 0 0 25px #00f
 
     .p-project-next-title
@@ -961,7 +1004,8 @@ body
       height: 0
 
     .p-project-intro-wrapper.__next
-      height: auto
+      //height: auto
+      height: 150vh
       transform: scale(1) translate3d(0, 0, 0) !important
 
     .p-project-intro-bg
@@ -1018,19 +1062,21 @@ body
     //overflow: hidden
 
     &.__anim
-      top: 80px
+      padding-top: 80px
+      //top: 80px
 
   .p-project-intro-wrapper.__next
     position: relative
-    height: 100vh
-    min-height: 100vh
+    //height: 100vh
+    //min-height: 100vh
+    height: 75vh
     margin-top: 0
-    transform: scale(1) translate3d(0, 25vh, 0)
+    transform: scale(1) //translate3d(0, 25vh, 0)
     transition: transform 0.3s ease-out
     transform-origin: center bottom
     .p-project-next:hover &,
     &:hover:not(.__anim)
-      transform: scale(0.96, 0.96) translate3d(0, 25vh, 0)
+      transform: scale(0.96, 0.96) //translate3d(0, 25vh, 0)
     // .p-project-intro.__next.__anim
 
     //&.__anim
@@ -1334,7 +1380,8 @@ body
 @media (min-width: 1049px)
   .p-project-next
     &.__anim
-     top: 102px
+      padding-top: 102px
+      //top: 102px
 
 @media (min-width: 1281px)
   .p-projects-intro p
@@ -1344,7 +1391,8 @@ body
 
   .p-project-next
     &.__anim
-     top: 112px
+      padding-top: 112px
+      //top: 112px
 
 @media (min-width: 1401px)
   .p-projects-intro p
@@ -1355,12 +1403,14 @@ body
 @media (min-width: 1441px)
   .p-project-next
     &.__anim
-      top: 117px
+      padding-top: 117px
+      //top: 117px
 
 @media (min-width: 1701px)
   .p-project-next
     &.__anim
-      top: 143px
+      padding-top: 143px
+      //top: 143px
 
 .p-service-intro
   display: flex

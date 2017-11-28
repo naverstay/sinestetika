@@ -25,71 +25,58 @@
     @endif
 </head>
 <body class="{{ \Request::route()->getName() }} __intro">
+    <div class="navbar navbar-custom" role="navigation">
+        <div class="navbar-circle">
+            <svg viewBox="0 0 360 360" class="svg-icon logo" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink">
+                <filter height="200%" id="Blur10" width="200%" x="-20%" y="-20%">
+                    <feGaussianBlur stdDeviation="10"></feGaussianBlur>
+                </filter>
+                <g filter="url(#Blur10)" class="logo-circle logo-circle-blur" id="Page-1" stroke="none" stroke-width="1"
+                   fill="none" fill-rule="evenodd">
+                    <circle cx="180" cy="180" r="90" fill-rule="nonzero" fill="#0000fe"></circle>
+                </g>
+            </svg>
+        </div>
+        <div class="container container-fluid">
+            <div class="row">
+                <div class="navbar-header">
+                    <a href="{{ route('home') }}" class="navbar-brand page-scroll">
+                        @svg('logo', 'logo')
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                    <div class="navbar-toggle">
+                        <div class="navbar-toggle-icon">
+                            <span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="b-menu-overlay"></div>
+        <div class="b-menu">
+            <div class="b-menu-container">
+                <div class="b-menu-body">
+                    <ul class="b-menu-list b-menu-services">
+                        @foreach ($all_services as $s)
+                        <li><a href="{{ route('service', $s->name) }}" class="page-scroll">{{ $s->main_caption }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+                <ul class="b-menu-list b-menu-main">
+                    <li><a href="{{ route('projects') }}" class="nav-experts page-scroll">Проекты</a></li>
+                    <li><a href="{{ route('contacts') }}" class="nav-contacts page-scroll">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <div class="s-page">
         @if (\Request::route()->getName() == 'home')
             @include('partial.intro')
         @endif
 
-        <div class="navbar navbar-custom" role="navigation">
-            <div class="container container-fluid">
-                <div class="row">
-                    <div class="navbar-header">
-                        <a href="{{ route('home') }}" class="navbar-brand page-scroll">
-                            @svg('logo', 'logo')
-                        </a>
-                    </div>
-                    <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                        <div class="navbar-toggle">
-                            <div class="navbar-toggle-icon">
-                                <span></span><span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="b-menu-overlay"></div>
-            <div class="b-menu">
-                <div class="b-menu-container">
-                    <div class="b-menu-body">
-                        <ul class="b-menu-list b-menu-services">
-                            @foreach ($all_services as $s)
-                                <li><a href="{{ route('service', $s->name) }}" class="page-scroll">{{ $s->main_caption }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <ul class="b-menu-list b-menu-main">
-                        <li><a href="{{ route('projects') }}" class="nav-experts page-scroll">Проекты</a></li>
-                        <li><a href="{{ route('contacts') }}" class="nav-contacts page-scroll">Контакты</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
         @yield('content')
-    </div>
-
-    <div class="navbar-circle">
-<!--        <svg viewBox="0 0 360 360" class="svg-icon logo" version="1.1" xmlns="http://www.w3.org/2000/svg"
-             xmlns:xlink="http://www.w3.org/1999/xlink">
-            <filter height="200%" id="Blur10" width="200%" x="-20%" y="-20%">
-                <feGaussianBlur stdDeviation="10"></feGaussianBlur>
-            </filter>
-            <g filter="url(#Blur10)" class="logo-circle logo-circle-blur" id="Page-1" stroke="none" stroke-width="1"
-               fill="none" fill-rule="evenodd">
-                <g id="logo" fill-rule="nonzero" fill="#0000fe">
-                    <circle id="Oval" cx="180" cy="180" r="90"></circle>
-                </g>
-            </g>
-        </svg>-->
-        <svg viewBox="0 0 360 360" class="svg-icon logo" version="1.1" xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
-            <filter height="200%" id="Blur10" width="200%" x="-20%" y="-20%">
-                <feGaussianBlur stdDeviation="10"></feGaussianBlur>
-            </filter>
-            <g filter="url(#Blur10)" class="logo-circle logo-circle-blur" id="Page-1" stroke="none" stroke-width="1"
-               fill="none" fill-rule="evenodd">
-                <circle cx="180" cy="180" r="90" fill-rule="nonzero" fill="#0000fe"></circle>
-            </g>
-        </svg>
     </div>
     @if (!is_ajax())
         @include('partial.js')

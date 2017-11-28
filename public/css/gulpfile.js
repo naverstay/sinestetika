@@ -48,7 +48,7 @@ gulp.task('build', function(cb) {
 
 gulp.task('css:vendor', function () {
     return gulp.src(paths.vendor)
-        .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.init())
         .pipe(plumber())
         .pipe(concat('vendor.css'))
         .pipe(postcss( processors ))
@@ -61,7 +61,7 @@ gulp.task('css:vendor', function () {
 
 gulp.task('css:site', function () {
     return gulp.src(paths.site)
-        .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.init())
         .pipe(plumber())
         .pipe(sass({
           outputStyle: 'expanded',

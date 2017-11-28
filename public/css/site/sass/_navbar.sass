@@ -29,7 +29,7 @@ svg.logo.logo-white
 
 body
   &.__intro:not(.__fade_in_nav)
-    .navbar-custom svg.logo
+    .navbar-custom .navbar-header svg.logo
       .logo-circle
         fill: #fff !important
         circle
@@ -45,7 +45,7 @@ body
       .navbar-header
         position: relative
         z-index: 999
-      .navbar-custom svg.logo
+      .navbar-custom .navbar-header svg.logo
         .logo-circle
           fill: #0000fe !important
           circle
@@ -58,6 +58,10 @@ body
 /*svg.logo .logo-text > * {
  *    opacity: 1;
  *}
+
+.navbar-header
+  position: relative
+  z-index: 100
 
 .navbar-brand
   cursor: default
@@ -137,9 +141,13 @@ body
     //box-shadow: 0 0 1px 5px #0000fe
     background: #0000fe
 
+$wave_time: .7s
+//$wave_time: 15s
+
 .navbar-circle
   will-change: transform
   display: block
+  //opacity: .8
   transform: scale(0)
   //box-shadow: 0 0 1rem 1rem #0000fe
   //background: #0000fe
@@ -149,43 +157,53 @@ body
   height: 5rem
   position: fixed
   left: 4rem
-  top: 7rem
+  top: 5.5rem
   border-radius: 100%
   //font-size: 100px
-  transition: transform .7s linear, background .7s linear, box-shadow .7s 0s linear, opacity .1s 0s
-  z-index: 150
+  //transition: transform .7s .4s linear, background .7s linear, box-shadow .7s .4s linear, opacity .1s 0s
+  z-index: 98
   cursor: default
   //animation-duration: .7s
+  //animation-delay: .4s
   //animation-timing-function: linear
   //animation-iteration-count: 1
   //animation-fill-mode: both
   //animation-direction: normal
-  pointer-events: none
+  //pointer-events: none
+
+  .navbar-custom &
+    position: absolute
+    top: 5.3rem
 
   svg.logo
+    will-change: transform
     width: 100%
     height: 100%
 
     .logo-circle circle
       will-change: transform
-      transition: fill .7s
+      transition: fill $wave_time/2
 
   .__intro &
     //box-shadow: 0 0 1rem 1rem #0000a0
     //background: #0000a0
 
     svg.logo .logo-circle circle
-      fill: #0000ed !important
+      fill: #0000a0
 
   .__anim_wave &
     //width: 2rem
     //height: 2rem
     //transition: transform .7s linear, background .7s linear, box-shadow .7s 1s linear, opacity 0s
     //animation-name: logo_anim
-    transform: scale(80)
-    //opacity: 1
+    transition: transform $wave_time linear, background $wave_time linear, box-shadow $wave_time linear, opacity .1s 0s
+    transform: scale(100)
+    //opacity: .9999
     //box-shadow: 0 0 1rem 1rem #0000fe
     //background: #0000fe
+
+    svg.logo .logo-circle circle
+      fill: #0000fe
 
     //+ .s-page
       opacity: 0
@@ -224,21 +242,30 @@ body
   .navbar-circle
     //left: 17rem
     //top: 9rem
-    left: 10.5rem
-    top: 5.5rem
+    left: 13.5rem
+    top: 8rem
+
+    .navbar-custom &
+      left: 15.5rem
+      top: 8rem
+
+    $wave_time: .9s
+    //$wave_time: 15s
 
     .__anim_wave &
-      width: 10rem
-      height: 10rem
+      //width: 10rem
+      //height: 10rem
+      //margin: -5rem 0 0 -5rem
+      transition: transform $wave_time linear, background $wave_time linear, box-shadow $wave_time linear, opacity .1s 0s
       //animation-name: logo_anim_big
-      //opacity: 1
-      transform: scale(200)
+      //opacity: .9999
+      transform: scale(440)
 
     //.__anim_wave.__anim_wave_back &
       transform: scale(200)
       //animation-name: logo_anim_back_big
 
-    //.__anim_wave .__skip-circle &
+    .__anim_wave .__skip-circle &
       animation-name: none !important
       transform: scale(0) !important
       opacity: 0
@@ -255,11 +282,9 @@ body
  *}
 
 
-
-
 .navbar-custom
   transition: transform .3s, opacity .3s
-  margin-top: 27px
+  //margin-top: 27px
   margin-bottom: 0
   position: fixed
   z-index: 99
@@ -267,7 +292,7 @@ body
   left: 0
   right: 0
   // height: 0
-  padding: 0
+  padding: 27px 0 0
   min-height: 1px
   // > .container
   //   height: 0
@@ -277,10 +302,13 @@ body
   &.nav-up
     transform: translate(0, -180%)
 
-  //.__fade_in_nav &,
+  .__anim_next &
+    transform: translate(0, 0) !important
+
   .__leave &,
   .__anim_next &
     transition: transform .3s 5s, opacity .3s
+    //transform: translate(0, 0) !important
 
     .navbar-brand svg
       opacity: 0 !important
@@ -303,8 +331,29 @@ body
         transition: opacity .3s .7s
 
   body.__fade_in_nav &
-    transition: transform .3s 5s, opacity .3s .8s
+    transition: transform .3s 0s, opacity .3s .8s
     opacity: 0
+
+  .__anim_wave body.__intro &
+    //.navbar-custom,
+    //.navbar-brand,
+    .navbar-brand svg,
+    .navbar-header
+      opacity: 1 !important
+
+  //&.nav-down
+  .__anim_wave &
+    //background: #000
+    transition: transform 0s, opacity .3s
+    transform: translate(0, 0)
+
+    .navbar-header
+      transition: opacity 3s
+
+      //.navbar-brand,
+      //.navbar-brand svg,
+      //.navbar-header
+      //  transition: opacity .3s !important
 
     //&.nav-down
       svg.logo .logo-circle
@@ -339,6 +388,7 @@ body
   &.in .navbar-brand
     position: static
   .b-menu-overlay
+    z-index: 100
     position: fixed
     top: 0
     right: 0
@@ -349,6 +399,7 @@ body
     opacity: 0
     visibility: hidden
   .b-menu
+    will-change: transform
     display: block
     position: fixed
     transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1)
@@ -361,6 +412,16 @@ body
     width: 100%
     left: 100%
     margin-left: 15px
+
+    &:before
+      content: ''
+      position: absolute
+      top: -200px
+      bottom: -200px
+      right: -30px
+      left: 0
+      background: inherit
+
   &.in
     .b-menu
       left: 0
@@ -410,6 +471,9 @@ body
   .navbar-custom .navbar-brand
     margin-left: 20px !important
     position: static
+
+  .navbar-custom .navbar-circle
+    left: 17.5rem
 
 .b-menu-main
   position: absolute
@@ -462,10 +526,28 @@ body
     &.in .b-menu
       left: 60%
 
+    .navbar-circle
+      left: 21.5rem
+
+@media (min-width: 1049px)
+  .navbar-custom .navbar-circle
+      left: 17.5rem
+
+@media (min-width: 1280px)
+  .navbar-custom .navbar-circle
+      left: 16.5rem
+
 @media (min-width: 1400px)
   .navbar-custom .b-menu
     padding-left: 0
     padding-right: 120px
+
+  .navbar-custom .navbar-circle
+    left: 18.5rem
+
+@media (min-width: 1700px)
+  .navbar-custom .navbar-circle
+    left: 15.5rem
 
 .navbar-custom
   .navbar-collapse
@@ -534,6 +616,6 @@ body
 
 @media (min-width: 768px)
   .navbar-custom
-    margin-top: 5.7rem
+    padding-top: 5.7rem
     .navbar-collapse
       height: 9.5rem !important
