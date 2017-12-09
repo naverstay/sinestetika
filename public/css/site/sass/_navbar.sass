@@ -5,16 +5,23 @@ svg.logo
   z-index: 10
   cursor: pointer
   .logo-circle
-    transition: fill .3s
     fill: #0000fe
+
+    ._page_loaded &
+      transition: fill .3s, opacity .3s
+
     circle
-      transition: fill .3s
       fill: #0000fe
+
+      ._page_loaded &
+        transition: fill .3s
   .logo-text > *
-    transition: fill .3s, opacity .3s
     //fill: #231f20
     fill: #0000fe
     opacity: 0
+
+    ._page_loaded &
+      transition: fill .3s, opacity .3s
 
 .intro svg.logo .logo-text > *
   opacity: 1
@@ -197,7 +204,7 @@ $wave_time: .7s
     //transition: transform .7s linear, background .7s linear, box-shadow .7s 1s linear, opacity 0s
     //animation-name: logo_anim
     transition: transform $wave_time linear, background $wave_time linear, box-shadow $wave_time linear, opacity .1s 0s
-    transform: scale(100)
+    transform: scale(150)
     //opacity: .9999
     //box-shadow: 0 0 1rem 1rem #0000fe
     //background: #0000fe
@@ -302,12 +309,14 @@ $wave_time: .7s
   &.nav-up
     transform: translate(0, -180%)
 
+  &.in,
   .__anim_next &
     transform: translate(0, 0) !important
 
   .__leave &,
   .__anim_next &
-    transition: transform .3s 5s, opacity .3s
+    //transition: transform .3s 5s, opacity .3s
+    transition: transform 0s 5s, opacity .3s
     //transform: translate(0, 0) !important
 
     .navbar-brand svg
@@ -344,7 +353,7 @@ $wave_time: .7s
   //&.nav-down
   .__anim_wave &
     //background: #000
-    transition: transform 0s, opacity .3s
+    transition: transform 0s .1s, opacity .3s
     transform: translate(0, 0)
 
     .navbar-header
@@ -431,27 +440,39 @@ $wave_time: .7s
       visibility: visible
   .b-menu-container
     position: relative
+    transform: translate3d(0, 0, 0)
+    will-change: transform
+    display: flex
+    height: 100vh
+    align-items: flex-end
+    justify-content: flex-start
+    background: #fff
+    flex-flow: column
+
   .b-menu
     .b-menu-body
       display: flex
-      height: 100vh
+      flex: 1 0 auto
+      //height: 100vh
       align-items: center
       justify-content: flex-start
       background: #fff
-      margin-top: -6rem
+      padding-top: 19rem
+      //margin-top: -6rem
     ul
       list-style: none
-      padding: 0
+      padding-left: 0
+      //padding: 0
       margin: 0
-      font-size: 2.4rem
-      letter-spacing: 0.15rem
-      text-transform: uppercase
-      min-height: 6rem
-      line-height: 4rem
-      color: #000
-      font-weight: 700
-      text-align: left
-      display: block
+      //font-size: 2.4rem
+      //letter-spacing: 0.15rem
+      //text-transform: uppercase
+      //min-height: 6rem
+      //line-height: 4rem
+      //color: #000
+      //font-weight: 700
+      //text-align: left
+      //display: block
       li
         list-style: none
         //padding: 0
@@ -463,7 +484,7 @@ $wave_time: .7s
         line-height: 4rem
         color: #000
         font-weight: 700
-        text-align: left
+        text-align: right
         display: block
         padding: 1rem 0
 
@@ -476,27 +497,42 @@ $wave_time: .7s
     left: 17.5rem
 
 .b-menu-main
-  position: absolute
-  bottom: 5rem
-  right: 0
-  left: 0
+  padding-bottom: 10rem
+  //transform: translate3d(0, 0, 0)
+  //will-change: transform
+  //position: absolute
+  //bottom: 5rem
+  //right: 0
+  //left: 0
 
 .navbar-custom .b-menu
   .b-menu-services
+    transform: translate3d(0, 0, 0)
+    will-change: transform
     margin-top: -1rem
   .b-menu-main li
     font-size: 2rem
     padding: 0.5rem 0
 
-.b-menu a:hover
-  color: #00f
+.b-menu
+  a
+    transform: translate3d(0,0,0)
+    will-change: color
+    transition: color .15s ease-out
+
+    &._active
+      cursor: default
+
+    &:hover,
+    &._active
+      color: #00f
 
 @media (orientation: landscape)
   .navbar-custom .b-menu
-    .b-menu-services
+    //.b-menu-services
       margin-top: -10rem
     .b-menu-main
-      bottom: 7rem
+      padding-bottom: 7rem
 
 @media (min-width: 768px)
   .navbar-custom

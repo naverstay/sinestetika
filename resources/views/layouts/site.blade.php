@@ -13,6 +13,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="og:description" content="Создаем системы визуальных и вербальных коммуникаций, необходимые для роста и развития, а также для запуска новых продуктов." />
     <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#00f">
 
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
@@ -24,7 +25,7 @@
         @include('partial.css')
     @endif
 </head>
-<body class="{{ \Request::route()->getName() }} __intro">
+<body class="{{ ((\Request::route()->getName() == 'contacts') ? 'viewport_height ' : '') }}{{ \Request::route()->getName() }} __intro">
     <div class="navbar navbar-custom" role="navigation">
         <div class="navbar-circle">
             <svg viewBox="0 0 360 360" class="svg-icon logo" version="1.1" xmlns="http://www.w3.org/2000/svg"

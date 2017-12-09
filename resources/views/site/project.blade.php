@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
-    <div class="p-project-intro-wrapper">
+    <div class="p-project-intro-wrapper __main_">
         <div class="p-project-intro-bg blueSection blue-bg"></div>
         <div class="p-project-intro">
             <div class="p-project-intro-body container container-fluid">
@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container container-fluid hidden-xs">
+            <div class="container container-fluid hidden-xs_">
                 <div class="row">
                     <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
                         <div class="p-project-tags b-tags">
@@ -22,9 +22,9 @@
                     </div>
                 </div>
             </div>
-            <div class="p-project-photo container container-fluid loadedProject __prevent_anim">
-                <img src="{{ asset($project->photo) }}" />
-            </div>
+        </div>
+        <div class="p-project-photo container container-fluid loadedProject __prevent_anim">
+            <img src="{{ asset($project->photo) }}"/>
         </div>
     </div>
         <div class="container container-fluid">
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container container-fluid hidden-xs">
+                <div class="container container-fluid hidden-xs_">
                     <div class="row">
                         <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
                             <div class="p-project-tags b-tags">
@@ -109,9 +109,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-project-photo container container-fluid">
-                    <img src="{{ asset($next_project->photo) }}" />
-                </div>
+            </div>
+            <div class="p-project-photo container container-fluid">
+                <img src="{{ asset($next_project->photo) }}"/>
             </div>
         </div>
     </a>

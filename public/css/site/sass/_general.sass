@@ -10,7 +10,7 @@ html
   min-height: 100%
   position: relative
   font-size: 6.4px
-  background: #0000ff
+  background: #00f
 
 @media only screen and (min-width: 768px)
   html
@@ -41,10 +41,10 @@ body
   height: 100%
   min-height: 100vh
   font-family: 'Brutal Type', "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif
-  color: #000000
+  color: #000
   font-weight: 400
   font-weight: normal
-  background: #0000ff
+  background: #00f
   padding: 0
   margin: 0
   border: none
@@ -70,22 +70,27 @@ body
 
 *
   backface-visibility: hidden
+  outline: 0
 
 *::selection
-  background: #0000fe
+  background: #00f
   color: white
+  opacity: 1
 
 .blue-bg *::selection
-  background: rgba(255,255,255, .99)
-  color: #0000fe
+  background: rgba(255, 255, 255, .99)
+  color: #00f
+  opacity: 1
 
 ::-moz-selection
-  background: #0000fe
+  background: #00f
   color: white
+  opacity: 1
 
 .blue-bg *::-moz-selection
   background: rgba(255, 255, 255, .99)
-  color: #0000fe
+  color: #00f
+  opacity: 1
 
 html
   width: 100%
@@ -105,9 +110,9 @@ p
     font-size: 3.2rem
 
 a
-  color: #000000
+  color: #000
   text-decoration: none
-  transition: color 0.15s ease-out
+  transition: color 0.3s ease-out
   &:hover, &:focus
     text-decoration: none
     color: #0000fe

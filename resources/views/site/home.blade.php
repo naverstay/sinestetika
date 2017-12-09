@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
-    <div class="section intro-expertise">
+    <div id="intro-expertise" class="section intro-expertise">
         <div class="container container-fluid">
             <div class="row">
                 <div class="col-sm-7 col-xs-12">

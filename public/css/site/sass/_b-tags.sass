@@ -1,9 +1,16 @@
 
 .b-tags
   font: 0/0 a
+  //height: 16rem
+  //min-height: 33vh
   vertical-align: middle
 
 .b-tags-item
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  -o-user-select: none
+  user-select: none
   will-change: transform
   position: relative
   display: inline-block
@@ -12,8 +19,7 @@
   height: 4.6rem
   line-height: 4.5rem
   vertical-align: middle
-  //box-shadow: 0 0 0 1px #fff
-  color: #fff
+  box-shadow: 0 0 0 1.05px #fff
   border-radius: 4rem
   font-family: 'Brutal Type', "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif
   font-size: 1.9rem
@@ -28,10 +34,13 @@
   animation-iteration-count: 1
   animation-fill-mode: forwards
   animation-direction: normal
-  border: 0 solid #fff
+  //border: 0 solid #fff
 
-  &:before
-    transition: border-width .1s ease-out
+  span
+    color: #fff
+
+  //&:before
+    transition: border-width .3s ease-out
     content: ''
     position: absolute
     top: 0
@@ -73,9 +82,9 @@ body.__from-next
     opacity: .99
 
 a.b-tags-item
-  &:hover, &:active, &:focus
+  &:hover, &:active
     color: #fff
-    //box-shadow: 0 0 0 2px #fff
+    box-shadow: 0 0 0 2px #fff
 
     &:before
       border-width: 2px

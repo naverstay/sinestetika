@@ -2,8 +2,10 @@
     @if ($show_start_screen)
         <div class="start-logo">
             <div class="start-logo__wrapper">
-                <span class="c1"></span>
-                <span class="c2"></span>
+                <span class="start_circle c1"></span>
+                <span class="start_circle c2">
+                    <span class="start_circle_shadow"></span>
+                </span>
             </div>
         </div>
     @endif
@@ -14,5 +16,5 @@
             <p class="intro-text"><span>Эстетичные системы коммуникаций для бизнеса</span></p>
         </div>
     </div>
-    <a href="javascript:void(0)" class="intro-arrow hidden-xs"><span></span></a>
+    <span class="intro-arrow hidden-xs_" data-target="#intro-expertise"><span></span></span>
 </header>

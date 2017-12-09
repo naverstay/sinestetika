@@ -13,9 +13,9 @@
   overflow: hidden
   &.__anim
     // animation-delay: 3.9s
-    .intro-body
-    flex: 1 0 auto
-    width: 100%
+    //.intro-body
+      flex: 1 0 auto
+      width: 100%
     .container
       position: relative
 
@@ -37,6 +37,7 @@
     pointer-events: none
     z-index: -1
   &__wrapper
+    will-change: transform
     width: 8rem
     height: 8rem
     position: absolute
@@ -53,52 +54,84 @@
     animation-iteration-count: 1
     animation-fill-mode: both
     animation-direction: normal
-  span
-    display: block
-    position: absolute
-    left: 0
-    top: 0
-    width: 8rem
-    height: 8rem
-    background: #00f
-    border-radius: 50%
-    &.c1
-      animation-name: start_c1
-      animation-duration: 0.7s
-      animation-delay: 1.3s
-      animation-timing-function: ease-out
-      animation-iteration-count: 1
-      animation-fill-mode: both
-      animation-direction: normal
-    &.c2
-      width: 5rem
-      height: 5rem
-      left: 1.5rem
-      top: 1.5rem
-      transform-origin: center center
-      transform: scale(1)
-      animation-name: start_c2
-      animation-duration: 1.8s
-      animation-delay: 1.3s
-      animation-timing-function: linear
-      animation-iteration-count: 1
-      animation-fill-mode: both
-      animation-direction: normal
+
+    > span
+      will-change: transform
+      display: block
+      position: absolute
+      left: 0
+      top: 0
+      width: 8rem
+      height: 8rem
+      background: #00f
+      border-radius: 50%
+      &.c1
+        animation-name: start_c1
+        animation-duration: 0.7s
+        animation-delay: 1.2s
+        animation-timing-function: ease-out
+        animation-iteration-count: 1
+        animation-fill-mode: both
+        animation-direction: normal
+      &.c2
+        width: 5rem
+        height: 5rem
+        left: 1.5rem
+        top: 1.5rem
+        transform-origin: center center
+        transform: scale(1)
+        animation-name: start_c2
+        animation-duration: 1.8s
+        animation-delay: 1.6s
+        animation-timing-function: linear
+        animation-iteration-count: 1
+        animation-fill-mode: both
+        animation-direction: normal
+
+        .start_circle_shadow
+          position: absolute
+          top: 1px
+          bottom: 1px
+          right: 1px
+          left: 1px
+          border-radius: 50%
+          animation-duration: 1.8s
+          animation-delay: 1.6s
+          animation-timing-function: linear
+          animation-iteration-count: 1
+          animation-fill-mode: both
+          animation-direction: normal
+          animation-name: start_c2_shadow
 
 @media (min-width: 768px)
-  //.intro
   .start-logo
     &__wrapper
-      width: 14rem
-      height: 14rem
-      margin-left: -7rem
-      margin-top: -7rem
+      > span
+        &.c1
+          animation-name: start_c1_wide
+
+        &.c2
+          .start_circle_shadow
+            top: 6px
+            bottom: 6px
+            right: 6px
+            left: 6px
+            animation-name: start_c2_shadow_wide
+
+  //.intro
+  $logo_size: 16rem
+  .start-logo
+    &__wrapper
+      width: $logo_size
+      height: $logo_size
+      margin-left: -$logo_size/2
+      margin-top: -$logo_size/2
     span
       &.c1, &.c2
         left: 0
         top: 0
-        width: 14rem
-        height: 14rem
+        width: $logo_size
+        height: $logo_size
 
 .intro-logo
   position: absolute
@@ -116,11 +149,11 @@
       font-size: 48px
       display: block
       overflow: hidden
-      height: 9rem
-      line-height: 9rem
 
       span
         will-change: transform
+        height: 9rem
+        line-height: 9rem
         display: inline-block
         -webkit-transform: translate3d(0, 100%, 0)
         transform: translate3d(0, 100%, 0)
@@ -158,6 +191,7 @@
     animation-delay: 3.3s
 
 .intro-arrow
+  cursor: pointer
   display: block
   font: 0/0 a
   box-sizing: border-box
@@ -182,6 +216,7 @@
 
 .p-service-intro .intro-arrow
   opacity: 0
+  //margin-left: 15px
   transform: translateY(2rem)
   animation-name: arrow_anim
   animation-duration: 0.3s
@@ -190,11 +225,13 @@
   animation-iteration-count: 1
   animation-fill-mode: forwards
   animation-direction: normal
+  left: 30px
 
 @media (min-width: 768px)
   .p-service-intro .intro-arrow
     left: 40px
-    margin-left: 0
+    margin-left: 15px
+
   .intro-logo
     top: 40px
   .intro
@@ -210,7 +247,7 @@
         > span
           display: inline-block
           height: 14rem
-          font-size: 11.4rem
+          font-size: 11.55rem
           line-height: 14rem
           //&:first-child
             margin-right: 3rem
@@ -222,6 +259,7 @@
 @media (min-width: 980px)
   .p-service-intro .intro-arrow
     left: 100px
+    margin-left: -25px
 
 @media (min-width: 1400px)
   .intro-logo.container-fluid
