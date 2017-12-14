@@ -27,6 +27,8 @@
   bottom: 0
   z-index: 1100
   background: white
+  transform: scale(1.5)
+
   //opacity: 0
   //pointer-events: none
   &.is-started
@@ -67,8 +69,8 @@
       border-radius: 50%
       &.c1
         animation-name: start_c1
-        animation-duration: 0.7s
-        animation-delay: 1.2s
+        animation-duration: 0.5s
+        animation-delay: 1.4s
         animation-timing-function: ease-out
         animation-iteration-count: 1
         animation-fill-mode: both
@@ -82,7 +84,7 @@
         transform: scale(1)
         animation-name: start_c2
         animation-duration: 1.8s
-        animation-delay: 1.6s
+        animation-delay: 1.3s
         animation-timing-function: linear
         animation-iteration-count: 1
         animation-fill-mode: both
@@ -90,13 +92,13 @@
 
         .start_circle_shadow
           position: absolute
-          top: 1px
-          bottom: 1px
-          right: 1px
-          left: 1px
+          top: .5rem
+          bottom: .5rem
+          right: .5rem
+          left: .5rem
           border-radius: 50%
-          animation-duration: 1.8s
-          animation-delay: 1.6s
+          animation-duration: .7s
+          animation-delay: 1.2s
           animation-timing-function: linear
           animation-iteration-count: 1
           animation-fill-mode: both
@@ -105,6 +107,8 @@
 
 @media (min-width: 768px)
   .start-logo
+    transform: scale(1)
+
     &__wrapper
       > span
         &.c1

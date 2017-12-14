@@ -2,22 +2,24 @@
 
 @section('content')
         <div class="p-service-intro blueSection blue-bg">
-            <div class="p-service-intro-body_ p-project-intro-body container container-fluid">
-                <div class="row">
-                    <div class="col-md-8 col-sm-10 col-xs-12">
-                        <h1 class="p-service-title_ p-project-title">{!! $service->html_caption !!}</h1>
+            <div class="p-service-intro-viewport">
+                <div class="p-service-intro-body p-project-intro-body_ container container-fluid">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-10 col-xs-12">
+                            <h1 class="p-service-title_ p-project-title">{!! $service->html_caption !!}</h1>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="container container-fluid">
-                <div class="row">
-                    <div class="col-md-6 col-sm-8 col-xs-12">
-                        <div class="p-service-tags_ p-project-tags b-tags">
-                            @foreach ($service->sections as $section)
-                                @foreach ($section->tags as $tag)
-                                    <a href="#{{ $tag->name }}" class="b-tags-item scrollTo"><span>{{ $tag->caption }}</span></a>
+                <div class="container p-service-intro-tags container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-8 col-xs-12">
+                            <div class="p-service-tags p-project-tags_ b-tags">
+                                @foreach ($service->sections as $section)
+                                    @foreach ($section->tags as $tag)
+                                        <a href="#{{ $tag->name }}" class="b-tags-item scrollTo"><span>{{ $tag->caption }}</span></a>
+                                    @endforeach
                                 @endforeach
-                            @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>

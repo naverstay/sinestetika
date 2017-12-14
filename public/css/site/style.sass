@@ -15,8 +15,10 @@ $b-next-project-info-loader_size: .3s // top and width
 $b-next-project-info-loader_shadow: .2s
 
 $project-viewport-padding-bottom: 25vh
-$project-viewport-padding-top: 20rem
+$project-viewport-padding-top: 16rem
 
+$logo_size: 8rem
+$logo_size_big: 16rem
 
 body
   //.__anim_wave &
@@ -421,7 +423,7 @@ body
 
 .b-project-info-loader
   opacity: 0
-  transition: box-shadow $b-project-info-loader_shadow $b-project-info-loader_delay cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity ($b-project-info-loader_size * 2) cubic-bezier(0.785, 0.135, 0.15, 0.86), width $b-project-info-loader_size $b-project-info-loader_shadow cubic-bezier(0.6, 0.04, 0.98, 0.335), height $b-project-info-loader_size $b-project-info-loader_delay cubic-bezier(0.6, 0.04, 0.98, 0.335)
+  transition: box-shadow $b-project-info-loader_shadow $b-project-info-loader_delay cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity ($b-project-info-loader_size * 2) cubic-bezier(0.785, 0.135, 0.15, 0.86), width $b-project-info-loader_size $b-project-info-loader_shadow cubic-bezier(0.785, 0.135, 0.15, 0.86), height $b-project-info-loader_size $b-project-info-loader_delay cubic-bezier(0.6, 0.04, 0.98, 0.335)
   position: absolute
   top: 50%
   left: 50%
@@ -550,10 +552,11 @@ body
   justify-content: flex-start
   width: 100%
   height: auto
-  will-change: transform
-  //min-height: 103vh
-  min-height: 100vh
-  padding: 13rem 0 25vh
+  //will-change: transform
+  min-height: 103vh
+  //padding: 13rem 0 0
+  //min-height: 100vh
+  //padding: 13rem 0 25vh
   text-align: left
   background: transparent
   color: #fff
@@ -561,7 +564,13 @@ body
   z-index: 1
   //transition: all .1s ease
 
-  > .container
+  .__next &
+    padding-top: 5rem
+    height: 75vh
+    min-height: 75vh
+    overflow: hidden
+
+  //> .container
     //min-height: 35vh
     //height: 30%
     flex: 1 0 auto
@@ -579,7 +588,7 @@ body
       min-width: 100%
       max-width: 115%
 
-  .p-project-photo
+  //.p-project-photo
     opacity: 0
     animation-duration: .6s
     animation-delay: .1s
@@ -602,8 +611,28 @@ body
       opacity: 1
       animation-name: none
 
+.p-project-intro-viewport
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  flex-direction: column
+  position: relative
+  width: 100%
+  height: 100vh
+  padding: 30vh 0 20vh
+
+  + .p-project-photo
+    margin-top: -20vh
+
+  .p-project-intro-tags
+    min-height: 0
+
+  .p-project-intro-body
+    height: auto !important
+    margin: 0 0 88px
+
 .p-project-intro-body
-  flex: 1 0 auto
+  //flex: 1 0 auto
   display: flex
   //min-height: 36rem
   //min-height: 35vh
@@ -611,14 +640,18 @@ body
   justify-content: flex-start
   flex-direction: row
   position: relative
+  //transition: height $b-next-project-info-loader_size .05s cubic-bezier(0.19, 1, 0.22, 1)
+
+  //.__next &
+    flex: 1 0 auto
 
   > .row
     width: 100%
     > div
       padding-right: 0
-      position: static
+      //position: static
 
-  .p-project-next &
+  //.p-project-next &
     flex: 1 0 auto
 
 /*.p-project-next .b-tags {
@@ -675,6 +708,9 @@ body
   position: relative
   z-index: 1
   transition: margin-top .3s .3s cubic-bezier(0.785, 0.135, 0.15, 0.86)
+
+  .__next &
+    margin-bottom: -35vh
 
   img
     display: block
@@ -1001,11 +1037,12 @@ body
 
 .p-project-next
   //transition: top .6s cubic-bezier(0.075, 0.82, 0.165, 1)
-  transition: top .6s cubic-bezier(0.19, 1, 0.22, 1)
+  transition: top .6s cubic-bezier(0.19, 1, 0.22, 1), padding-top .6s cubic-bezier(0.19, 1, 0.22, 1)
   display: block
   position: relative
   z-index: 10
   height: 75vh
+  background: #fff
 
   .p-project-next-title
     transition: opacity .5s .35s ease-out, height .4s ease-out, margin .4s ease-out
@@ -1022,7 +1059,7 @@ body
     box-shadow: none
     transform: translate(-50%, 0)
     //transition: top .3s .4s cubic-bezier(0.075, 0.82, 0.165, 1), width .3s cubic-bezier(0.6, 0.04, 0.98, 0.335)
-    transition: box-shadow $b-next-project-info-loader_shadow $b-next-project-info-loader_delay cubic-bezier(0.785, 0.135, 0.15, 0.86), top $b-next-project-info-loader_size $b-next-project-info-loader_delay cubic-bezier(0.6, 0.04, 0.98, 0.335), width $b-next-project-info-loader_size cubic-bezier(0.6, 0.04, 0.98, 0.335)
+    transition: box-shadow $b-next-project-info-loader_shadow $b-next-project-info-loader_delay cubic-bezier(0.785, 0.135, 0.15, 0.86), top $b-next-project-info-loader_size $b-next-project-info-loader_delay cubic-bezier(0.6, 0.04, 0.98, 0.335), transform $b-next-project-info-loader_size * .5 $b-next-project-info-loader_delay * 1 ease, width $b-next-project-info-loader_size cubic-bezier(0.6, 0.04, 0.98, 0.335)
     //transition: top .3s cubic-bezier(0.6, 0.04, 0.98, 0.335)
 
   .p-project-intro-bg
@@ -1041,6 +1078,7 @@ body
     .b-project-info-loader
       width: 120vw
       top: -100vh
+      //bottom: 17vh
       box-shadow: 0 0 25px #00f
 
     .p-project-intro
@@ -1059,10 +1097,13 @@ body
 
     //transform: scale(1) translate3d(0, -5%, 0)
 
-    //.b-project-info-loader
+    .b-project-info-loader
+      transform: translate(-50%, -17vh)
+      box-shadow: 0 0 0 #00f
+
       //height: 2000px
-      top: -100vh
-      box-shadow: 0 0 25px #00f
+      //top: -100vh
+      //box-shadow: 0 0 25px #00f
 
     .p-project-next-title
       margin: 0
@@ -1074,32 +1115,33 @@ body
       transform: scale(1) translate3d(0, 0, 0) !important
 
       .p-project-intro
-        //transition: all .3s .1s ease
+        transition: height .3s .05s ease, padding .25s .05s ease
         //transition: none
-        padding: $project-viewport-padding-top 0 $project-viewport-padding-bottom
-        //height: 100vh
+        //padding: ($project-viewport-padding-top - 3) 0 0
+        height: 103vh
 
-      > .p-project-photo
+      //> .p-project-photo
         margin-top: -$project-viewport-padding-bottom
 
     .p-project-intro-bg
-      height: 100%
+      height: 83vh
+      min-height: 83vh
 
     //.p-project-intro
       height: auto
       overflow: visible
 
 .p-project-next-title
-  //transition: opacity 0.6s ease-out
+  transition: opacity 0.6s ease-out
   font-size: 1.79rem
-  //margin: 5.4rem 0 5.4rem
+  margin: 5.4rem 0 5.4rem
   line-height: 5.4rem
-  margin: 0
+  //margin: 0
   letter-spacing: 0.25rem
   font-weight: 700
   text-transform: uppercase
-  position: absolute
-  top: 0
+  //position: absolute
+  //top: 0
   //left: 0
 
 .p-project-intro-wrapper
@@ -1108,8 +1150,8 @@ body
     margin-top: -25vh
 
   &.__main_
-    > .p-project-photo
-      margin-top: -$project-viewport-padding-bottom
+    .p-project-photo
+      //margin-top: -$project-viewport-padding-bottom
       opacity: 0
       animation-duration: .6s
       animation-delay: .1s
@@ -1156,7 +1198,7 @@ body
     height: 100vh
     min-height: 100vh
 
-  .p-project-tags
+  //.p-project-tags
     min-height: 30vh
     margin-bottom: 9rem
 
@@ -1201,6 +1243,23 @@ body
  *    height: auto;
  *}
 
+//.p-project-tags
+
+
+.p-project-intro-tags
+  min-height: 30vh
+  display: flex
+  align-items: center
+  flex-flow: row
+  flex-wrap: wrap
+
+  > .row
+    min-width: 100%
+    //flex: 1 0 auto
+
+  //.__next &
+    min-height: 18vh
+
 @media (min-width: 768px)
   .p-project-intro-wrapper.__main_
     > .p-project-photo
@@ -1218,35 +1277,55 @@ body
       animation-duration: .8s
       animation-delay: .8s
 
+      //.__next &
+        margin-bottom: 0
+
   .b-project-info-loader
-    transition: box-shadow $b-project-info-loader_shadow $b-project-info-loader_delay cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity ($b-project-info-loader_size * 2) cubic-bezier(0.785, 0.135, 0.15, 0.86), width ($b-project-info-loader_size + .05) $b-project-info-loader_shadow cubic-bezier(0.6, 0.04, 0.98, 0.335), height ($b-project-info-loader_size + .15) ($b-project-info-loader_delay + .2) cubic-bezier(0.6, 0.04, 0.98, 0.335)
+    transition: box-shadow $b-project-info-loader_shadow $b-project-info-loader_delay cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity ($b-project-info-loader_size * 2) cubic-bezier(0.785, 0.135, 0.15, 0.86), width $b-project-info-loader_size $b-project-info-loader_shadow cubic-bezier(0.6, 0.04, 0.98, 0.335), height $b-project-info-loader_size $b-project-info-loader_delay cubic-bezier(0.6, 0.04, 0.98, 0.335)
+
+    //transition: box-shadow $b-project-info-loader_shadow $b-project-info-loader_delay cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity ($b-project-info-loader_size * 2) cubic-bezier(0.785, 0.135, 0.15, 0.86), width ($b-project-info-loader_size + .05) $b-project-info-loader_shadow cubic-bezier(0.6, 0.04, 0.98, 0.335), height ($b-project-info-loader_size + .15) ($b-project-info-loader_delay + .2) cubic-bezier(0.6, 0.04, 0.98, 0.335)
     //transition: box-shadow .3s .7s cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity .5s cubic-bezier(0.785, 0.135, 0.15, 0.86), width .3s .3s cubic-bezier(0.6, 0.04, 0.98, 0.335), height .4s .9s cubic-bezier(0.6, 0.04, 0.98, 0.335)
 
   .p-project-next
     background: #fff
     //overflow: hidden
 
-    //&.__anim
+    &.__anim
       //padding-top: 80px
-      padding-top: 23px
+      //padding-top: 23px !important
       //top: 80px
+
+      .b-project-info-loader
+        transform: translate(-50%, 0)
+
+      .p-project-intro-wrapper.__next
+
+        .p-project-intro
+          min-height: 100vh
+          //padding: $project-viewport-padding-top 0 0
 
   .p-project-intro-wrapper.__next
     position: relative
-    //height: 100vh
-    //min-height: 100vh
-    //height: 75vh
+    height: 100vh
+    min-height: 100vh
     margin-top: 0
     transform: scale(1) //translate3d(0, 25vh, 0)
-    //transition: transform 0.3s ease-out
-    //transform-origin: center bottom
-
-    > .p-project-photo
-      margin-top: -45vh
-
-    .p-project-next:hover &,
+    transition: transform 0.3s ease-out
+    transform-origin: center bottom
     &:hover:not(.__anim)
       transform: scale(0.96, 0.96) //translate3d(0, 25vh, 0)
+
+    .p-project-photo
+      opacity: 1
+
+    &.__anim
+      position: fixed
+      z-index: 0
+      bottom: 0
+      left: 0
+      right: 0
+      transform: scale(1) translate3d(0, 0vh, 0)
+      transition: transform 0.6s ease-out
 
     //body:not(.__anim_next) &
       padding-top: 10rem
@@ -1299,31 +1378,50 @@ body
     position: absolute
     z-index: 1
   .p-project-intro
-    padding: $project-viewport-padding-top 0 $project-viewport-padding-bottom
-    //margin-bottom: 15rem
+    //padding: $project-viewport-padding-top 0 0
+    margin-bottom: 15rem
     height: auto
     min-height: 100vh
-    //transition: all .6s .3s ease
+    transition: all .6s .3s ease, padding .6s 0s ease
   .__next .p-project-intro
     //padding: 0
-    padding: 10rem 0 40vh
+    //padding: 10rem 0 40vh
     margin: 0
     //height: 100%
     //min-height: 100%
     //height: 75vh
     //min-height: 75vh
-    overflow: hidden
+    //overflow: hidden
   .p-project-intro-body
-    //height: 46rem
+    height: 46rem
     //min-height: 44vh
-    padding-top: 2rem
-    //margin-top: 2rem
+    //padding-top: 2rem
+    margin-top: 2rem
+
+    .__next &
+      //margin-top: 7rem
+      height: 26vh
+      flex: 1 0 auto
+
+    .__anim .__next &
+      //margin-top: 0
+      height: 46rem
+
+      //height: 30rem
+    .p-service-intro &
+      margin-top: 6rem
+
   .p-project-title
     font-size: 10rem
     line-height: 11.5rem
-    margin: 4rem 0 0
-  //.p-project-tags
-    height: 16rem
+    //margin: 4rem 0 0
+    margin: 0
+  .p-project-intro-tags
+    //min-height: 16rem
+
+    .__next &
+      min-height: 16rem
+
     //min-height: 30vh
     //margin-bottom: 9rem
   .p-project-descr
@@ -1358,7 +1456,7 @@ body
     height: 4rem
     overflow: hidden
     letter-spacing: 0.56rem
-    //margin-top: -1.2rem
+    margin-top: -1.2rem
     transition: all .3s .3s ease-out
 // .__next .p-project-title
 //   margin: 0 0 5rem
@@ -1566,7 +1664,7 @@ body
 //@media (min-width: 1049px)
   .p-project-next
     &.__anim
-      padding-top: 102px
+      padding-top: 102px !important
       //top: 102px
 
 @media (min-width: 1281px)
@@ -1577,7 +1675,7 @@ body
 
   //.p-project-next
     &.__anim
-      padding-top: 112px
+      padding-top: 112px !important
       //top: 112px
 
 @media (min-width: 1401px)
@@ -1589,13 +1687,13 @@ body
 //@media (min-width: 1441px)
   .p-project-next
     &.__anim
-      padding-top: 117px
+      padding-top: 117px !important
       //top: 117px
 
 //@media (min-width: 1701px)
   .p-project-next
     &.__anim
-      padding-top: 143px
+      padding-top: 143px !important
       //top: 143px
 
 .p-service-intro
@@ -1608,14 +1706,15 @@ body
   width: 100%
   //height: 100vh
   min-height: 100vh
-  padding: 12rem 0 8rem
+  //padding: 12rem 0 8rem
   text-align: left
   background: #0000fe
   color: #fff
   position: relative
 
   > .container
-    min-height: 35vh
+    //min-height: 35vh
+    min-height: 16vh
     flex: 1 0 auto
     display: flex
     align-items: center
@@ -1627,6 +1726,25 @@ body
       flex: 1 0 auto
       min-width: 100%
       max-width: 115%
+
+.p-service-intro-viewport
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  position: relative
+  width: 100%
+  height: 100vh
+  padding: 100px 0
+
+  .p-service-intro-tags
+    min-height: 0
+
+  .p-service-intro-body
+    height: auto !important
+    margin: 0 0 88px
+    min-height: 0
+    flex: 0 0 auto
 
 .p-service-intro-body
   min-height: 35vh
@@ -1721,7 +1839,7 @@ body
     margin: 50px 0
 
 @media (min-width: 768px)
-  .p-service-intro
+  //.p-service-intro
     padding: 15rem 0 15rem
   .p-service-title
     font-size: 10rem

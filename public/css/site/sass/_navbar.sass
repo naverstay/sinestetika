@@ -148,7 +148,7 @@ body
     //box-shadow: 0 0 1px 5px #0000fe
     background: #0000fe
 
-$wave_time: .7s
+$wave_time: 1s
 //$wave_time: 15s
 
 .navbar-circle
@@ -163,7 +163,7 @@ $wave_time: .7s
   width: 5rem
   height: 5rem
   position: fixed
-  left: 4rem
+  left: 2rem
   top: 5.5rem
   border-radius: 100%
   //font-size: 100px
@@ -204,7 +204,7 @@ $wave_time: .7s
     //transition: transform .7s linear, background .7s linear, box-shadow .7s 1s linear, opacity 0s
     //animation-name: logo_anim
     transition: transform $wave_time linear, background $wave_time linear, box-shadow $wave_time linear, opacity .1s 0s
-    transform: scale(150)
+    transform: scale(270)
     //opacity: .9999
     //box-shadow: 0 0 1rem 1rem #0000fe
     //background: #0000fe
@@ -249,7 +249,7 @@ $wave_time: .7s
   .navbar-circle
     //left: 17rem
     //top: 9rem
-    left: 13.5rem
+    //left: 13.5rem
     top: 8rem
 
     .navbar-custom &
@@ -266,7 +266,7 @@ $wave_time: .7s
       transition: transform $wave_time linear, background $wave_time linear, box-shadow $wave_time linear, opacity .1s 0s
       //animation-name: logo_anim_big
       //opacity: .9999
-      transform: scale(440)
+      transform: scale(480)
 
     //.__anim_wave.__anim_wave_back &
       transform: scale(200)
@@ -340,6 +340,9 @@ $wave_time: .7s
         transition: opacity .3s .7s
 
   body.__fade_in_nav &
+    opacity: 0
+
+  body.__force_nav_down &
     transition: transform .3s 0s, opacity .3s .8s
     opacity: 0
 
@@ -351,6 +354,14 @@ $wave_time: .7s
       opacity: 1 !important
 
   //&.nav-down
+  //.__from-next &
+    //background: #000
+    transition: transform 0s .1s, opacity .3s
+    transform: translate(0, 0)
+
+    .navbar-header
+      transition: opacity .3s
+
   .__anim_wave &
     //background: #000
     transition: transform 0s .1s, opacity .3s
@@ -408,6 +419,7 @@ $wave_time: .7s
     opacity: 0
     visibility: hidden
   .b-menu
+    transform: translate3d(0,0,0)
     will-change: transform
     display: block
     position: fixed
@@ -458,9 +470,11 @@ $wave_time: .7s
       justify-content: flex-start
       background: #fff
       padding-top: 19rem
+      width: 100%
       //margin-top: -6rem
     ul
       list-style: none
+      width: 100%
       padding-left: 0
       //padding: 0
       margin: 0
@@ -484,7 +498,7 @@ $wave_time: .7s
         line-height: 4rem
         color: #000
         font-weight: 700
-        text-align: right
+        text-align: left
         display: block
         padding: 1rem 0
 
@@ -493,11 +507,15 @@ $wave_time: .7s
     margin-left: 20px !important
     position: static
 
-  .navbar-custom .navbar-circle
-    left: 17.5rem
+  .navbar-circle
+    left: 15rem
+
+  .navbar-custom .b-menu
+    ul li
+      text-align: right
 
 .b-menu-main
-  padding-bottom: 10rem
+  padding-bottom: 5rem
   //transform: translate3d(0, 0, 0)
   //will-change: transform
   //position: absolute
@@ -562,28 +580,28 @@ $wave_time: .7s
     &.in .b-menu
       left: 60%
 
-    .navbar-circle
-      left: 21.5rem
+  .navbar-circle
+    left: 18.9rem
 
 @media (min-width: 1049px)
-  .navbar-custom .navbar-circle
-      left: 17.5rem
+  .navbar-circle
+      left: 15.5rem
 
 @media (min-width: 1280px)
-  .navbar-custom .navbar-circle
-      left: 16.5rem
+  .navbar-circle
+      left: 14.5rem
 
 @media (min-width: 1400px)
   .navbar-custom .b-menu
     padding-left: 0
     padding-right: 120px
 
-  .navbar-custom .navbar-circle
+  //.navbar-circle
     left: 18.5rem
 
 @media (min-width: 1700px)
-  .navbar-custom .navbar-circle
-    left: 15.5rem
+  .navbar-circle
+    left: 13.5rem
 
 .navbar-custom
   .navbar-collapse

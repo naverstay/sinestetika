@@ -26,19 +26,19 @@
     @endif
 </head>
 <body class="{{ ((\Request::route()->getName() == 'contacts') ? 'viewport_height ' : '') }}{{ \Request::route()->getName() }} __intro">
+    <div class="navbar-circle">
+        <svg viewBox="0 0 360 360" class="svg-icon logo" version="1.1" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
+            <filter height="200%" id="Blur10" width="200%" x="-20%" y="-20%">
+                <feGaussianBlur stdDeviation="10"></feGaussianBlur>
+            </filter>
+            <g filter="url(#Blur10)" class="logo-circle logo-circle-blur" id="Page-1" stroke="none" stroke-width="1"
+               fill="none" fill-rule="evenodd">
+                <circle cx="180" cy="180" r="90" fill-rule="nonzero" fill="#0000fe"></circle>
+            </g>
+        </svg>
+    </div>
     <div class="navbar navbar-custom" role="navigation">
-        <div class="navbar-circle">
-            <svg viewBox="0 0 360 360" class="svg-icon logo" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink">
-                <filter height="200%" id="Blur10" width="200%" x="-20%" y="-20%">
-                    <feGaussianBlur stdDeviation="10"></feGaussianBlur>
-                </filter>
-                <g filter="url(#Blur10)" class="logo-circle logo-circle-blur" id="Page-1" stroke="none" stroke-width="1"
-                   fill="none" fill-rule="evenodd">
-                    <circle cx="180" cy="180" r="90" fill-rule="nonzero" fill="#0000fe"></circle>
-                </g>
-            </svg>
-        </div>
         <div class="container container-fluid">
             <div class="row">
                 <div class="navbar-header">
@@ -57,7 +57,7 @@
         </div>
         <div class="b-menu-overlay"></div>
         <div class="b-menu">
-            <div class="b-menu-container">
+            <div class="b-menu-container viewport_height">
                 <div class="b-menu-body">
                     <ul class="b-menu-list b-menu-services">
                         @foreach ($all_services as $s)

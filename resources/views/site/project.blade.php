@@ -4,27 +4,29 @@
     <div class="p-project-intro-wrapper __main_">
         <div class="p-project-intro-bg blueSection blue-bg"></div>
         <div class="p-project-intro">
-            <div class="p-project-intro-body container container-fluid">
-                <div class="row">
-                    <div class="col-md-8 col-sm-10 col-xs-12">
-                        <h1 class="p-project-title"><span><span>{{ $project->caption }}</span></span></h1>
+            <div class="p-project-intro-viewport">
+                <div class="p-project-intro-body container container-fluid">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-10 col-xs-12">
+                            <h1 class="p-project-title"><span><span>{{ $project->caption }}</span></span></h1>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="container container-fluid hidden-xs_">
-                <div class="row">
-                    <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
-                        <div class="p-project-tags b-tags">
-                            @foreach ($project->tags as $tag)
-                                <div class="b-tags-item"><span>{{ $tag->caption }}</span></div>
-                            @endforeach
+                <div class="container p-project-intro-tags container-fluid hidden-xs_">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+                            <div class="p-project-tags b-tags">
+                                @foreach ($project->tags as $tag)
+                                    <div class="b-tags-item"><span>{{ $tag->caption }}</span></div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="p-project-photo container container-fluid loadedProject __prevent_anim">
-            <img src="{{ asset($project->photo) }}"/>
+            <div class="p-project-photo container container-fluid loadedProject __prevent_anim">
+                <img src="{{ asset($project->photo) }}"/>
+            </div>
         </div>
     </div>
         <div class="container container-fluid">
@@ -90,28 +92,30 @@
             <div class="p-project-intro-bg blueSection blue-bg"></div>
             <div class="b-project-info-loader"></div>
             <div class="p-project-intro">
-                <div class="p-project-intro-body container container-fluid">
-                    <div class="row">
-                        <div class="col-md-8 col-sm-10 col-xs-12">
-                            <p class="p-project-next-title">Следующий проект</p>
-                            <p class="p-project-title">{{ $next_project->caption }}</p>
+                <div class="p-project-intro-viewport">
+                    <div class="p-project-intro-body container container-fluid">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-10 col-xs-12">
+                                <p class="p-project-next-title">Следующий проект</p>
+                                <p class="p-project-title">{{ $next_project->caption }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="container container-fluid hidden-xs_">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
-                            <div class="p-project-tags b-tags">
-                                @foreach ($next_project->tags as $tag)
-                                    <div class="b-tags-item"><span>{{ $tag->caption }}</span></div>
-                                @endforeach
+                    <div class="container p-project-intro-tags container-fluid hidden-xs_">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+                                <div class="p-project-tags b-tags">
+                                    @foreach ($next_project->tags as $tag)
+                                        <div class="b-tags-item"><span>{{ $tag->caption }}</span></div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="p-project-photo container container-fluid">
-                <img src="{{ asset($next_project->photo) }}"/>
+                <div class="p-project-photo container container-fluid">
+                    <img src="{{ asset($next_project->photo) }}"/>
+                </div>
             </div>
         </div>
     </a>
