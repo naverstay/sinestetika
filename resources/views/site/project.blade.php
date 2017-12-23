@@ -4,7 +4,7 @@
     <div class="p-project-intro-wrapper __main_">
         <div class="p-project-intro-bg blueSection blue-bg"></div>
         <div class="p-project-intro">
-            <div class="p-project-intro-viewport">
+            <div class="p-project-intro-viewport currentProject">
                 <div class="p-project-intro-body container container-fluid">
                     <div class="row">
                         <div class="col-md-8 col-sm-10 col-xs-12">
@@ -15,7 +15,7 @@
                 <div class="container p-project-intro-tags container-fluid hidden-xs_">
                     <div class="row">
                         <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
-                            <div class="p-project-tags b-tags">
+                            <div class="p-project-tags b-tags checkTagCount">
                                 @foreach ($project->tags as $tag)
                                     <div class="b-tags-item"><span>{{ $tag->caption }}</span></div>
                                 @endforeach
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="p-project-photo container container-fluid loadedProject __prevent_anim">
-                <img src="{{ asset($project->photo) }}"/>
+                <img class="replaceIfNext orderLoader" data-src="{{ asset($project->photo) }}" onLoad="consecutiveLoader(this)" data-next=".orderLoader"/>
             </div>
         </div>
     </div>
@@ -72,11 +72,11 @@
                                 @if(sizeof($s->images) > 1)
                                     <div class="p-project-section-slider">
                                         @foreach($s->images as $img)
-                                            <div class="p-project-section-slider-item"><img data-lazy="{{ asset($img['main']) }}" /></div>
+                                            <div class="p-project-section-slider-item"><img class="orderLoader" data-src="{{ asset($img['main']) }}" onLoad="consecutiveLoader(this)"  data-next=".orderLoader"/></div>
                                         @endforeach
                                     </div>
                                 @else
-                                    <img src="{{ asset(@$s->images[0]['main']) }}" />
+                                    <img class="orderLoader" data-src="{{ asset(@$s->images[0]['main']) }}" onLoad="consecutiveLoader(this)" data-next=".orderLoader"/>
                                 @endif
                             @endif
                         </div>
@@ -104,7 +104,7 @@
                     <div class="container p-project-intro-tags container-fluid hidden-xs_">
                         <div class="row">
                             <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
-                                <div class="p-project-tags b-tags">
+                                <div class="p-project-tags b-tags checkTagCount">
                                     @foreach ($next_project->tags as $tag)
                                         <div class="b-tags-item"><span>{{ $tag->caption }}</span></div>
                                     @endforeach
@@ -114,7 +114,7 @@
                     </div>
                 </div>
                 <div class="p-project-photo container container-fluid">
-                    <img src="{{ asset($next_project->photo) }}"/>
+                    <img class="orderLoader" onLoad="consecutiveLoader(this)" data-next=".orderLoader" data-src="{{ asset($next_project->photo) }}"/>
                 </div>
             </div>
         </div>

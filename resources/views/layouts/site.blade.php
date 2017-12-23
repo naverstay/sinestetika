@@ -21,9 +21,10 @@
 
     <title>{{ (isset($page_title) ? 'Sinestetika - ' . $page_title : 'Брендинговое агентство Sinestetika') }}</title>
 
-    @if (!is_ajax())
+    @if (!is_ajax() || (is_ajax() && Request::is('/')) )
         @include('partial.css')
     @endif
+
 </head>
 <body class="{{ ((\Request::route()->getName() == 'contacts') ? 'viewport_height ' : '') }}{{ \Request::route()->getName() }} __intro">
     <div class="navbar-circle">
@@ -38,7 +39,7 @@
             </g>
         </svg>
     </div>
-    <div class="navbar navbar-custom" role="navigation">
+    <div class="navbar navbar-custom nav-up" role="navigation">
         <div class="container container-fluid">
             <div class="row">
                 <div class="navbar-header">
@@ -61,13 +62,13 @@
                 <div class="b-menu-body">
                     <ul class="b-menu-list b-menu-services">
                         @foreach ($all_services as $s)
-                        <li><a href="{{ route('service', $s->name) }}" class="page-scroll">{{ $s->main_caption }}</a></li>
+                        <li><a href="{{ route('service', $s->name) }}" class="page-scroll {{ Request::path() == 'service/' . $s->name ? '_active' : '' }}">{{ $s->main_caption }}</a></li>
                         @endforeach
                     </ul>
                 </div>
                 <ul class="b-menu-list b-menu-main">
-                    <li><a href="{{ route('projects') }}" class="nav-experts page-scroll">Проекты</a></li>
-                    <li><a href="{{ route('contacts') }}" class="nav-contacts page-scroll">Контакты</a></li>
+                    <li><a href="{{ route('projects') }}" class="nav-experts page-scroll {{ Request::path() == 'projects' ? '_active' : '' }}">Проекты</a></li>
+                    <li><a href="{{ route('contacts') }}" class="nav-contacts page-scroll {{ Request::path() == 'contacts' ? '_active' : '' }}">Контакты</a></li>
                 </ul>
             </div>
         </div>
@@ -79,7 +80,7 @@
 
         @yield('content')
     </div>
-    @if (!is_ajax())
+    @if (!is_ajax() || (is_ajax() && Request::is('/')) )
         @include('partial.js')
     @endif
 </body>

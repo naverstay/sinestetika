@@ -4,6 +4,45 @@ var menu_closing_delay = 200; // slide aside delay, ms
 var project_to_next_project = 700; // moving up delay, ms
 var home_to_project = 1200; // html replacement delay, ms
 var project_to_project = 1300; // html replacement delay, ms
+var tag_row_count; // for fixing rows in next project animation
+
+function imgLoader(img) {
+  var src = img.css('visibility', 'hidden').attr('data-src');
+  if (src && src.length) {
+    img.attr('src', src).attr('data-src', null);
+  }
+}
+
+function consecutiveLoader(el) {
+  var img = $(el).css('visibility', ''), images = $(img.attr('data-next')),
+    parent_slider = img.closest('.slick-slider');
+
+  if (img.hasClass('bsOnLoad')) {
+    img.parent().backstretch(img.attr('src'));
+  }
+
+  if (parent_slider.length) {
+    parent_slider.slick('setPosition');
+  }
+
+  images.each(function (i) {
+    if ($(this).is(img)) {
+      if ($(images[i]).length) {
+        // setTimeout(function () {
+        imgLoader($(images[i + 1]));
+        // }, 500);
+      }
+    }
+  });
+}
+
+function startImgLoader() {
+  var images = $('.orderLoader');
+
+  console.log('startImgLoader', images);
+
+  imgLoader(images.first());
+}
 
 $(function () {
   var is_animating = false;
@@ -14,10 +53,58 @@ $(function () {
   var boardGrid;
   var lastScrollTop = 0;
   var delta = 5;
+  var nb = $('.navbar');
+
+
+  function checkHeader() {
+    // Hide Header on scroll down
+    var st = getScrollTop();
+    var navbarHeight = nb.outerHeight();
+
+    if (prevent_hide_nav) {
+      console.log(nb, prevent_hide_nav);
+      nb.addClass('nav-down').removeClass('nav-up');
+      prevent_hide_nav = false;
+      return;
+    }
+
+    // setInterval(function () {
+    if (didScroll) {
+      hasScrolled();
+      didScroll = false;
+    }
+
+    // }, 250);
+
+    function hasScrolled() {
+      // Make sure they scroll more than delta
+      if (Math.abs(lastScrollTop - st) <= delta) return;
+
+      // If they scrolled down and are past the navbar, add class .nav-up.
+      // This is necessary so you never see what is "behind" the navbar.
+      if (st > lastScrollTop && st > navbarHeight) {
+        // Scroll Down
+        nb.removeClass('nav-down').addClass(nb.hasClass('in') ? '' : 'nav-up');
+      } else {
+        // Scroll Up
+        if (st + $(window).height() < $(document).height()) {
+          nb.removeClass('nav-up').addClass('nav-down');
+        }
+      }
+
+      lastScrollTop = st;
+    }
+  }
+
+  function getScrollTop() {
+    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  }
 
   // trigger only for homepage
   // that's why it's outside onPageLoaded
   homePreloader();
+
+  if (!getScrollTop()) nb.addClass('nav-down').removeClass('nav-up');
 
   // detect mobile devices
 
@@ -27,6 +114,23 @@ $(function () {
       d.style[prop] = value;
       return d.style[prop] === value;
     }
+  }
+
+  function checkTags() {
+    $('.checkTagCount').each(function (ind) {
+      var rows = 0, prevTop = 0, tagsBlock = $(this);
+
+      tagsBlock.children().each(function (ind) {
+        var tag = $(this);
+
+        if (tag.offset().top !== prevTop) {
+          rows++;
+          prevTop = tag.offset().top;
+        }
+      });
+
+      tagsBlock.closest('.p-project-intro-viewport').attr('data-rows', rows);
+    });
   }
 
   function fixWebkitStyle() {
@@ -89,8 +193,8 @@ $(function () {
     $('.__prevent_anim img').on('load', function (e) {
       $(this).parent().removeClass('__prevent_anim');
     }).each(function () {
-      var img = $(this);
-      img.attr('src', img.attr('src') + '?load=true');
+      // var img = $(this);
+      // img.attr('src', img.attr('src') + '?load=true');
     });
 
     if (!$html.hasClass('__hide_page')) {
@@ -149,6 +253,8 @@ $(function () {
 
   function onPageLoaded() {
 
+    startImgLoader();
+
     throttle(onScrollResize, 100);
 
     $('.p-project-section .p-project-section-slider:not(.slick-initialized)').each(function () {
@@ -180,52 +286,9 @@ $(function () {
 
     fixWebkitStyle();
 
+    checkTags();
+
     initBoard();
-  }
-
-  function checkHeader() {
-    // Hide Header on scroll down
-    var nb = $('.navbar');
-    var st = getScrollTop();
-    var navbarHeight = nb.outerHeight();
-
-    if (prevent_hide_nav) {
-      console.log(nb, prevent_hide_nav);
-      nb.addClass('nav-down').removeClass('nav-up');
-      prevent_hide_nav = false;
-      return;
-    }
-
-    // setInterval(function () {
-    if (didScroll) {
-      hasScrolled();
-      didScroll = false;
-    }
-
-    // }, 250);
-
-    function hasScrolled() {
-      // Make sure they scroll more than delta
-      if (Math.abs(lastScrollTop - st) <= delta) return;
-
-      // If they scrolled down and are past the navbar, add class .nav-up.
-      // This is necessary so you never see what is "behind" the navbar.
-      if (st > lastScrollTop && st > navbarHeight) {
-        // Scroll Down
-        nb.removeClass('nav-down').addClass(nb.hasClass('in') ? '' : 'nav-up');
-      } else {
-        // Scroll Up
-        if (st + $(window).height() < $(document).height()) {
-          nb.removeClass('nav-up').addClass('nav-down');
-        }
-      }
-
-      lastScrollTop = st;
-    }
-  }
-
-  function getScrollTop() {
-    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
   }
 
   function onScrollResize(hide_nav) {
@@ -250,6 +313,9 @@ $(function () {
     checkHeader(hide_nav);
 
     fixWebkitStyle();
+
+    checkTags();
+
   }
 
   var pages = {};
@@ -288,6 +354,7 @@ $(function () {
 
       if ($project.length > 0) { // переход с проекта на следующий проект
         anim_type = 'next';
+        tag_row_count = $project.find('.p-project-intro-viewport').attr('data-rows');
 
         console.log($project.offset().top, getScrollTop());
 
@@ -311,7 +378,7 @@ $(function () {
           setTimeout(function () {
             $project.addClass('__anim');
             $('body').addClass('__anim_next');
-          }, 100);
+          }, 150);
 
           // $('html, body').animate({
           //   scrollTop: 0
@@ -331,6 +398,8 @@ $(function () {
           $('body').addClass('__fade_in_nav');
 
           // $('.navbar-custom.nav-down').addClass('__invis');
+
+          $('.intro-body').hide();
 
           $surf.addClass('__animate');
 
@@ -405,7 +474,14 @@ $(function () {
 
         if (animationHandlerCb && animationHandlerCb.anim_type === "next") {
           // переход с проекта на следующий проект
-          html = html.replace('navbar-custom', 'navbar-custom __invis').replace('__prevent_anim', '').replace('loadedProject', 'loadedProject __skip_anim');
+
+          console.log('tag_row_count', tag_row_count);
+
+          $('.intro').addClass('__invis');
+
+          html = html.replace('navbar-custom', 'navbar-custom __invis').replace('__prevent_anim', '').replace('loadedProject', 'loadedProject __skip_anim').replace('currentProject"', 'currentProject" data-rows="' + tag_row_count + '"').replace(/<img class="replaceIfNext.*data-src="(.*?)".*?\/>/ig, function (match, $1, $2, offset, original) {
+            return '<img src="' + $1 + '"/>';
+          });
         }
 
         if (animationHandlerCb && animationHandlerCb.fade_in_nav) {
@@ -476,6 +552,7 @@ $(function () {
               boardGrid.isotope('remove', $('.gridItem'));
 
               boardGrid.isotope('insert', $newItems);
+
             } else {
               initBoard();
             }
@@ -486,19 +563,19 @@ $(function () {
 
           } else {
             if (animationHandlerCb && animationHandlerCb.anim_type === "next") {
-              console.log($new_html.filter('.s-page').html());
+              // console.log($new_html.filter('.s-page').html());
+
 
             } else {
-
+              var s_page = $('.s-page');
+              s_page.replaceWith($new_html.filter('.s-page'));
             }
 
-            var s_page = $('.s-page'), b_menu = $new_html.filter('.b-menu');
 
-            s_page.html();
-
-            s_page.html($new_html.filter('.s-page').html());
-
-            // s_page.remove();
+            var s_bmenu = $('.b-menu');
+            s_bmenu.replaceWith($new_html.find('.b-menu'));
+            console.log('dd');
+            console.log($new_html.find('.b-menu'));
 
             $('.nav-up').removeClass('nav-up');
 
@@ -510,8 +587,6 @@ $(function () {
 
             setTimeout(function () {
               console.log('remove __fade_in_nav');
-
-              // $('.b-menu').replaceWith(b_menu);
 
               $('body').removeClass('__fade_in_nav').removeClass('__force_nav_down');
               $('.navbar-custom').removeClass('__invis');
@@ -534,7 +609,9 @@ $(function () {
         boardGrid.isotope('layout');
       }, 200);
     } else if ($('.boardGrid').length) {
-      boardGrid = $('.boardGrid').isotope({
+      boardGrid = $('.boardGrid').on('revealComplete', function () {
+        startImgLoader();
+      }).isotope({
         percentPosition: true,
         gutter: 0,
         // main isotope options
@@ -618,7 +695,7 @@ $(function () {
       var wh = $($(this).attr('data-target')).offset().top;
       $('html, body').animate({
         'scrollTop': wh
-      }, 460);
+      }, 600); //460
     })
     .on('click', '.p-projects-filter-groups .__all.__mobile a', function (e) {
       e.preventDefault();

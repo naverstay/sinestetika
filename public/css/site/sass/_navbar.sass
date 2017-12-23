@@ -163,7 +163,8 @@ $wave_time: 1s
   width: 5rem
   height: 5rem
   position: fixed
-  left: 2rem
+  //left: 2rem
+  left: 20px
   top: 5.5rem
   border-radius: 100%
   //font-size: 100px
@@ -251,6 +252,7 @@ $wave_time: 1s
     //top: 9rem
     //left: 13.5rem
     top: 8rem
+    left: 80px
 
     .navbar-custom &
       left: 15.5rem
@@ -364,7 +366,7 @@ $wave_time: 1s
 
   .__anim_wave &
     //background: #000
-    transition: transform 0s .1s, opacity .3s
+    transition: transform 0s .01s, opacity .2s
     transform: translate(0, 0)
 
     .navbar-header
@@ -507,7 +509,7 @@ $wave_time: 1s
     margin-left: 20px !important
     position: static
 
-  .navbar-circle
+  //.navbar-circle
     left: 15rem
 
   .navbar-custom .b-menu
@@ -540,9 +542,9 @@ $wave_time: 1s
 
     &._active
       cursor: default
+      color: #00f
 
-    &:hover,
-    &._active
+    &:hover
       color: #00f
 
 @media (orientation: landscape)
@@ -581,13 +583,14 @@ $wave_time: 1s
       left: 60%
 
   .navbar-circle
-    left: 18.9rem
+    //left: 18.9rem
+    left: 100px
 
-@media (min-width: 1049px)
+//@media (min-width: 1049px)
   .navbar-circle
       left: 15.5rem
 
-@media (min-width: 1280px)
+//@media (min-width: 1280px)
   .navbar-circle
       left: 14.5rem
 
@@ -596,8 +599,9 @@ $wave_time: 1s
     padding-left: 0
     padding-right: 120px
 
-  //.navbar-circle
-    left: 18.5rem
+  .navbar-circle
+    //left: 18.5rem
+    left: 120px
 
 @media (min-width: 1700px)
   .navbar-circle
