@@ -3,6 +3,8 @@
   font: 0/0 a
   //height: 16rem
   //min-height: 33vh
+  transform: translate(0,0)
+  margin-right: -3rem
   vertical-align: middle
 
 .b-tags-item
@@ -41,12 +43,14 @@
     color: #fff
 
   &:before
+    will-change: transform
+    transform: translate(0,0)
     transition: border-width .3s ease-out
     content: ''
     position: absolute
     top: 0
     right: 0
-    bottom: 0
+    bottom: .5px
     left: 0
     border: 1.2px solid
     border-color: inherit
@@ -80,15 +84,16 @@ body.__from-next
   .__main_ .b-tags-item
     animation-delay: 0s !important
     animation-duration: 0s
-    opacity: .99
+    opacity: 1
+    transform: translate3d(0, 0, 0)
 
 a.b-tags-item
   &:hover, &:active
     color: #fff
-    box-shadow: 0 0 0 1px #fff
+    //box-shadow: 0 0 0 1px #fff
 
-    //&:before
-      border-width: 2px
+    &:before
+      border-width: 2.2px
 
 @media (min-width: 768px)
   .b-tags-item

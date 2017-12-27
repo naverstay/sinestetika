@@ -7,9 +7,16 @@ var project_to_project = 1300; // html replacement delay, ms
 var tag_row_count; // for fixing rows in next project animation
 
 function imgLoader(img) {
-  var src = img.css('visibility', 'hidden').attr('data-src');
+
+  var src = img.css('visibility', 'hidden').attr('data-src'), floating = img.closest('.h-floating:not(.__visible)');
   if (src && src.length) {
     img.attr('src', src).attr('data-src', null);
+
+    if (floating.length) {
+      floating.unveil('2%', function () {
+        $(this).addClass('__visible');
+      });
+    }
   }
 }
 
@@ -38,8 +45,6 @@ function consecutiveLoader(el) {
 
 function startImgLoader() {
   var images = $('.orderLoader');
-
-  console.log('startImgLoader', images);
 
   imgLoader(images.first());
 }
@@ -199,7 +204,9 @@ $(function () {
 
     if (!$html.hasClass('__hide_page')) {
       console.log('normal load');
-      $html.addClass('_page_loaded');
+      $html
+      // .removeClass('__anim_wave')
+        .addClass('_page_loaded');
     }
 
     setTimeout(function () {
@@ -215,7 +222,10 @@ $(function () {
 
       console.log('delay load');
 
-      $html.removeClass('__hide_page').addClass('_page_loaded');
+      $html
+        // .removeClass('__anim_wave')
+        .removeClass('__hide_page')
+        .addClass('_page_loaded');
       $('body').removeClass('__skip-circle');
     }, 300);
 
@@ -284,8 +294,6 @@ $(function () {
 
     animatePageLoad();
 
-    fixWebkitStyle();
-
     checkTags();
 
     initBoard();
@@ -311,8 +319,6 @@ $(function () {
     $('body').toggleClass('__intro', wt <= wh - nbh2);
 
     checkHeader(hide_nav);
-
-    fixWebkitStyle();
 
     checkTags();
 
@@ -358,13 +364,14 @@ $(function () {
 
         console.log($project.offset().top, getScrollTop());
 
-        $project.addClass('__start_anim').find('.p-project-intro>.container').each(function (ind) {
-          // var cn = $(this);
-          // console.log(cn.outerHeight());
-          // cn.css('height', cn.outerHeight());
-        });
+        $project.addClass('__start_anim');
+
 
         $('.navbar-custom').addClass('__invis');
+
+        $('body').addClass('__fade_in_nav');
+
+        fade_in_nav = true;
 
         setTimeout(function () {
           $project.css({
@@ -375,15 +382,32 @@ $(function () {
             top: $project.offset().top - getScrollTop()
           });
 
-          setTimeout(function () {
-            $project.addClass('__anim');
-            $('body').addClass('__anim_next');
-          }, 150);
+          var css = 'translate(0,' + (-($project.offset().top - getScrollTop())) + 'px)';
+
+          $project.each(function () {
+            // this.style.position = 'fixed';
+            // this.style.left = 0;
+            // this.style.right = 0;
+            // this.style.height = '100vh';
+            // this.style.MozTransform = css;
+            // this.style.WebkitTransform = css;
+            // this.style.OTransform = css;
+            // this.style.MsTransform = css;
+            // this.style.transform = css;
+          });
+
+          // setTimeout(function () {
+
+          $project.addClass('__anim');
+          $('body').addClass('__anim_next');
+
+
+          // }, 600);
 
           // $('html, body').animate({
           //   scrollTop: 0
           // }, 0);
-        }, project_to_next_project - 100);
+        }, project_to_next_project);
       }
 
       if ($filter.length > 0) {
@@ -411,12 +435,14 @@ $(function () {
 
       if (anim_type === 'next') {
         delay = project_to_project;
+        fade_in_nav = true;
 
         // nextAnim()
       } else {
         if (!($surf.length > 0 || $filter.length > 0)) {
           setTimeout(function () {
             $html.addClass('__anim_wave __hide_page');
+
           }, $trg.closest('.b-menu').length ? menu_closing_delay : 0);
           // $('.navbar-circle').addClass('__anim');
 
@@ -437,7 +463,7 @@ $(function () {
   function showPage(path, hash, event, is_back) {
     console.log('ajax', (busy ? 'busy' : 'start'));
 
-    if (busy) return;
+    if (busy) return false;
 
     busy = true;
     is_back = (typeof is_back === 'boolean' ? is_back : false);
@@ -465,6 +491,10 @@ $(function () {
         if (animationHandlerCb && animationHandlerCb.anim_type === 'simple') {
           console.log('simple anim_type');
 
+          setTimeout(function () {
+            $('.s-page').html('');
+          }, delay - 50);
+
           if ($('.navbar-custom').hasClass('nav-up')) {
             prevent_hide_nav = true;
           }
@@ -475,11 +505,15 @@ $(function () {
         if (animationHandlerCb && animationHandlerCb.anim_type === "next") {
           // переход с проекта на следующий проект
 
-          console.log('tag_row_count', tag_row_count);
+          // console.log('tag_row_count', tag_row_count);
 
           $('.intro').addClass('__invis');
 
-          html = html.replace('navbar-custom', 'navbar-custom __invis').replace('__prevent_anim', '').replace('loadedProject', 'loadedProject __skip_anim').replace('currentProject"', 'currentProject" data-rows="' + tag_row_count + '"').replace(/<img class="replaceIfNext.*data-src="(.*?)".*?\/>/ig, function (match, $1, $2, offset, original) {
+          html = html.replace('navbar-custom', 'navbar-custom __invis')
+            .replace('__prevent_anim', '')
+            .replace('loadedProject', 'loadedProject __skip_anim')
+            .replace('currentProject"', 'currentProject" data-rows="' + tag_row_count + '"')
+            .replace(/<img class="replaceIfNext.*data-src="(.*?)".*?\/>/ig, function (match, $1, $2, offset, original) {
             return '<img src="' + $1 + '"/>';
           });
         }
@@ -546,7 +580,7 @@ $(function () {
 
             var $newItems = $($new_html.find('.gridItem'));
 
-            $newItems.find('.b-project').addClass('__visible');
+            // $newItems.find('.b-project').addClass('__visible');
 
             if (boardGrid) {
               boardGrid.isotope('remove', $('.gridItem'));
@@ -567,15 +601,13 @@ $(function () {
 
 
             } else {
-              var s_page = $('.s-page');
-              s_page.replaceWith($new_html.filter('.s-page'));
             }
 
+            var s_page = $('.s-page');
+            s_page.replaceWith($new_html.filter('.s-page'));
 
             var s_bmenu = $('.b-menu');
             s_bmenu.replaceWith($new_html.find('.b-menu'));
-            console.log('dd');
-            console.log($new_html.find('.b-menu'));
 
             $('.nav-up').removeClass('nav-up');
 
@@ -677,9 +709,10 @@ $(function () {
   }
 
   $(window)
+    .on('resize', throttle(fixWebkitStyle, 100))
     .on('resize scroll', throttle(onScrollResize, 100))
     .on("wheel mousewheel touchstart touchmove", function (e) {
-      console.log(is_animating);
+      console.log('is_animating', is_animating);
 
       if (is_animating) {
         e.preventDefault();
@@ -695,7 +728,7 @@ $(function () {
       var wh = $($(this).attr('data-target')).offset().top;
       $('html, body').animate({
         'scrollTop': wh
-      }, 600); //460
+      }, 800, 'swing'); //460
     })
     .on('click', '.p-projects-filter-groups .__all.__mobile a', function (e) {
       e.preventDefault();
@@ -725,6 +758,7 @@ $(function () {
       var link = $(this);
 
       if (link.hasClass('scrollTo')) {
+        // если якорная ссылка, то скролим к якорю
         e.preventDefault();
         scrollToHash(link.attr('href'));
         return false;

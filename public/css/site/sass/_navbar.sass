@@ -14,7 +14,8 @@ svg.logo
       fill: #0000fe
 
       ._page_loaded &
-        transition: fill .3s
+        transition: fill .3s .3s
+
   .logo-text > *
     //fill: #231f20
     fill: #0000fe
@@ -165,6 +166,7 @@ $wave_time: 1s
   position: fixed
   //left: 2rem
   left: 20px
+  margin-left: .5rem
   top: 5.5rem
   border-radius: 100%
   //font-size: 100px
@@ -189,7 +191,6 @@ $wave_time: 1s
     height: 100%
 
     .logo-circle circle
-      will-change: transform
       transition: fill $wave_time/2
 
   .__intro &
@@ -315,10 +316,15 @@ $wave_time: 1s
   .__anim_next &
     transform: translate(0, 0) !important
 
-  .__leave &,
+  .__leave &
+    transition: transform 0s 5s, opacity .3s
+
+    .navbar-brand svg
+      opacity: 0 !important
+
   .__anim_next &
     //transition: transform .3s 5s, opacity .3s
-    transition: transform 0s 5s, opacity .3s
+    transition: transform 0s 0s, opacity .3s
     //transform: translate(0, 0) !important
 
     .navbar-brand svg
@@ -421,13 +427,13 @@ $wave_time: 1s
     opacity: 0
     visibility: hidden
   .b-menu
-    transform: translate3d(0,0,0)
+    transform: translate(0,0)
     will-change: transform
     display: block
     position: fixed
     transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1)
     top: 0
-    right: 0
+    //right: 0
     height: 100vh
     background: #fff
     padding: 0 20px
@@ -454,7 +460,7 @@ $wave_time: 1s
       visibility: visible
   .b-menu-container
     position: relative
-    transform: translate3d(0, 0, 0)
+    //transform: translate3d(0, 0, 0)
     will-change: transform
     display: flex
     height: 100vh
@@ -491,6 +497,7 @@ $wave_time: 1s
       //display: block
       li
         list-style: none
+        transform: translate(0, 0)
         //padding: 0
         margin: 0
         font-size: 2.4rem
@@ -536,8 +543,10 @@ $wave_time: 1s
 
 .b-menu
   a
-    transform: translate3d(0,0,0)
-    will-change: color
+    display: inline-block
+    vertical-align: top
+    transform: translate(0,0)
+    will-change: transform
     transition: color .15s ease-out
 
     &._active
@@ -603,7 +612,7 @@ $wave_time: 1s
     //left: 18.5rem
     left: 120px
 
-@media (min-width: 1700px)
+//@media (min-width: 1700px)
   .navbar-circle
     left: 13.5rem
 

@@ -17,7 +17,7 @@ $b-next-project-info-loader_shadow: .2s
 $project-viewport-padding-bottom: 25vh
 $project-viewport-padding-top: 16rem
 
-$project_to_next_project: .4s
+$project_to_next_project: .6s
 
 $logo_size: 8rem
 $logo_size_big: 16rem
@@ -624,6 +624,7 @@ body
       animation-name: none
 
 .p-project-intro-viewport
+  will-change: transform
   display: flex
   align-items: center
   justify-content: flex-start
@@ -656,13 +657,13 @@ body
       margin: -6.7rem 0 4.1rem !important
 
   .__next &
-    transition: margin .6s cubic-bezier(0.19, 1, 0.22, 1), height .6s cubic-bezier(0.19, 1, 0.22, 1)
+    transition: height .6s cubic-bezier(0.19, 1, 0.22, 1), padding .6s cubic-bezier(0.19, 1, 0.22, 1)
     flex: 1 0 auto
     padding: 0
     //height: 75vh
 
-    height: 64vh
-    max-height: 64vh
+    height: calc(75vh - 9.8rem)
+    //max-height: calc(75vh - 9.8rem)
     padding-bottom: 20vh
 
     .p-project-intro-body
@@ -671,7 +672,7 @@ body
 
   .__anim &
     height: 70vh !important
-    max-height: 70vh !important
+    //max-height: 70vh !important
     //padding-bottom: 20vh
 
     .p-project-intro-body
@@ -679,6 +680,7 @@ body
 
 .p-project-intro-body
   will-change: transform
+  transform: translate(0, 0)
   //flex: 1 0 auto
   display: flex
   //min-height: 36rem
@@ -689,7 +691,7 @@ body
   position: relative
 
   .__anim &
-    transition: margin $b-next-project-info-loader_size .05s cubic-bezier(0.19, 1, 0.22, 1)
+    transition: margin $b-next-project-info-loader_size .1s cubic-bezier(0.19, 1, 0.22, 1)
 
   //.__next &
     flex: 1 0 auto
@@ -716,6 +718,7 @@ body
  *}
 
 .p-project-title
+  transform: translate(0,0)
   font-size: 4.7rem
   line-height: 7.9rem
   font-weight: normal
@@ -758,9 +761,10 @@ body
   z-index: 1
   transition: margin-top .3s .3s cubic-bezier(0.785, 0.135, 0.15, 0.86)
 
-  //.__next &
+  .__next &
     //margin-top: 0
-    background: red
+    animation: none !important
+    //background: red
     //margin-bottom: -35vh
 
   img
@@ -819,6 +823,7 @@ body
   cursor: pointer
   height: 100%
   flex: 1 0 auto
+  min-height: 0
   outline: none !important
   img
     width: auto
@@ -1086,14 +1091,33 @@ body
  *    display: block;
  *}
 
+.p-project-next-spacer
+  display: none
+  position: fixed
+  height: 100vh
+  width: 100vw
+  top: 0
+  left: 0
+  z-index: 1
+  background: #00f
+
+  //.__anim_next &
+    display: block
+
 .p-project-next
+  transform: translate(0, 0)
   //transition: top .6s cubic-bezier(0.075, 0.82, 0.165, 1)
-  transition: top .6s cubic-bezier(0.19, 1, 0.22, 1), padding-top .6s cubic-bezier(0.19, 1, 0.22, 1)
+  transition: top .6s cubic-bezier(0.19, 1, 0.22, 1),  height .6s cubic-bezier(0.19, 1, 0.22, 1), padding-top .6s cubic-bezier(0.19, 1, 0.22, 1)
   display: block
   position: relative
+  //position: absolute
+  //bottom: 0
+  //right: 0
+  //left: 0
   z-index: 10
   height: 75vh
   background: #fff
+  will-change: transform
 
   .p-project-next-title
     transition: opacity .5s .35s ease-out, height .4s ease-out, margin .4s ease-out
@@ -1116,6 +1140,9 @@ body
   .p-project-intro-bg
     background-color: transparent
 
+  //.p-project-intro-viewport
+    background: red
+
   &.__start_anim
 
     .p-project-next-title
@@ -1127,32 +1154,37 @@ body
       //height: auto
 
     .b-project-info-loader
+      //position: fixed
       width: 120vw
       top: -100vh
-      bottom: -1000vh
+      bottom: -100vh
       //bottom: 17vh
       box-shadow: 0 0 25px #00f
 
     .p-project-intro
       //height: auto
       //height: 100%
+      transition: height .3s .05s ease, padding .25s .05s ease
       overflow: visible
 
   &.__anim
-    //position: fixed
-    //opacity: .5
-    //pointer-events: none
+    background: #00f
+    position: fixed
+    //opacity: .9
+    pointer-events: none
     //padding-top: 30vh
     top: 0 !important
-    //z-index: 100
-    //right: 0
-    //left: 0
-    //height: 100vh
+    z-index: 6
+    right: 0
+    left: 0
+    height: 100vh
 
     //transform: scale(1) translate3d(0, -5%, 0)
 
     .b-project-info-loader
       transform: translate(-50%, -17vh)
+      top: -1000vh
+      transition: none
       box-shadow: 0 0 0 #00f
 
       //height: 2000px
@@ -1172,7 +1204,7 @@ body
         transition: height .3s .05s ease, padding .25s .05s ease
         //transition: none
         //padding: ($project-viewport-padding-top - 3) 0 0
-        height: 103vh
+        //height: 103vh
 
       //> .p-project-photo
         margin-top: -$project-viewport-padding-bottom
@@ -1186,6 +1218,7 @@ body
       overflow: visible
 
 .p-project-next-title
+  transform: translate(0,0)
   transition: opacity 0.6s ease-out
   font-size: 1.79rem
   margin: 5.4rem 0 5.4rem
@@ -1200,8 +1233,8 @@ body
   //left: 0
 
 .p-project-intro-wrapper
-  will-change: transform
-  transition: transform .4s .1s cubic-bezier(0.19, 1, 0.22, 1), padding $project_to_next_project .0s cubic-bezier(0.19, 1, 0.22, 1)
+  //will-change: transform
+  transition: transform $project_to_next_project .1s cubic-bezier(0.19, 1, 0.22, 1), padding $project_to_next_project .0s cubic-bezier(0.19, 1, 0.22, 1)
   //transition: transform .3s ease-out, padding .3s ease-out, margin-top .3s ease-out
   //> .p-project-photo
     margin-top: -25vh
@@ -1310,6 +1343,7 @@ body
 
 
 .p-project-intro-tags
+  transform: translate(0, 0)
   will-change: transform
   min-height: 30vh
   display: flex
@@ -1359,7 +1393,8 @@ body
     background: #fff
     //overflow: hidden
 
-    &.__anim
+    //&.__anim
+      pointer-events: none
       //padding-top: 80px
       //padding-top: 23px !important
       //top: 80px
@@ -1367,7 +1402,7 @@ body
       .b-project-info-loader
         transform: translate(-50%, 0)
 
-      .p-project-intro-wrapper.__next
+      //.p-project-intro-wrapper.__next
 
         .p-project-intro
           min-height: 100vh
@@ -1452,7 +1487,9 @@ body
     margin-bottom: 15rem
     height: auto
     min-height: 100vh
-    transition: all .6s .3s ease, padding .6s 0s ease
+    //transition: all .6s .3s ease, padding .6s 0s ease
+    transition: height .6s .05s ease, padding .6s 0s ease
+
   .__next .p-project-intro
     //padding: 0
     //padding: 10rem 0 40vh
@@ -1472,7 +1509,7 @@ body
       //margin-top: 7rem
       height: 26vh
       flex: 1 0 auto
-      margin: 0
+      //margin: 0
 
     .__anim .__next &
       //margin-top: 0
@@ -1490,7 +1527,7 @@ body
   .p-project-intro-tags
     //min-height: 16rem
 
-    .__next &
+    //.__next &
       //min-height: 16rem
       min-height: 24vh
 

@@ -1,9 +1,11 @@
 .s-page
   will-change: transform
-  transition: opacity 0s .4s
+  transform: translate(0,0)
+  //transition: opacity 0s .4s
   min-height: 100%
   background: #fff
   overflow: hidden
+  position: relative
 
   .viewport_height &
     height: 100%
@@ -15,6 +17,7 @@
     will-change: transform
 
   //.__anim_wave &
+    transition: opacity 0s .4s
     opacity: 0
 
   .__hide_page &
@@ -75,3 +78,6 @@
 
 img
   will-change: transform
+
+.__vis_hidden
+  visibility: hidden !important

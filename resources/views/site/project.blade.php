@@ -86,6 +86,7 @@
             </div>
         </div>
 
+<!--    <div class="p-project-next-spacer"></div>-->
 
     <a class="p-project-next" href="{{ route('project', $next_project->name) }}">
         <div class="p-project-intro-wrapper __next">
@@ -119,4 +120,5 @@
             </div>
         </div>
     </a>
+
 @endsection
