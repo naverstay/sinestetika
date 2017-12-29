@@ -1,6 +1,6 @@
 // animation timings, check css' ones
 var default_wave_delay = 600; // default wave animation delay, ms
-var menu_closing_delay = 250; // slide aside delay, ms
+var menu_closing_delay = 200; // slide aside delay, ms
 var project_to_next_project = 700; // moving up delay, ms
 var home_to_project = 1200; // html replacement delay, ms
 var project_to_project = 1300; // html replacement delay, ms

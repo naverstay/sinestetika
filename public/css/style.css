@@ -621,10 +621,6 @@ body.home.__intro svg.logo .logo-text > * {
   transition: transform 0s 5s, opacity .3s, -webkit-transform 0s 5s;
 }
 
-.__leave .navbar-custom .navbar-brand svg {
-  opacity: 0 !important;
-}
-
 .__anim_next .navbar-custom {
   -webkit-transition: opacity .3s, -webkit-transform 0s 0s;
   transition: opacity .3s, -webkit-transform 0s 0s;
@@ -1096,11 +1092,11 @@ body.__force_nav_down .navbar-custom {
 }
 
 .start-logo {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  bottom: 0;
+  height: 100%;
   z-index: 1100;
   background: white;
   -webkit-transform: scale(1.5);
@@ -3189,6 +3185,7 @@ a.b-tags-item:hover:before, a.b-tags-item:active:before {
   transition: top 0.6s cubic-bezier(0.19, 1, 0.22, 1), height 0.6s cubic-bezier(0.19, 1, 0.22, 1), padding-top 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   display: block;
   position: relative;
+  cursor: pointer;
   z-index: 10;
   background: #fff;
   will-change: transform;
