@@ -27,6 +27,16 @@
 
 </head>
 <body class="{{ ((\Request::route()->getName() == 'contacts') ? 'viewport_height ' : '') }}{{ \Request::route()->getName() }} __intro">
+@if ($show_start_screen)
+<div class="start-logo">
+    <div class="start-logo__wrapper">
+        <span class="start_circle c1"></span>
+        <span class="start_circle c2">
+                    <span class="start_circle_shadow"></span>
+                </span>
+    </div>
+</div>
+@endif
     <div class="navbar-circle">
         <svg viewBox="0 0 360 360" class="svg-icon logo" version="1.1" xmlns="http://www.w3.org/2000/svg"
              xmlns:xlink="http://www.w3.org/1999/xlink">

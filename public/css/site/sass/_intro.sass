@@ -209,7 +209,7 @@
   margin-left: -38px
   bottom: 26px
   padding: 30px
-  transition: padding 0.15s ease-out
+  transition: padding 0.15s ease-out, opacity 0s .1s ease-out
   span
     display: block
     border-radius: 1px 0 1px 3px
@@ -221,6 +221,12 @@
   &:hover
     padding-top: 35px
     padding-bottom: 25px
+
+  .__fade_in_nav &,
+  .__anim_wave &
+    display: none
+    transition: padding 0.15s ease-out, opacity 0s .5s ease-out
+    opacity: 0
 
 .p-service-intro .intro-arrow
   opacity: 0

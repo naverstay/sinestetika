@@ -1,5 +1,5 @@
 <header class="intro blueSection blue-bg{{ ($show_start_screen ? ' __anim' : '') }}">
-    @if ($show_start_screen)
+<!--    @if ($show_start_screen)
         <div class="start-logo">
             <div class="start-logo__wrapper">
                 <span class="start_circle c1"></span>
@@ -8,7 +8,7 @@
                 </span>
             </div>
         </div>
-    @endif
+    @endif-->
 
     <div class="intro-body">
         <div class="container container-fluid">

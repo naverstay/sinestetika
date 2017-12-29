@@ -1,6 +1,6 @@
 // animation timings, check css' ones
 var default_wave_delay = 600; // default wave animation delay, ms
-var menu_closing_delay = 200; // slide aside delay, ms
+var menu_closing_delay = 50; // slide aside delay, ms
 var project_to_next_project = 700; // moving up delay, ms
 var home_to_project = 1200; // html replacement delay, ms
 var project_to_project = 1300; // html replacement delay, ms
@@ -139,8 +139,11 @@ $(function () {
   }
 
   function fixWebkitStyle() {
-    var cv = $('#custom_values'), vh = window.innerHeight,
-      css = '.viewport_height {height: ' + vh + 'px !important; min-height: ' + vh + 'px !important;}';
+    var cv = $('#custom_values'), vh = window.innerHeight, vw = window.innerWidth,
+      css = '.viewport_height {height: ' + vh + 'px !important; min-height: ' + vh + 'px !important;}' +
+        '.p-project-next.__start_anim .b-project-info-loader {width:' + (1.2 * vw) + 'px;top:-' + vh + 'px;bottom:-' + vh + 'px;' +
+        '.b-project.__animate .b-project-info-loader{width:' + (2 * vw) +
+        'px;height:' + (2 * vh) + 'px;}'; // IE fix
 
     if (cv.length) {
       cv.text(css);
@@ -223,7 +226,7 @@ $(function () {
       console.log('delay load');
 
       $html
-        // .removeClass('__anim_wave')
+      // .removeClass('__anim_wave')
         .removeClass('__hide_page')
         .addClass('_page_loaded');
       $('body').removeClass('__skip-circle');
@@ -492,8 +495,12 @@ $(function () {
           console.log('simple anim_type');
 
           setTimeout(function () {
-            $('.s-page').html('');
-          }, delay - 50);
+            $('.s-page')
+              .html('')
+              .addClass('__invis');
+            // debugger;
+
+          }, delay - 200);
 
           if ($('.navbar-custom').hasClass('nav-up')) {
             prevent_hide_nav = true;
@@ -514,8 +521,8 @@ $(function () {
             .replace('loadedProject', 'loadedProject __skip_anim')
             .replace('currentProject"', 'currentProject" data-rows="' + tag_row_count + '"')
             .replace(/<img class="replaceIfNext.*data-src="(.*?)".*?\/>/ig, function (match, $1, $2, offset, original) {
-            return '<img src="' + $1 + '"/>';
-          });
+              return '<img src="' + $1 + '"/>';
+            });
         }
 
         if (animationHandlerCb && animationHandlerCb.fade_in_nav) {
@@ -709,7 +716,7 @@ $(function () {
   }
 
   $(window)
-    .on('resize', throttle(fixWebkitStyle, 100))
+    .on('resize load', throttle(fixWebkitStyle, 100))
     .on('resize scroll', throttle(onScrollResize, 100))
     .on("wheel mousewheel touchstart touchmove", function (e) {
       console.log('is_animating', is_animating);
