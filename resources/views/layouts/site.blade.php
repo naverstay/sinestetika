@@ -27,7 +27,7 @@
 
 </head>
 <body class="{{ ((\Request::route()->getName() == 'contacts') ? 'viewport_height ' : '') }}{{ \Request::route()->getName() }} __intro">
-@if ($show_start_screen)
+@if ($show_start_screen && (\Request::route()->getName() == 'home') )
 <div class="start-logo">
     <div class="start-logo__wrapper">
         <span class="start_circle c1"></span>

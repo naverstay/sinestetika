@@ -1,6 +1,6 @@
 // animation timings, check css' ones
 var default_wave_delay = 600; // default wave animation delay, ms
-var menu_closing_delay = 50; // slide aside delay, ms
+var menu_closing_delay = 250; // slide aside delay, ms
 var project_to_next_project = 700; // moving up delay, ms
 var home_to_project = 1200; // html replacement delay, ms
 var project_to_project = 1300; // html replacement delay, ms
@@ -140,10 +140,15 @@ $(function () {
 
   function fixWebkitStyle() {
     var cv = $('#custom_values'), vh = window.innerHeight, vw = window.innerWidth,
-      css = '.viewport_height {height: ' + vh + 'px !important; min-height: ' + vh + 'px !important;}' +
-        '.p-project-next.__start_anim .b-project-info-loader {width:' + (1.2 * vw) + 'px;top:-' + vh + 'px;bottom:-' + vh + 'px;' +
-        '.b-project.__animate .b-project-info-loader{width:' + (2 * vw) +
-        'px;height:' + (2 * vh) + 'px;}'; // IE fix
+      css = '.viewport_height {height: ' + vh + 'px !important; min-height: ' + vh + 'px !important;}';
+    /*
+    +
+    '.p-project-next.__start_anim .b-project-info-loader {width:' + (1.2 * vw) + 'px;top:-' + vh + 'px;bottom:-' + vh + 'px;' +
+    '.__next .p-project-intro-viewport+.p-project-photo{height:' + (.23 * vh) + 'px;margin-top:' + (.05 * vh) + 'px}' +
+    '.__anim .p-project-intro-viewport + .p-project-photo {height:' + vh + 'px;}' +
+    '.__anim .p-project-intro-viewport{height:' + (.45 * vh) + 'px!important;}' +
+    '.b-project.__animate .b-project-info-loader{width:' + (2 * vw) +
+    'px;height:' + (2 * vh) + 'px;}'; // IE fix*/
 
     if (cv.length) {
       cv.text(css);
@@ -256,7 +261,7 @@ $(function () {
       }, 3000);
 
     } else {
-      console.log('skip start logo');
+      // console.log('skip start logo');
       // setTimeout(function () {
       $start_logo.addClass('is-finnised').hide();
       // $('.intro').addClass('__anim');
@@ -348,7 +353,11 @@ $(function () {
     }
   }
 
-  function animationHandler(event) {
+  function animationHandler(event, wait) {
+    if (!wait) wait = 0;
+
+    console.log('wait', wait);
+
     if (event) {
       var $trg = $(event.target);
       var $project = $trg.hasClass('p-project-next') ? $trg : $trg.closest('.p-project-next');
@@ -365,9 +374,7 @@ $(function () {
         anim_type = 'next';
         tag_row_count = $project.find('.p-project-intro-viewport').attr('data-rows');
 
-        console.log($project.offset().top, getScrollTop());
-
-        $project.addClass('__start_anim');
+        var $project_wp = $project.addClass('__start_anim').find('.p-project-intro-viewport');
 
 
         $('.navbar-custom').addClass('__invis');
@@ -381,9 +388,11 @@ $(function () {
             position: 'fixed',
             left: 0,
             right: 0,
-            height: '100vh',
+            height: $project.outerHeight(),
             top: $project.offset().top - getScrollTop()
           });
+
+          $project_wp.css('height', $project_wp.outerHeight());
 
           var css = 'translate(0,' + (-($project.offset().top - getScrollTop())) + 'px)';
 
@@ -402,6 +411,7 @@ $(function () {
           // setTimeout(function () {
 
           $project.addClass('__anim');
+
           $('body').addClass('__anim_next');
 
 
@@ -445,8 +455,8 @@ $(function () {
         if (!($surf.length > 0 || $filter.length > 0)) {
           setTimeout(function () {
             $html.addClass('__anim_wave __hide_page');
+          }, wait);
 
-          }, $trg.closest('.b-menu').length ? menu_closing_delay : 0);
           // $('.navbar-circle').addClass('__anim');
 
           delay = default_wave_delay;
@@ -457,14 +467,14 @@ $(function () {
       }
       return {
         fade_in_nav: fade_in_nav,
-        delay: delay,
+        delay: delay + wait,
         anim_type: anim_type
       };
     }
   }
 
-  function showPage(path, hash, event, is_back) {
-    console.log('ajax', (busy ? 'busy' : 'start'));
+  function showPage(path, hash, event, is_back, wait) {
+    console.log('ajax', (busy ? 'busy' : 'start'), 'wait', wait);
 
     if (busy) return false;
 
@@ -485,7 +495,7 @@ $(function () {
         var delay = 0;
         var $b = $('body');
 
-        var animationHandlerCb = animationHandler(event);
+        var animationHandlerCb = animationHandler(event, wait);
 
         if (!is_back) {
           delay = animationHandlerCb.delay;
@@ -610,8 +620,10 @@ $(function () {
             } else {
             }
 
+
             var s_page = $('.s-page');
             s_page.replaceWith($new_html.filter('.s-page'));
+
 
             var s_bmenu = $('.b-menu');
             s_bmenu.replaceWith($new_html.find('.b-menu'));
@@ -648,8 +660,11 @@ $(function () {
         boardGrid.isotope('layout');
       }, 200);
     } else if ($('.boardGrid').length) {
-      boardGrid = $('.boardGrid').on('revealComplete', function () {
-        startImgLoader();
+
+      boardGrid = $('.boardGrid').on('revealComplete layoutComplete', function () {
+        setTimeout(function () {
+          startImgLoader();
+        }, 200);
       }).isotope({
         percentPosition: true,
         gutter: 0,
@@ -716,7 +731,7 @@ $(function () {
   }
 
   $(window)
-    .on('resize load', throttle(fixWebkitStyle, 100))
+    .on('resize load', throttle(fixWebkitStyle, 50))
     .on('resize scroll', throttle(onScrollResize, 100))
     .on("wheel mousewheel touchstart touchmove", function (e) {
       console.log('is_animating', is_animating);
@@ -785,8 +800,8 @@ $(function () {
             }
 
             setTimeout(function () {
-              showPage(link[0].pathname, link[0].hash, e);
-            }, hasTouch() ? 10 : 0);
+              showPage(link[0].pathname, link[0].hash, e, null, (link.closest('.b-menu').length ? menu_closing_delay : 0));
+            }, (hasTouch() ? 10 : 0));
           }
         }
 
@@ -1020,10 +1035,10 @@ $(function () {
   // viewport units buggyfill
 
   // if (!checkPropertyDimention('width', '1vw')) {
-  //   viewportUnitsBuggyfill.init({
-  //     force: true,
-  //     refreshDebounceWait: 50
-  //   });
+  viewportUnitsBuggyfill.init({
+    force: true,
+    refreshDebounceWait: 50
+  });
   // }
 
   if (hasTouch()) { // remove all :hover stylesheets

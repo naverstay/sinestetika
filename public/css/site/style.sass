@@ -566,7 +566,8 @@ body
   justify-content: flex-start
   width: 100%
   height: auto
-  //will-change: transform
+  transform: translate(0,0)
+  will-change: transform
   min-height: 103vh
   //padding: 13rem 0 0
   //min-height: 100vh
@@ -580,8 +581,18 @@ body
 
   .__next &
     //padding-top: 5rem
+    //height: 75vh
+    //min-height: 75vh
+    height: auto
+    min-height: 0
+    //overflow: hidden
+
+  .__anim .__next &
+    //padding-top: 5rem
     height: 75vh
     min-height: 75vh
+    //height: auto
+    //min-height: 0
     //overflow: hidden
 
   //> .container
@@ -638,6 +649,7 @@ body
   padding: 30vh 0 20vh
 
   + .p-project-photo
+    //height: 20vh
     margin-top: -20vh
 
   .p-project-intro-tags
@@ -660,30 +672,55 @@ body
       margin: -6.7rem 0 4.1rem !important
 
   .__next &
+    //transition: height .6s cubic-bezier(0.785, 0.135, 0.15, 0.86), padding .6s cubic-bezier(0.19, 1, 0.22, 1)
     transition: height .6s cubic-bezier(0.19, 1, 0.22, 1), padding .6s cubic-bezier(0.19, 1, 0.22, 1)
     flex: 1 0 auto
     padding: 0
     //height: 75vh
-
-    height: calc(75vh - 9.8rem)
+    height: auto
+    //height: calc(75vh - 9.8rem)
     //max-height: calc(75vh - 9.8rem)
-    padding-bottom: 20vh
+    //padding-bottom: 20vh
 
     .p-project-intro-body
       flex: 0 0 auto
       margin: 0 0 3rem !important
 
+    //&[data-rows='2']
+      .p-project-intro-body
+        margin: -3.35rem 0 3rem !important
+
+    //&[data-rows='3']
+      .p-project-intro-body
+        margin: -6.7rem 0 3rem !important
+
+    + .p-project-photo
+      height: 20vh
+      margin-top: 5vh
+
   .__anim &
-    height: 70vh !important
+    height: 45vh !important
     //max-height: 70vh !important
     //padding-bottom: 20vh
 
     .p-project-intro-body
-      margin: 0 0 9.8rem
+      margin: 0 0 9.8rem !important
+
+    &[data-rows='2']
+      .p-project-intro-body
+        margin: -3.35rem 0 5.35rem !important
+
+    &[data-rows='3']
+      .p-project-intro-body
+        margin: -6.7rem 0 4.1rem !important
+
+    + .p-project-photo
+      height: 100vh
+      //margin-top: 0
 
 .p-project-intro-body
-  will-change: transform
-  transform: translate(0, 0)
+  //will-change: transform
+  //transform: translate(0, 0)
   //flex: 1 0 auto
   display: flex
   //min-height: 36rem
@@ -694,7 +731,8 @@ body
   position: relative
 
   .__anim &
-    transition: margin $b-next-project-info-loader_size .1s cubic-bezier(0.19, 1, 0.22, 1)
+    transition: margin $b-next-project-info-loader_size cubic-bezier(0.19, 1, 0.22, 1)
+    //transition: margin $b-next-project-info-loader_size + .1 cubic-bezier(0.19, 1, 0.22, 1)
 
   //.__next &
     flex: 1 0 auto
@@ -721,7 +759,7 @@ body
  *}
 
 .p-project-title
-  transform: translate(0,0)
+  //transform: translate(0,0)
   font-size: 4.7rem
   line-height: 7.9rem
   font-weight: normal
@@ -762,12 +800,14 @@ body
   display: block
   position: relative
   z-index: 1
-  transition: margin-top .3s .3s cubic-bezier(0.785, 0.135, 0.15, 0.86)
+  transition: margin-top .3s .05s cubic-bezier(0.785, 0.135, 0.15, 0.86)
 
   .__next &
     //margin-top: 0
     animation: none !important
-    //background: red
+    transition: none
+
+  //background: red
     //margin-bottom: -35vh
 
   img
@@ -1110,7 +1150,7 @@ body
 .p-project-next
   transform: translate(0, 0)
   //transition: top .6s cubic-bezier(0.075, 0.82, 0.165, 1)
-  transition: top .6s cubic-bezier(0.19, 1, 0.22, 1),  height .6s cubic-bezier(0.19, 1, 0.22, 1), padding-top .6s cubic-bezier(0.19, 1, 0.22, 1)
+  transition: top .6s cubic-bezier(0.19, 1, 0.22, 1), height .6s cubic-bezier(0.19, 1, 0.22, 1), padding-top .6s cubic-bezier(0.19, 1, 0.22, 1)
   display: block
   position: relative
   //position: absolute
@@ -1118,7 +1158,7 @@ body
   //right: 0
   //left: 0
   z-index: 10
-  height: 75vh
+  //height: 75vh
   background: #fff
   will-change: transform
 
@@ -1180,7 +1220,7 @@ body
     z-index: 6
     right: 0
     left: 0
-    height: 100vh
+    height: 100vh !important
 
     //transform: scale(1) translate3d(0, -5%, 0)
 
@@ -1200,7 +1240,8 @@ body
 
     .p-project-intro-wrapper.__next
       //height: auto
-      height: 100vh
+      //height: 100vh
+      height: 100%
       transform: scale(1) translate3d(0, 0, 0) !important
 
       .p-project-intro
@@ -1226,6 +1267,7 @@ body
   font-size: 1.79rem
   margin: 5.4rem 0 5.4rem
   margin-top: -1.2rem
+  margin-bottom: 6rem
   line-height: 5.4rem
   //margin: 0
   letter-spacing: 0.25rem
@@ -1273,7 +1315,8 @@ body
       min-height: 30vh
 
 .p-project-intro-wrapper.__next
-  padding-top: 9.8rem
+  //padding-top: 9.8rem
+  padding-top: 6.8rem
 
   .__anim &
     padding-top: 30vh
@@ -1346,8 +1389,8 @@ body
 
 
 .p-project-intro-tags
-  transform: translate(0, 0)
-  will-change: transform
+  //transform: translate(0, 0)
+  //will-change: transform
   min-height: 30vh
   display: flex
   align-items: center
@@ -1363,7 +1406,7 @@ body
     min-height: 18vh
 
 @media (min-width: 768px)
-  .p-project-intro-wrapper.__next
+  //.p-project-intro-wrapper.__next
     height: 70vh
     max-height: 70vh
 
@@ -1413,8 +1456,8 @@ body
 
   .p-project-intro-wrapper.__next
     position: relative
-    height: 100vh
-    min-height: 100vh
+    //height: 100vh
+    //min-height: 100vh
     margin-top: 0
     transform: scale(1) //translate3d(0, 25vh, 0)
     //transition: transform 0.3s ease-out
@@ -1527,7 +1570,8 @@ body
     line-height: 11.5rem
     //margin: 4rem 0 0
     margin: 0
-  .p-project-intro-tags
+
+  //.p-project-intro-tags
     //min-height: 16rem
 
     //.__next &
