@@ -2333,9 +2333,6 @@ video::-webkit-media-controls-current-time-display {
   -webkit-transform: translate(0, 0);
       -ms-transform: translate(0, 0);
           transform: translate(0, 0);
-  -webkit-transition: border-width .3s ease;
-  -o-transition: border-width .3s ease;
-  transition: border-width .3s ease;
   content: '';
   position: absolute;
   top: 0;

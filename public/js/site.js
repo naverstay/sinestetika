@@ -67,7 +67,7 @@ $(function () {
     var navbarHeight = nb.outerHeight();
 
     if (prevent_hide_nav) {
-      console.log(nb, prevent_hide_nav);
+      // console.log(nb, prevent_hide_nav);
       nb.addClass('nav-down').removeClass('nav-up');
       prevent_hide_nav = false;
       return;
@@ -211,7 +211,7 @@ $(function () {
     });
 
     if (!$html.hasClass('__hide_page')) {
-      console.log('normal load');
+      // console.log('normal load');
       $html
       // .removeClass('__anim_wave')
         .addClass('_page_loaded');
@@ -228,7 +228,7 @@ $(function () {
     setTimeout(function () {
       is_animating = false;
 
-      console.log('delay load');
+      // console.log('delay load');
 
       $html
       // .removeClass('__anim_wave')
@@ -356,7 +356,7 @@ $(function () {
   function animationHandler(event, wait) {
     if (!wait) wait = 0;
 
-    console.log('wait', wait);
+    // console.log('wait', wait);
 
     if (event) {
       var $trg = $(event.target);
@@ -474,7 +474,7 @@ $(function () {
   }
 
   function showPage(path, hash, event, is_back, wait) {
-    console.log('ajax', (busy ? 'busy' : 'start'), 'wait', wait);
+    // console.log('ajax', (busy ? 'busy' : 'start'), 'wait', wait);
 
     if (busy) return false;
 
@@ -490,7 +490,7 @@ $(function () {
     xhr.done(function (html, state) {
       busy = false;
 
-      console.log('ajax done');
+      // console.log('ajax done');
       if (state === 'success') {
         var delay = 0;
         var $b = $('body');
@@ -502,7 +502,7 @@ $(function () {
         }
 
         if (animationHandlerCb && animationHandlerCb.anim_type === 'simple') {
-          console.log('simple anim_type');
+          // console.log('simple anim_type');
 
           setTimeout(function () {
             $('.s-page')
@@ -554,7 +554,7 @@ $(function () {
             loadPage(window.location.pathname, window.location.hash);
             history.pushState(null, (tit[1] || null), path + hash);
             if (!(animationHandlerCb && animationHandlerCb.anim_type === "filter")) {
-              console.log('scrollTop 0');
+              // console.log('scrollTop 0');
               $('html, body').scrollTop(0);
             }
           }
@@ -637,7 +637,7 @@ $(function () {
             initBoard();
 
             setTimeout(function () {
-              console.log('remove __fade_in_nav');
+              // console.log('remove __fade_in_nav');
 
               $('body').removeClass('__fade_in_nav').removeClass('__force_nav_down');
               $('.navbar-custom').removeClass('__invis');
@@ -734,7 +734,7 @@ $(function () {
     .on('resize load', throttle(fixWebkitStyle, 50))
     .on('resize scroll', throttle(onScrollResize, 100))
     .on("wheel mousewheel touchstart touchmove", function (e) {
-      console.log('is_animating', is_animating);
+      // console.log('is_animating', is_animating);
 
       if (is_animating) {
         e.preventDefault();
@@ -772,7 +772,7 @@ $(function () {
       var slider = $(this).parents('.p-project-section-slider').slick('slickNext');
     })
     .on('mouseenter', 'a', function () {
-      if (window.location.hostname == this.hostname) {
+      if (window.location.hostname === this.hostname) {
         loadPage(this.pathname, this.hash);
       }
     })
@@ -791,8 +791,10 @@ $(function () {
       } else {
         e.preventDefault();
 
-        if (window.location.hostname == this.hostname) {
-          if (window.location.pathname != this.pathname || window.location.hash != this.hash) {
+        if (window.location.hostname === this.hostname) {
+          if (link.hasClass('navbar-brand') && window.location.pathname === '/') {
+            window.location = '/';
+          } else if (window.location.pathname !== this.pathname || window.location.hash !== this.hash) {
             if (link.parents('.b-menu').length > 0) {
               link.closest('.b-menu').find('a').removeClass('_active');
               link.addClass('_active');
@@ -813,7 +815,7 @@ $(function () {
     e.preventDefault();
     var state = History.getState();
 
-    console.log('popstate', state, window.location.host);
+    // console.log('popstate', state, window.location.host);
 
     if (state) {
       var rx = new RegExp('.*' + window.location.host);
@@ -914,7 +916,7 @@ $(function () {
       that.elVolume().toggleClass('muted', muted);
     };
     this.changeVolume = function (e) {
-      console.log(e);
+      // console.log(e);
       var x = e.offsetX;
       var w = that.elVolumeBar().width();
 
@@ -1035,10 +1037,10 @@ $(function () {
   // viewport units buggyfill
 
   // if (!checkPropertyDimention('width', '1vw')) {
-  viewportUnitsBuggyfill.init({
-    force: true,
-    refreshDebounceWait: 50
-  });
+  // viewportUnitsBuggyfill.init({
+  //   force: true,
+  //   refreshDebounceWait: 50
+  // });
   // }
 
   if (hasTouch()) { // remove all :hover stylesheets
